@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dazhongmianfei.dzmfreader.view.ObservableScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_bookshelf_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/fragment_bookshelf_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/fragment_shelf_banner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/shape_bookshel_bg"
+                android:orientation="vertical">
+
+                <com.dazhongmianfei.dzmfreader.banner.ConvenientBannerBookShelf
+                    android:id="@+id/fragment_shelf_banner_male"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    app:canLoop="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_bookshelf_marquee_layout"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_announce"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@mipmap/shelf_laba" />
+
+                <com.dazhongmianfei.dzmfreader.view.MarqueeTextView
+                    android:id="@+id/fragment_bookshelf_marquee"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/fragment_bookshelf_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/shelf_sign" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="4dp"
+                        android:text="@string/noverfragment_sign"
+                        android:textColor="@color/mainColor2"
+                        android:textSize="11dp" />
+
+                    <!--    <RelativeLayout
+                            android:layout_width="40dp"
+                            android:padding="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical">
+
+                            <View
+                                android:layout_width="9dp"
+                                android:layout_height="9dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/signin_yes_shape" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="@string/noverfragment_sign"
+                                android:textColor="@color/bookshelf_sign" />
+
+                        </RelativeLayout>-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <com.dazhongmianfei.dzmfreader.view.AdaptionGridViewNoMargin
+
+                android:id="@+id/fragment_comicshelf_AdaptionGridViewNoMargin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:horizontalSpacing="10dp"
+                android:numColumns="3"
+                android:paddingBottom="25dp" />
+
+            <LinearLayout
+                android:id="@+id/fragment_bookshelf_noresult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:background="@mipmap/no_data"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/noverfragment_nobooks"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/public_12_dp" />
+
+                <Button
+                    android:id="@+id/fragment_bookshelf_go_shelf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/shape_go_shelf_button"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="@string/noverfragment_gostore"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/public_12_dp" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</com.dazhongmianfei.dzmfreader.view.ObservableScrollView>

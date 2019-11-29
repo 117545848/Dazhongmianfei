@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dazhongmianfei.dzmfreader"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <application
+        android:name="com.dazhongmianfei.dzmfreader.config.ReaderApplication"
+        android:allowBackup="true"
+        android:appComponentFactory="@string/app_name"
+        android:icon="@mipmap/appicon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:appComponentFactory"
+        tools:targetApi="p">
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.activity.SplashActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="iy8qdo" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.activity.BookInfoActivity"
+            android:exported="true"
+            android:launchMode="standard"
+            android:theme="@style/ColorTranslucentTheme" />
+
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.TestActivity" />
+
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.CatalogActivity" />
+
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.FeedBackActivity" />
+
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.LoginActivity" />
+
+
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.AboutActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.UserInfoActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.BindPhoneActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.CatalogInnerActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.RechargeActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.AcquireBaoyueActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.AnnounceActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.AboutUsActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.TaskCenterActivity" />
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.activity.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/ColorTranslucentTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.PayActivity" />
+
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.activity.SearchActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.read.ReadActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.comic.activity.ComicLookActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.SettingsActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.FirstStartActivity" />
+
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.WebViewActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.DayShareActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.DownMangerActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.TaskExplainActivity" />
+
+
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.comic.activity.ComicCommentActivity"
+            android:theme="@style/ActivityEntryAnimation"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.book.activity.BookCommentActivity"
+            android:theme="@style/ActivityEntryAnimation"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.comic.activity.ComicinfoMuluActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.comic.activity.ComicDownActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.BaseOptionActivity" />
+
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <!--微信支付-->
+        <activity
+            android:name="com.alibaba.sdk.android.push.keeplive.PushExtActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:finishOnTaskLaunch="false"
+            android:launchMode="singleInstance"
+            android:process=":channel"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <!--微信登录-->
+
+        <activity
+            android:name="com.qq.e.ads.ADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+        <!--支付宝支付-->
+        <activity android:name="com.dazhongmianfei.dzmfreader.comic.activity.ComicInfoActivity" />
+        <activity android:name="com.dazhongmianfei.dzmfreader.activity.ComeFromWWWActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!--协议部分，随便设置-->
+                <data
+                    android:host="xiaoshuo.com"
+                    android:path="/openApp"
+                    android:scheme="dazhongmianfei" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent101738731" />
+            </intent-filter>
+        </activity>
+
+        <!-- Push SDK 相关组件，required-->
+        <!-- 消息接收服务 -->
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+
+            android:excludeFromRecents="true"
+
+            android:theme="@style/Theme.UMDefault"
+
+            />
+
+
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.localapp.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2">
+
+        </activity>
+
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.filesearcher.delegate.FileSearcherDelegateActivity"
+            android:theme="@style/FileSearcherTransParentTheme" />
+
+        <activity
+            android:name="com.dazhongmianfei.dzmfreader.filesearcher.FileSearcherActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FileSearcherActivityTheme" />
+
+
+        <!-- adhub-->
+        <activity
+            android:name="com.hubcloud.adhubsdk.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@style/AdhubDialogStyle" />
+        <service
+            android:name="com.hubcloud.adhubsdk.DownloadService"
+            android:exported="false" />
+
+        <!-- Fmobi Ad -->
+
+        <activity android:name="com.ly.adpoymer.activity.LyVideoActivity" />
+
+        <!-- gdt Ad -->
+
+        <activity
+            android:name="com.qq.e.ads.ADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name="com.qq.e.ads.PortraitADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qq.e.ads.LandscapeADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape" />
+
+        <service
+            android:name="com.qq.e.comm.DownloadService"
+            android:exported="false" />
+        <!--如果targetSdkVersion设置值>=24，则必须添加以下provider，否则会影响app变现效率-->
+        <!--请开发者根据自己PackageName来替换${applicationId}这个字段-->
+        <!--特别注意这个authorities中的fileprovider为全部小写-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.dazhongmianfei.dzmfreader.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/gdt_file_path" />
+        </provider>
+
+        <!-- baidu Ad -->
+
+        <activity
+            android:name="com.baidu.mobads.AppActivity"
+            android:configChanges="screenSize|keyboard|keyboardHidden|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--如果targetSdkVersion设置值>=24，则必须添加以下provider，否则会影响app变现效率-->
+        <!--请开发者根据自己PackageName来替换${applicationId}这个字段-->
+        <provider
+            android:name="com.baidu.mobads.openad.FileProvider"
+            android:authorities="com.dazhongmianfei.dzmfreader.bd.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/bd_file_paths" />
+        </provider>
+
+
+        <meta-data
+            android:name="com.openinstall.APP_KEY"
+            android:value="iy8qdo" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="ratio_float" />
+
+        <meta-data
+            android:name="com.alibaba.app.appkey"
+            android:value="27705284" />
+
+
+        <meta-data
+            android:name="com.alibaba.app.appsecret"
+            android:value="b7535b0c587cfbc7f9d9d159358cc15e" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5b716a23a40fa323ca000063" />
+
+
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="com.dazhongmianfei.dzmfreader.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/pathlist" />
+        </provider>
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="com.dazhongmianfei.dzmfreader.TTMultiProvider"
+            android:exported="false" />
+
+        <receiver
+            android:name=".push.ReaderMessageReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.alibaba.push2.action.NOTIFICATION_OPENED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.alibaba.push2.action.NOTIFICATION_REMOVED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.taobao.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.alibaba.sdk.android.push.RECEIVE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.taobao.accs.EventReceiver"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- V3.0.9及以上版本需配置 -->
+        <receiver
+            android:name="com.taobao.accs.ServiceReceiver"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.START_FROM_AGOO" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver
+            android:name="com.taobao.agoo.AgooCommondReceiver"
+            android:exported="true"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="${applicationId}.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.alibaba.sdk.android.push.SystemEventReceiver"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+
+        <service android:name="com.dazhongmianfei.dzmfreader.comic.activity.DownComicService">
+            <intent-filter>
+                <action android:name="com.dazhongmianfei.dzmfreader.comic.activity.DownComicService" />
+            </intent-filter>
+        </service>
+
+
+        <service
+            android:name="com.alibaba.sdk.android.push.MsgService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.alibaba.sdk.android.push.NOTIFY_ACTION" />
+            </intent-filter>
+        </service>
+
+
+        <!--阿里云推送-->
+        <service
+            android:name="com.alibaba.sdk.android.push.channel.CheckService"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="com.alibaba.sdk.android.push.CHECK_SERVICE" />
+            </intent-filter>
+        </service> <!-- 请填写你自己的- appKey-->
+        <service
+            android:name="com.taobao.accs.ChannelService"
+            android:exported="true"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.SERVICE" />
+            </intent-filter>
+        </service> <!-- 请填写你自己的appSecret-->
+        <service
+            android:name="com.taobao.accs.ChannelService$KernelService"
+            android:exported="false"
+            android:process=":channel" />
+
+        <service
+            android:name="com.taobao.accs.data.MsgDistributeService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+
+        <service
+            android:name="org.android.agoo.accs.AgooService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+
+        <service
+            android:name="com.alibaba.sdk.android.push.AliyunPushIntentService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.alibaba.sdk.android.push.channel.TaobaoRecvService"
+            android:exported="true"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="org.android.agoo.client.MessageReceiverService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.taobao.accs.internal.AccsJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":channel" />
+
+        <service
+            android:name="com.alibaba.sdk.android.push.channel.KeepChannelService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":channel" />
+
+        <service
+            android:name="com.qq.e.comm.DownloadService"
+            android:exported="false" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+
+    </application>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 设置READ_PHONE_STATE权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 设置安装程序权限 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 设置创建于删除文件权限 -->
+    <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- 开启GPS寻址权限 -->
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 修复部分机型如中兴调用activityManager.getRunningTasks(1)报java.lang.SecurityException异常 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--用于读取手机硬件信息等，用于机型过滤-->
+    <!--选举使用，当应用有删除或者更新时需要重新选举，复用推送通道-->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <!--补偿通道小米PUSH使用，不用可去除-->
+
+    <!--允许监听启动完成事件-->
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <!--允许访问震动器-->
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <!-- 允许task重排序 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
+</manifest>

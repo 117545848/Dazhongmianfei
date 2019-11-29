@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dazhongmianfei.dzmfreader.view.PullToRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refreshLayoutMale"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dazhongmianfei.dzmfreader.activity.MainActivity">
+
+    <include layout="@layout/refresh_head" />
+
+    <com.dazhongmianfei.dzmfreader.view.ObservableScrollView
+        android:id="@+id/scrollViewMale"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/fragment_store_comic_content" />
+
+
+    </com.dazhongmianfei.dzmfreader.view.ObservableScrollView>
+
+    <include layout="@layout/load_more" />
+
+</com.dazhongmianfei.dzmfreader.view.PullToRefreshLayout>

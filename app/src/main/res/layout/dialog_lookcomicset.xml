@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toggle="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_lookcomicset_fanye_text1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/public_14_dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/dialog_lookcomicset_fanye_text2"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/public_12_dp" />
+        </LinearLayout>
+
+
+        <com.zcw.togglebutton.ToggleButton
+            android:id="@+id/dialog_lookcomicset_fanye_ToggleButton"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+
+            toggle:tbBorderWidth="1dp"
+            toggle:tbOnColor="@color/mainColor2"
+            toggle:tbOffBorderColor="@color/lightgray2" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_lookcomicset_fanye_yejian"
+                android:textColor="@color/black"
+                android:textSize="@dimen/public_14_dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/dialog_lookcomicset_fanye_text2"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/public_12_dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+        <com.zcw.togglebutton.ToggleButton
+            android:id="@+id/dialog_lookcomicset_yejian_ToggleButton"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            toggle:tbBorderWidth="1dp"
+            toggle:tbOffBorderColor="@color/lightgray2"
+            toggle:tbOnColor="@color/mainColor2" />
+
+    </RelativeLayout>
+</LinearLayout>

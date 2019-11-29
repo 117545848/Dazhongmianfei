@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.dazhongmianfei.dzmfreader.view.ObservableScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_book_info_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingBottom="70dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/fragment_comicinfo_mulu_zhuangtai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/public_11_dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:id="@+id/fragment_comicinfo_mulu_layout"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:id="@+id/fragment_comicinfo_mulu_xu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/fragment_comic_info_zhengxu"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/public_11_dp" />
+
+                <ImageView
+                    android:id="@+id/fragment_comicinfo_mulu_xu_img"
+                    android:layout_width="15dp"
+                    android:layout_height="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="2dp"
+                    android:src="@mipmap/positive_order" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <ListView
+
+            android:id="@+id/fragment_comicinfo_mulu_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/white"
+            android:divider="@color/lightgray2"
+            android:dividerHeight="0.3dp" />
+
+
+    </LinearLayout>
+</com.dazhongmianfei.dzmfreader.view.ObservableScrollView>

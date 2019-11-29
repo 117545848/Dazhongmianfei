@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main_vitualkey"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_height="match_parent">
+
+        <com.dazhongmianfei.dzmfreader.view.ObservableScrollView
+            android:id="@+id/activity_book_info_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lightgray2">
+
+            <include layout="@layout/activity_book_info_content" />
+        </com.dazhongmianfei.dzmfreader.view.ObservableScrollView>
+
+        <include layout="@layout/book_info_titlebar"
+
+            />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#f8f8f8"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/activity_book_info_add_shelf"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/mainColor"
+                android:textSize="@dimen/public_12_dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lightgray2" />
+
+            <TextView
+                android:id="@+id/activity_book_info_start_read"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/mainColor"
+                android:gravity="center"
+                android:text="@string/BookInfoActivity_startyuedu"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_12_dp" />
+            <!--<View-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/lightgray2" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/activity_book_info_down"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:visibility="visible"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/BookInfoActivity_down"-->
+                <!--android:textColor="@color/mainColor"-->
+                <!--android:textSize="@dimen/public_12_dp" />-->
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+     >
+
+        <com.dazhongmianfei.dzmfreader.banner.ConvenientBanner
+            android:id="@+id/store_banner_male"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            app:canLoop="true" />
+
+        <ImageView
+            android:id="@+id/store_banner_line"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/banner_bottom_line" />
+<!--
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_gravity="bottom"
+            android:background="@color/white" />-->
+    </FrameLayout>
+
+
+    <com.dazhongmianfei.dzmfreader.view.AdaptionGridView
+        android:id="@+id/store_entrance_grid_male"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:numColumns="5"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/fragment_store_comic_content_commend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" />
+</LinearLayout>

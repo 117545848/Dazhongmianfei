@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <ListView
+        android:id="@+id/fragment_comicinfo_mulu_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:divider="@color/lightgray2"
+        android:dividerHeight="0.3dp"
+        android:paddingLeft="13dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+
+        android:paddingRight="15dp">
+
+        <LinearLayout
+            android:id="@+id/titlebar_back"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/back_gray"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/titlebar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/BookInfoActivity_mulu"
+            android:textSize="@dimen/public_13_dp" />
+
+
+
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:id="@+id/fragment_comicinfo_mulu_layout"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/fragment_comicinfo_mulu_xu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/fragment_comic_info_zhengxu"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/public_11_dp" />
+
+            <ImageView
+                android:id="@+id/fragment_comicinfo_mulu_xu_img"
+                android:layout_width="15dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="2dp"
+                android:src="@mipmap/positive_order" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_comicinfo_mulu_dangqian_layout"
+        android:layout_width="50dp"
+        android:layout_height="130dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="90dp">
+
+        <LinearLayout
+            android:id="@+id/fragment_comicinfo_mulu_dangqian"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/shape_comic_mulu_dangqian"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/comicdetail_gotocurrent" />
+
+            <TextView
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:text="@string/fragment_comic_info_dangqian"
+                android:textColor="@color/black"
+                android:textSize="@dimen/public_8_dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_comicinfo_mulu_zhiding"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_comic_mulu_dangqian"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/fragment_comicinfo_mulu_zhiding_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/comicdetail_gotobottom" />
+
+            <TextView
+                android:id="@+id/fragment_comicinfo_mulu_zhiding_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:text="@string/fragment_comic_info_daodi"
+                android:textColor="@color/black"
+                android:textSize="@dimen/public_8_dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

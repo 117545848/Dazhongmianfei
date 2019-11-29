@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/activity_home_book_layout"
+        layout="@layout/activity_home_viewpager_book" />
+
+
+    <include
+        android:id="@+id/activity_home_sex_layout"
+        layout="@layout/activity_home_viewpager_sex"
+        />
+</FrameLayout>

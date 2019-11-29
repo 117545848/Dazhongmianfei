@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:id="@+id/recyclerview_item_readhistory_HorizontalScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="114dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/recyclerview_item_readhistory_book"
+                android:layout_width="match_parent"
+                android:layout_height="94dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp">
+
+                <ImageView
+                    android:id="@+id/recyclerview_item_readhistory_img"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="centerCrop" />
+
+                <RelativeLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/recyclerview_item_readhistory_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:lines="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/public_13_dp" />
+
+                    <TextView
+                        android:id="@+id/recyclerview_item_readhistory_des"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+
+                        android:lines="1"
+                        android:textColor="@color/gray3"
+                        android:textSize="@dimen/public_10_dp" />
+
+
+                    <TextView
+                        android:id="@+id/recyclerview_item_readhistory_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="10dp"
+
+                        android:lines="1"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/public_10_dp" />
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/recyclerview_item_readhistory_goon"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/shape_login_weixin_bg"
+                    android:gravity="center"
+                    android:text="继续阅读"
+                    android:textColor="@color/mainColor"
+                    android:textSize="@dimen/public_9_dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/recyclerview_item_readhistory_del"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:background="@color/mainColor2"
+                android:gravity="center"
+                android:text="@string/ReadHistoryFragment_shangchu"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_10_dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <include layout="@layout/list_ad_view"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lightgray2" />
+</RelativeLayout>

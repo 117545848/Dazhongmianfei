@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_dialog"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_dowu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+
+            android:text="@string/BookInfoActivity_down_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_13_dp" />
+
+        <ListView
+            android:id="@+id/dialog_dowu_list"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/dialog_dowu_title"
+            android:divider="@color/lightgray2"
+            android:dividerHeight="0.3dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@+id/dialog_dowu_list"
+            android:background="@color/lightgray1" />
+
+        <TextView
+            android:id="@+id/dialog_dowu_manger"
+            android:layout_width="match_parent"
+
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+
+            android:gravity="center"
+            android:text="@string/BookInfoActivity_down_manger"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_13_dp" />
+    </RelativeLayout>
+</LinearLayout>

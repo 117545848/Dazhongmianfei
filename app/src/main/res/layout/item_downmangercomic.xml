@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:id="@+id/item_dowmmanger_HorizontalScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/item_dowmmanger_LinearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/item_dowmmanger_LinearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/item_dowmmanger_cover"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp" />
+
+                <RelativeLayout
+                    android:id="@+id/item_dowmmanger_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/item_dowmmanger_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+
+                        android:text="dualan"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/item_dowmmanger_xiazaiprocess"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="dualan"
+                        android:textColor="@color/gray"
+                        android:textSize="12dp" />
+
+                </RelativeLayout>
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/item_dowmmanger_open"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/shape_login_weixin_bg"
+                    android:gravity="center"
+                    android:text="@string/noverfragment_goonread"
+                    android:textColor="@color/mainColor"
+                    android:textSize="@dimen/public_11_dp" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_dowmmanger_delete"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@color/mainColor2"
+                android:gravity="center"
+                android:text="@string/BookInfoActivity_down_delete"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_13_dp" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/lightgray1" />
+</LinearLayout>

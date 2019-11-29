@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="11dp"
+            android:layout_height="11dp"
+            android:layout_marginLeft="3dp"
+            android:layout_gravity="center_vertical"
+            android:background="@mipmap/store_labe" />
+
+
+        <TextView
+            android:id="@+id/fragment_store_gridview3_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp"
+
+            android:text="精品推荐"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_12_dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/fragment_discovery_daojishi_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/fragment_discovery_daojishi_hh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_login_enable_bg2"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="2dp"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_11_dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="@dimen/public_11_dp" />
+
+            <TextView
+                android:id="@+id/fragment_discovery_daojishi_mm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_login_enable_bg2"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="2dp"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_11_dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textColor="@color/black"
+                android:textSize="@dimen/public_11_dp" />
+
+            <TextView
+                android:id="@+id/fragment_discovery_daojishi_ss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_login_enable_bg2"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="2dp"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_11_dp" />
+
+
+        </LinearLayout>
+
+        <View
+
+            android:layout_width="2dp"
+            android:layout_height="5dp"
+            android:layout_weight="1" />
+
+        <RelativeLayout
+            android:id="@+id/fragment_discovery_daojishi_end"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:background="@drawable/shape_login_enable_bg2"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+
+                android:text="@string/Discover_end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_10_dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <com.dazhongmianfei.dzmfreader.view.AdaptionGridView
+        android:id="@+id/fragment_store_gridview3_gridview_fore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:numColumns="1"
+        android:visibility="gone" />
+
+    <com.dazhongmianfei.dzmfreader.view.AdaptionGridView
+        android:id="@+id/fragment_store_gridview3_gridview_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:numColumns="3" />
+
+    <com.dazhongmianfei.dzmfreader.view.AdaptionGridView
+        android:id="@+id/fragment_store_gridview3_gridview_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:numColumns="1"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/fragment_store_gridview1_more"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/shape_announce"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#999999"
+            android:textSize="11dp"
+            android:text="@string/storeFragment_more" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="7dp"
+            android:src="@mipmap/comic_mall_more" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>

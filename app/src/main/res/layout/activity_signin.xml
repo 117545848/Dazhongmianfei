@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main_vitualkey"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_titlebar"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="@mipmap/icon_signin_bg">
+
+            <ImageView
+                android:id="@+id/activity_signin_sigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_signin_no" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="175dp"
+            android:background="@drawable/signin_blackframe_shape"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/activity_signin_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            
+                    android:gravity="center"
+                    android:text="1天"
+                    android:textColor="@color/white"
+                    android:background="@drawable/signin_yes_shape"
+                    android:textSize="@dimen/public_13_dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></View>
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/activity_signin_one_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center"
+                    android:text=""
+
+                    android:textSize="@dimen/public_10_dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/signin_yes_shape"
+                    android:id="@+id/activity_signin_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            
+                    android:gravity="center"
+                    android:text="2天"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/public_13_dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></View>
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/activity_signin_two_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center"
+                    android:text=""
+               
+                    android:textSize="@dimen/public_10_dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/signin_yes_shape"
+                    android:id="@+id/activity_signin_there"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+             
+                    android:gravity="center"
+                    android:text="3天"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/public_13_dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></View>
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/activity_signin_there_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+             
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="@dimen/public_10_dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/signin_yes_shape"
+                    android:id="@+id/activity_signin_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+          
+                    android:gravity="center"
+                    android:text="4天"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/public_13_dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></View>
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/activity_signin_four_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+       
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="@dimen/public_10_dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/signin_yes_shape"
+                    android:id="@+id/activity_signin_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+        
+                    android:gravity="center"
+                    android:text="5天"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/public_13_dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></View>
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/activity_signin_five_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+         
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="@dimen/public_10_dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/signin_yes_shape"
+                    android:id="@+id/activity_signin_six"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                  
+                    android:gravity="center"
+                    android:text="6天"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/public_13_dp" />
+
+                <View
+
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></View>
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/activity_signin_six_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+               
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="@dimen/public_10_dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:background="@drawable/signin_yes_shape"
+                    android:id="@+id/activity_signin_seven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                
+                    android:gravity="center"
+                    android:text="7天"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/public_13_dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"></View>
+
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/activity_signin_seven_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="@dimen/public_10_dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+    <LinearLayout
+        android:background="@drawable/signin_blackframe_shape"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical"
+        android:layout_marginRight="15dp"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/icon_signin_rule"
+        android:text="签到规则">
+
+    </ImageView>
+
+    <ListView
+        android:divider="@null"
+        android:layout_marginTop="30dp"
+        android:id="@+id/activity_signin_listview"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_height="wrap_content"></ListView>
+</LinearLayout>
+
+</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/shelf_book_delete_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/shelf_book_delete_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/select_all"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_14_dp" />
+
+        <TextView
+            android:id="@+id/shelf_book_delete_del"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/red"
+            android:gravity="center"
+            android:text="@string/ReadHistoryFragment_shangchu"
+            android:textColor="@color/white"
+            android:textSize="@dimen/public_14_dp" />
+
+        <TextView
+            android:id="@+id/shelf_book_delete_cancle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/splashactivity_cancle"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_14_dp" />
+    </LinearLayout>
+</LinearLayout>

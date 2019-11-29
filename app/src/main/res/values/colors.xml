@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="updategray">#6e6e6e</color>
+    <color name="updateblue">#376ee5</color>
+
+
+    <!--主题绿色F20249-->
+    <color name="mainColor">#ff9966</color>
+    <color name="mainColor3">#ff9966</color>
+    <color name="comic_info_tag_text">#FF96D1CF</color>
+    <color name="comic_info_tag_bg">#FFF0FAFC</color>
+
+
+    <color name="mainColor2">#ff9966</color>
+    <!--透明色 -->
+    <color name="transparent">#00000000</color>
+    <!--白色 -->
+    <color name="white">#FFFFFF</color>
+
+
+    <!--象牙色 -->
+    <!--亮黄色 -->
+    <!--黄色 -->
+    <!--雪白色 -->
+    <!--花白色 -->
+    <!--柠檬绸色 -->
+    <!--米绸色 -->
+    <!--海贝色 -->
+    <!--淡紫红 -->
+    <!--番木色 -->
+    <!--白杏色 -->
+    <!--浅玫瑰色 -->
+    <!--桔黄色 -->
+    <!--鹿皮色 -->
+    <!--纳瓦白 -->
+    <!--桃色 -->
+    <!--金色 -->
+    <!--粉红色 -->
+    <!--亮粉红色 -->
+    <!--橙色 -->
+    <!--亮肉色 -->
+    <!--暗桔黄色 -->
+    <!--珊瑚色 -->
+    <color name="coral">#FF7F50</color>
+    <!--热粉红色 -->
+    <!--西红柿色 -->
+    <!--红橙色 -->
+    <!--深粉红色 -->
+    <!--紫红色 -->
+    <!--红色 -->
+    <color name="red">#E25754</color>
+    <color name="bookshelf_sign">#FF408CED</color>
+
+
+    <!--老花色 -->
+    <!--亮金黄色 -->
+    <!--亚麻色 -->
+    <!--古董白 -->
+    <!--鲜肉色 -->
+    <!--幽灵白 -->
+    <!--薄荷色 -->
+    <!--烟白色 -->
+    <!--米色 -->
+    <!--浅黄色 -->
+    <!--沙褐色 -->
+    <!--天蓝色 -->
+    <!--蜜色 -->
+    <!--艾利斯兰 -->
+    <!--黄褐色 -->
+    <!--亮珊瑚色 -->
+    <color name="lightcoral">#F08080</color>
+    <!--苍麒麟色 -->
+    <!--紫罗兰色 -->
+    <!--暗肉色 -->
+    <!--淡紫色 -->
+    <!--亮青色 -->
+    <!--实木色 -->
+    <color name="burlywood">#DEB887</color>
+    <!--洋李色 -->
+    <!--淡灰色 -->
+    <!--暗深红色 -->
+    <!--苍紫罗兰色 -->
+    <!--金麒麟色 -->
+    <!--淡紫色 -->
+    <!--蓟色 -->
+    <!--亮灰色 -->
+    <color name="lightgray">#D3D3D3</color>
+    <!--亮灰色 -->
+    <color name="lightgray1">#e4e4e4</color>
+
+
+    <!--亮灰色2 -->
+    <color name="lightgray2">#f7f8f9</color>
+    <!--亮灰色3 -->
+    <color name="lightgray3">#f1f1f1</color>
+    <!--茶色 -->
+    <!--巧可力色 -->
+    <!--秘鲁色 -->
+    <!--印第安红 -->
+    <!--中紫罗兰色 -->
+    <!--银色 -->
+    <!--暗黄褐色 -->
+    <!--褐玫瑰红 -->
+    <!--中粉紫色 -->
+    <!--暗金黄色 -->
+    <!--火砖色 -->
+    <!--粉蓝色 -->
+    <!--亮钢兰色 -->
+    <!--苍宝石绿 -->
+    <!--黄绿色 -->
+    <!--亮蓝色 -->
+    <!--暗灰色 -->
+    <!--褐色 -->
+    <!--赭色 -->
+    <!--暗紫色 -->
+    <!--苍绿色 -->
+    <!--暗紫罗兰色 -->
+    <!--中紫色 -->
+    <!--亮绿色 -->
+    <!--暗海兰色 -->
+    <!--重褐色 -->
+    <!--暗洋红 -->
+    <!--暗红色 -->
+    <!--紫罗兰蓝色 -->
+    <!--亮天蓝色 -->
+    <!--天蓝色 -->
+    <color name="skyblue">#87CEEB</color>
+    <!--灰色 -->
+    <color name="gray">#A9A9A9</color>
+
+    <color name="gray1">#e9e9e9</color>
+    <!--灰色2 -->
+    <color name="gray2">#F5F5F5</color>
+    <!--灰色3 -->
+    <color name="gray3">#b2b2b3</color>
+    <color name="gray4">#6B6B6B</color>
+
+    <!--橄榄色 -->
+    <!--紫色 -->
+    <!--粟色 -->
+    <!--碧绿色 -->
+    <!--黄绿色 -->
+    <!--草绿色 -->
+    <!--中暗蓝色 -->
+    <!--亮蓝灰 -->
+    <!--灰石色 -->
+    <!--深绿褐色 -->
+    <!--石蓝色 -->
+    <!--暗灰色 -->
+    <!--中绿色 -->
+    <!--菊兰色 -->
+    <color name="cornflowerblue">#6495ED</color>
+    <!--军兰色 -->
+    <!--暗橄榄绿 -->
+    <!--靛青色 -->
+    <!--中绿宝石 -->
+    <!--暗灰蓝色 -->
+    <!--钢兰色 -->
+    <!--皇家蓝 -->
+    <!--青绿色 -->
+    <!--中海蓝 -->
+    <!--橙绿色 -->
+    <color name="limegreen">#28ac28</color>
+
+    <!--暗瓦灰色 -->
+    <!--海绿色 -->
+    <!--森林绿 -->
+    <!--亮海蓝色 -->
+    <!--闪兰色 -->
+    <!--中灰兰色 -->
+    <!--浅绿色 -->
+    <!--青色 -->
+    <color name="aboutus_gray">#f8f8f8</color>
+    <!--青色 -->
+
+    aboutus_gray
+    <!--春绿色 -->
+    <!--酸橙色 -->
+    <!--中春绿色 -->
+    <!--暗宝石绿 -->
+    <!--深天蓝色 -->
+    <!--暗青色 -->
+    <!--水鸭色 -->
+    <!--绿色 -->
+    <color name="green">#69DA96</color>
+    <!--暗绿色 -->
+    <!--蓝色 -->
+
+
+    <!--中兰色 -->
+    <!--暗蓝色 -->
+    <!--海军色 -->
+    <!--黑色 -->
+    <color name="black">#000000</color>
+    <!--草绿色 -->
+    <!--灰色cc -->
+    <!--灰色8f -->
+
+    <!--阅读器-->
+    <color name="read_dialog_bg">#2C2C2C</color>
+    <color name="half_transparent">#aa000000</color>
+    <!-- Reader Color -->
+    <color name="read_textColor">#3B3A38</color>
+
+    <color name="read_dialog_button_select">#E25754</color>
+
+    <color name="read_bg_default">#F5D9AB</color>
+    <color name="read_bg_1">#d6ead5</color>
+    <color name="read_bg_2">#cbdeef</color>
+    <color name="read_bg_3">#e4c6ce</color>
+    <color name="read_bg_4">#ffffff</color>
+    <color name="read_bg_7">#3b4044</color>
+    <color name="read_bg_8">#000000</color>
+
+
+    <color name="read_font_1">#2F332D</color>
+    <color name="read_font_2">#2F332D</color>
+    <color name="read_font_3">#A9687A</color>
+    <color name="read_font_4">#2F332D</color>
+    <color name="read_font_7">#b1b1b1</color>
+    <color name="read_font_8">#ffffff</color>
+
+    <!-- UI Color -->
+    <!-- Navigation Color is 30% black mask attack to primary color -->
+    <color name="colorAccent">#E25754</color>
+
+    <color name="navigation_bg">#f9f9f9</color>
+    <color name="navigation_bg_border_up">#f6f6f6</color>
+    <color name="navigation_bg_border_down">#f1f1f1</color>
+    <color name="top_title_border">#e9eaeb</color>
+    <color name="login_input_tip">#c7c7cd</color>
+    <color name="login_button">#e5e6e7</color>
+    <color name="search_bg">#edeeee</color>
+
+
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1E88E5</color>
+    <color name="colorPrimaryLight">#90CAF9</color>
+    <color name="nightColorPrimary">#555555</color>
+    <color name="nightColorPrimaryDark">#424242</color>
+    <color name="nightColorPrimaryLight">#757575</color>
+    <color name="whitest">#FFFFFF</color>
+    <color name="dayModeBackgroundColor">#FCECDF</color>
+    <color name="dayModeTextColor">#424242</color>
+    <color name="nightModeBackgroundColor">#424242</color>
+    <color name="nightModeTextColor">#E0E0E0</color>
+
+    <!--day theme-->
+    <!--night theme-->
+
+
+    <color name="fileSearcherPrimaryColor">#3F51B5</color>
+    <color name="fileSearcherPrimaryDarkColor">#303F9F</color>
+    <color name="fileSearcherAccentColor">#3f51b5</color>
+    <color name="fileSearcherTransparent">#00000000</color>
+    <color name="fileSearcherBlack">#333333</color>
+    <color name="fileSearcherWhite">#ffffff</color>
+    <color name="fileSearcherCheckedBackground">#E8EAF6</color>
+
+    <color name="comic_bg">#B3000000</color>
+
+
+</resources>

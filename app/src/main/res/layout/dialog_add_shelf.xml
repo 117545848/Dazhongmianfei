@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_round_white"
+    android:orientation="vertical"
+    android:paddingBottom="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:padding="30dp"
+        android:text="@string/ReadActivity_addbookself"
+        android:textSize="18dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+
+            />
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/shape_addbook_no"
+            android:gravity="center"
+            android:text="@string/ReadActivity_addbookselfno"
+            android:textColor="@color/gray" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+
+            />
+
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:background="@drawable/shape_addbook_yes"
+            android:gravity="center"
+            android:text="@string/BookInfoActivity_jiarushujia"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>

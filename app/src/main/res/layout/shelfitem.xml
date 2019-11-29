@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/shelfitem_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:minWidth="90dp">
+
+        <FrameLayout
+            android:id="@+id/shelfitem_img_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:id="@+id/shelfitem_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="90dp"
+                android:minHeight="120dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/shelfitem_top_newchapter"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/shape_novelfragment_newchapter"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_10_dp" />
+
+            <RelativeLayout
+                android:id="@+id/shelfitem_check_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#7FFFFFFF"
+                android:visibility="gone">
+
+                <CheckBox
+                    android:id="@+id/shelfitem_check"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/selector_shelf_item_checkbox"
+                    android:button="@null"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/shelfitem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:lines="1"
+            android:textColor="@color/read_textColor"
+            android:textSize="@dimen/public_12_dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

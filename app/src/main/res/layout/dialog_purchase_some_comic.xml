@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:toggle="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+  >
+
+    <TextView
+        android:id="@+id/dialog_purchase_some_tite"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="@string/ReadActivity_benzhangbuy"
+        android:textColor="@color/black"
+        android:textSize="@dimen/public_10_dp" />
+
+    <HorizontalScrollView
+        android:id="@+id/dialog_purchase_HorizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:scrollbars="none">
+
+        <RadioGroup
+            android:id="@+id/dialog_purchase_some_select_rgs"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+        </RadioGroup>
+    </HorizontalScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/gray2" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/ReadActivity_yue"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_10_dp" />
+
+        <TextView
+            android:id="@+id/dialog_purchase_some_remain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/public_10_dp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/gray2" />
+
+    <RelativeLayout
+        android:id="@+id/dialog_purchase_auto"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/SettingsActivity_antobuy"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_10_dp" />
+
+        <com.zcw.togglebutton.ToggleButton
+            android:id="@+id/dialog_purchase_some_auto_buy"
+            android:layout_width="35dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            toggle:tbBorderWidth="1dp"
+            toggle:tbOffBorderColor="#000000"></com.zcw.togglebutton.ToggleButton>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/lightgray2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ReadActivity_price"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/public_10_dp" />
+
+                <TextView
+                    android:id="@+id/dialog_purchase_some_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/mainColor"
+                    android:textSize="@dimen/public_10_dp"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ReadActivity_oprice"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/public_8_dp" />
+
+                <TextView
+                    android:id="@+id/dialog_purchase_some_original_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/public_8_dp"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/dialog_purchase_some_buy"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_dialog_purchase_some_buy"
+            android:text="@string/ReadActivity_buy"
+            android:textColor="@color/white"
+            android:textSize="@dimen/public_11_dp" />
+
+    </RelativeLayout>
+</LinearLayout>

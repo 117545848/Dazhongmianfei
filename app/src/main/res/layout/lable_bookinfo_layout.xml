@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center_vertical"
+
+            android:background="@mipmap/store_labe" />
+
+
+        <TextView
+            android:id="@+id/fragment_store_gridview3_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="3dp"
+
+            android:text="精品推荐"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_12_dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <com.dazhongmianfei.dzmfreader.view.AdaptionGridView
+        android:id="@+id/fragment_store_gridview3_gridview_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:numColumns="3" />
+</LinearLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <declare-styleable name="ConvenientBanner">
+        <attr name="canLoop" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension"/>
+        <attr name="civ_border_color" format="color"/>
+        <attr name="civ_border_overlay" format="boolean"/>
+        <!-- {@deprecated Use civ_circlebackground_color instead.} -->
+        <attr name="civ_fill_color" format="color"/>
+        <attr name="civ_circle_background_color" format="color"/>
+    </declare-styleable>
+
+    <!--阅读器-->
+    <declare-styleable name="CircleImageViewReader">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
+
+    <!--波浪view-->
+    <declare-styleable name="WaveView">
+        <attr name="wave_color" format="color"/>
+        <attr name="wave_length_multiple" format="float">
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="NumberProgressBar">
+        <attr name="progress_current" format="integer"/>
+        <attr name="progress_max" format="integer"/>
+
+        <attr name="progress_unreached_color" format="color"/>
+        <attr name="progress_reached_color" format="color"/>
+
+        <attr name="progress_reached_bar_height" format="dimension"/>
+        <attr name="progress_unreached_bar_height" format="dimension"/>
+
+        <attr name="progress_text_size" format="dimension"/>
+        <attr name="progress_text_color" format="color"/>
+
+        <attr name="progress_text_offset" format="dimension"/>
+
+        <attr name="progress_text_visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="CustomLayout">
+        <attr name="backgroundColor" format="reference"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="SComicRecyclerView">
+        <attr format="float" name="min_scale"/>
+        <attr format="float" name="max_scale"/>
+        <attr format="float" name="default_scale"/>
+        <attr format="integer" name="zoom_duration"/>
+    </declare-styleable>
+
+   <!-- <declare-styleable name="ProgressBarView_">
+        <attr name="progress_unreach_color" format="color" />
+        <attr name="progress_height" format="dimension" />
+        <attr name="progress_reach_color" format="color" />
+        <attr name="progress_text_color_" format="color" />
+        <attr name="progress_text_size_" format="dimension" />
+        <attr name="progress_text_offsett" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="RoundProgressBar">
+        <attr name="radius" format="dimension" />
+    </declare-styleable>-->
+</resources>

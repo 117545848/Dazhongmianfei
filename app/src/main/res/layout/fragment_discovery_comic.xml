@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dazhongmianfei.dzmfreader.view.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/discover_refreshLayoutMale"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dazhongmianfei.dzmfreader.activity.MainActivity">
+
+    <include layout="@layout/refresh_head" />
+
+    <com.dazhongmianfei.dzmfreader.view.ObservableScrollView
+        android:id="@+id/discover_scrollViewMale"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            android:paddingRight="15dp">
+
+            <com.dazhongmianfei.dzmfreader.banner.ConvenientBanner
+                android:id="@+id/discover_banner_female"
+                android:layout_width="match_parent"
+
+                android:layout_height="100dp"
+                android:background="@color/white"
+                app:canLoop="true" />
+
+            <com.dazhongmianfei.dzmfreader.view.NestedListView
+                android:id="@+id/discover_entrance_grid_female"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:divider="@color/white"
+                android:dividerHeight="20dp" />
+        </LinearLayout>
+    </com.dazhongmianfei.dzmfreader.view.ObservableScrollView>
+
+    <include layout="@layout/load_more" />
+
+</com.dazhongmianfei.dzmfreader.view.PullToRefreshLayout>

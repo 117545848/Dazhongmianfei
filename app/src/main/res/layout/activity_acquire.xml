@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main_vitualkey"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightgray2"
+        android:orientation="vertical">
+
+        <include layout="@layout/common_titlebar" />
+
+        <com.dazhongmianfei.dzmfreader.view.ObservableScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lightgray2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.dazhongmianfei.dzmfreader.view.CircleImageView
+                            android:id="@+id/activity_acquire_avatar"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/hold_user_avatar" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/activity_acquire_avatar_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/BaoyueActivity_nologin"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/public_12_dp" />
+
+                            <TextView
+                                android:id="@+id/activity_acquire_avatar_desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/BaoyueActivity_mianfei"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/public_10_dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <com.dazhongmianfei.dzmfreader.view.AdaptionGridViewNoMargin
+                    android:id="@+id/activity_acquire_pay_gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:numColumns="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/AcquireBaoyueActivity_fore"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/public_12_dp"
+
+                        />
+
+                    <com.dazhongmianfei.dzmfreader.view.AdaptionGridViewNoMargin
+                        android:id="@+id/activity_acquire_privilege_gridview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:numColumns="4" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.dazhongmianfei.dzmfreader.view.ObservableScrollView>
+    </LinearLayout>
+</RelativeLayout>

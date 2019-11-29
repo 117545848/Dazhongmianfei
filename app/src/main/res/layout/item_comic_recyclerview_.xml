@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/item_comic_recyclerview_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_comic_recyclerview_photoview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+       <!-- <com.dazhongmianfei.dzmfreader.comic.view.LargeImageView
+            android:id="@+id/item_comic_recyclerview_photoview2"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content" />-->
+
+
+        <!--        <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
+                    android:id="@+id/item_comic_recyclerview_SubsamplingScaleImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />-->
+
+
+        <RelativeLayout
+            android:id="@+id/item_comic_recyclerview_danmu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</RelativeLayout>

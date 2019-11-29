@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_vitualkey"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/common_titlebar" />
+
+        <LinearLayout
+            android:id="@+id/activity_bind_phone_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="51dp">
+
+
+                <EditText
+                    android:id="@+id/activity_bind_phone_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@null"
+                    android:hint="@string/UserInfoActivity_phone"
+                    android:inputType="phone"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textColorHint="@color/login_input_tip"
+                    android:textSize="@dimen/public_12_dp" />
+
+                <ImageView
+                    android:id="@+id/activity_bind_phone_clear"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/login_close"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray2" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <EditText
+                        android:id="@+id/activity_bind_phone_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="@string/LoginActivity_code"
+                        android:inputType="number"
+                        android:textColorHint="@color/login_input_tip"
+                        android:textSize="@dimen/public_12_dp" />
+
+
+                    <Button
+                        android:id="@+id/activity_bind_phone_get_message_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:hint="@string/LoginActivity_getcode"
+                        android:textColor="@color/login_input_tip"
+                        android:textSize="@dimen/public_12_dp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:background="@color/gray2" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/activity_bind_phone_btn"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@id/activity_bind_phone_container"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/shape_login_bg"
+            android:text="@string/public_sure"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/public_12_dp" />
+
+    </LinearLayout>
+</RelativeLayout>

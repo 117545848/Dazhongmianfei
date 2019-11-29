@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingRight="3dp"
+    android:paddingLeft="3dp">
+
+    <LinearLayout
+        android:id="@+id/item_store_label_male_vertical_layout"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/item_store_label_male_vertical_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="90dp"
+            android:minHeight="120dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/item_store_label_male_vertical_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/public_12_dp" />
+
+        <TextView
+            android:id="@+id/item_store_label_male_vertical_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/public_11_dp" />
+    </LinearLayout>
+</RelativeLayout>

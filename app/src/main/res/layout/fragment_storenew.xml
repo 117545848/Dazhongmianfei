@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fragment_store_viewpage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/fragment_store_top"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingRight="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp">
+
+            <RelativeLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
+
+                <LinearLayout
+                    android:layout_width="110dp"
+
+                    android:layout_height="41dp"
+                    android:orientation="horizontal">
+
+                    <com.dazhongmianfei.dzmfreader.view.SizeAnmotionTextview
+                        android:id="@+id/fragment_store_xiaoshuo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/noverfragment_xiaoshuo"
+                        android:textColor="@color/white"
+                        android:textSize="23dp" />
+
+                    <com.dazhongmianfei.dzmfreader.view.SizeAnmotionTextview
+                        android:id="@+id/fragment_store_manhau"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="@string/noverfragment_manhua"
+
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+
+                <com.dazhongmianfei.dzmfreader.view.UnderlinePageIndicatorHalf
+                    android:id="@+id/fragment_store_indicator"
+                    android:layout_width="120dp"
+                    android:layout_height="4dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="2dp"
+                    app:selectedColor="@color/white" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/fragment_store_search"
+                android:layout_width="0dp"
+                android:layout_height="23dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="8"
+                android:background="@drawable/shape_comic_store_search"
+                android:paddingLeft="10dp">
+
+
+                <TextView
+                    android:id="@+id/fragment_store_search_bookname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="11dp" />
+
+                <TextView
+                    android:id="@+id/fragment_store_search_bookname2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="11dp"
+                    android:textColor="@color/white"
+                    android:textSize="10dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/fragment_store_search_img"
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@mipmap/main_search_white" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:id="@+id/fragment_store_manorwoman"
+                android:layout_width="30dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/fragment_store_sex"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/comic_mall_boy_dark" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="45dp"
+
+             android:layout_alignParentBottom="true"
+             android:layout_marginBottom="10dp">
+
+             <View
+                 android:layout_width="match_parent"
+                 android:layout_height="1dp"
+                 android:layout_centerInParent="true"
+                 android:background="@color/red" />
+
+         </RelativeLayout>-->
+    </RelativeLayout>
+</FrameLayout>
+
