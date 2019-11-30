@@ -18,6 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.TTAdConstant;
@@ -70,7 +72,18 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TodayOneAD {
-    int flag;
+    public int  position;
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return position==((TodayOneAD)(obj)).position;
+    }
+
+    @Override
+    public int hashCode() {
+        return position;
+    }
+
+    public int flag;
     private NativeAd nativeAd;
     private List<? extends View> mAdViewList;
     public boolean is_getNativeInfoListView;
@@ -80,7 +93,6 @@ public class TodayOneAD {
         if (is_getNativeInfoListView  && nativeAd != null&&mAdViewList!=null&&!mAdViewList.isEmpty()&&frameLayoutToday!=null) {
             for (int i = 0; i < mAdViewList.size(); i++) {
                 View lyAdView = mAdViewList.get(i);
-                frameLayoutToday.addView(lyAdView);
                 nativeAd.nativeRender(lyAdView);//这个方法需要广告真正显示到屏幕上的时候再去调用
             }
         }
@@ -121,8 +133,12 @@ public class TodayOneAD {
                             is_getNativeInfoListView = true;
                             mAdViewList = response.getNativeInfoListView();
                             frameLayoutToday.removeAllViews();
-                            if (flag != 1) {
-                                nativeRender();
+                            for (int i = 0; i < mAdViewList.size(); i++) {
+                                View lyAdView = mAdViewList.get(i);
+                                frameLayoutToday.addView(lyAdView);
+                                if(flag != 1&&flag != 0) {
+                                    nativeAd.nativeRender(lyAdView);//这个方法需要广告真正显示到屏幕上的时候再去调用
+                                }
                             }
                         } else {
                             is_getNativeInfoListView = false;
@@ -570,9 +586,8 @@ public class TodayOneAD {
         }
         switch (flag) {
             case 0:
-            case 1:
                 convertView = layoutInflater.inflate(R.layout.listitem_ad_large_pic2, null, false);
-                break;
+            case 1:
             case 2:
                 convertView = layoutInflater.inflate(R.layout.listitem_ad_smallpage_pic, null, false);
                 break;

@@ -215,6 +215,7 @@ public class PageFactory {
 
 
     FrameLayout insert_todayone2;
+
     BaseBook baseBook;
     TodayOneAD todayOneAD;
 
@@ -708,6 +709,7 @@ public class PageFactory {
                 @Override
                 public void switchPreChapter() {
                     insert_todayone2.setVisibility(View.VISIBLE);
+                    todayOneAD.nativeRender();
                     IS_CHAPTERFirst = false;
                     mPurchaseLayout.setVisibility(View.GONE);
                 }
@@ -815,6 +817,7 @@ public class PageFactory {
                 public void switchNextChapter() {
                     insert_todayone2.setVisibility(View.VISIBLE);
                     IS_CHAPTERLast = false;
+                    todayOneAD.nativeRender();
                     mPurchaseLayout.setVisibility(View.GONE);
 
                 }
@@ -852,6 +855,7 @@ public class PageFactory {
                     public void switchNextChapter() {
                         insert_todayone2.setVisibility(View.VISIBLE);
                         IS_CHAPTERLast = false;
+                        todayOneAD.nativeRender();
                         mPurchaseLayout.setVisibility(View.GONE);
 
                     }
@@ -1745,95 +1749,6 @@ public class PageFactory {
             todayOneAD = new TodayOneAD(mActivity, 0, "925050236");
         }
         todayOneAD.getTodayOneBanner(insert_todayone2, null, 0);
-
-
-
-        /*if (baseAd == null) {
-            ReaderParams params = new ReaderParams(activity);
-            String requestParams = ReaderConfig.BASE_URL + "/advert/info";
-            params.putExtraParams("type", XIAOSHUO + "");
-            params.putExtraParams("position", "8");
-            String json = params.generateParamsJson();
-            HttpUtils.getInstance(activity).sendRequestRequestParams3(requestParams, json, false, new HttpUtils.ResponseListener() {
-                        @Override
-                        public void onResponse(final String result) {
-                            try {
-                                baseAd = new Gson().fromJson(result, BaseAd.class);
-                                if (baseAd.ad_type == 1) {
-                                    insert_todayone2.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Intent intent = new Intent();
-                                            intent.setClass(activity, WebViewActivity.class);
-                                            intent.putExtra("url", baseAd.ad_skip_url);
-                                            intent.putExtra("title", baseAd.ad_title);
-                                            intent.putExtra("advert_id", baseAd.advert_id);
-                                            intent.putExtra("ad_url_type", baseAd.ad_url_type);
-                                            activity.startActivity(intent);
-                                        }
-                                    });
-                                    if (list_ad_view_img == null) {
-                                        list_ad_view_img = insert_todayone2.findViewById(R.id.list_ad_view_img);
-                                        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) list_ad_view_img.getLayoutParams();
-                                        layoutParams.width = ScreenSizeUtils.getInstance(activity).getScreenWidth() - ImageUtil.dp2px(activity, 20);
-                                        layoutParams.height = layoutParams.width;
-                                        Insert_todayone2 = layoutParams.width;
-                                        list_ad_view_img.setLayoutParams(layoutParams);
-                                        MyPicasso.GlideImageRoundedCornersNoSize(6, activity, baseAd.ad_image, list_ad_view_img);
-
-                                    }
-
-
-                                } else {
-
-                                }
-
-                            } catch (Exception e) {
-                            }
-                        }
-
-                        @Override
-                        public void onErrorResponse(String ex) {
-
-                        }
-                    }
-
-            );
-        } else {
-            if (baseAd.ad_type == 1) {
-                insert_todayone2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent();
-                        intent.setClass(activity, WebViewActivity.class);
-                        intent.putExtra("url", baseAd.ad_skip_url);
-                        intent.putExtra("title", baseAd.ad_title);
-                        intent.putExtra("advert_id", baseAd.advert_id);
-                        intent.putExtra("ad_url_type", baseAd.ad_url_type);
-                        activity.startActivity(intent);
-                    }
-                });
-                if (list_ad_view_img == null) {
-                    list_ad_view_img = insert_todayone2.findViewById(R.id.list_ad_view_img);
-                    FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) list_ad_view_img.getLayoutParams();
-                    layoutParams.width = ScreenSizeUtils.getInstance(activity).getScreenWidth() - ImageUtil.dp2px(activity, 20);
-                    layoutParams.height = layoutParams.width;
-                    Insert_todayone2 = layoutParams.width;
-                    list_ad_view_img.setLayoutParams(layoutParams);
-                    MyPicasso.GlideImageNoSize(activity, baseAd.ad_image, list_ad_view_img);
-                }
-                MyPicasso.GlideImageNoSize(activity, baseAd.ad_image, list_ad_view_img);
-
-            } else {
-                if (todayOneAD == null) {
-                    todayOneAD = new TodayOneAD(mActivity, 0, baseAd.ad_android_key);
-                }
-                todayOneAD.getTodayOneBanner(insert_todayone2, null, 0);
-
-            }
-        }*/
-
-
     }
 
     public boolean IS_CHAPTERLast = true;

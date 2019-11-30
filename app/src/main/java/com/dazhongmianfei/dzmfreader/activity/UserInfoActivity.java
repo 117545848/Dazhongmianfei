@@ -331,25 +331,26 @@ public class UserInfoActivity extends BaseButterKnifeActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         MyToash.Log("onActivityResult", requestCode + "  " + resultCode);
         if (requestCode == 111) {
             initData();
         } else {//uri
             if (resultCode == RESULT_OK) {
                 if (requestCode == CAMERA) {
-                  //  Handle(cameraSavePath.getAbsolutePath());
+                    //  Handle(cameraSavePath.getAbsolutePath());
                     cropPhoto(uri, true);
                 } else if (requestCode == GALLERY) {
                     Uri uri = data.getData();
                     cropPhoto(uri, false);
                     //mCutUri
                     // Handle(getImagePath(uri));
-                }else if (requestCode == REQUEST_CROP) {
+                } else if (requestCode == REQUEST_CROP) {
                     Glide.with(activity).load(mCutUri).into(user_info_avatar);
-                    uploadImg(uriToFile(mCutUri,activity));
-                   // Handle(getImagePath(mCutUri));
-                   // Uri uri = data.getData();
-                   // cropPhoto(uri, false);
+                    uploadImg(uriToFile(mCutUri, activity));
+                    // Handle(getImagePath(mCutUri));
+                    // Uri uri = data.getData();
+                    // cropPhoto(uri, false);
                     //mCutUri
                     // Handle(getImagePath(uri));
                 }

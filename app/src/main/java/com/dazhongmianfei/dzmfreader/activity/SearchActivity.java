@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.dazhongmianfei.dzmfreader.jinritoutiao.TodayOneAD;
 import com.google.gson.Gson;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -88,6 +89,7 @@ public class SearchActivity extends BaseButterKnifeActivity {
     OptionRecyclerViewAdapter optionAdapter;
     LayoutInflater layoutInflater;
     List<OptionBeen> optionBeenList;
+
     boolean PRODUCT;
 
     @Override
@@ -116,12 +118,13 @@ public class SearchActivity extends BaseButterKnifeActivity {
     public void initView() {
         optionBeenList = new ArrayList<>();
         layoutInflater=LayoutInflater.from(activity);
-
         MyContentLinearLayoutManager layoutManager = new MyContentLinearLayoutManager(activity);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         fragment_option_listview.setLayoutManager(layoutManager);
         fragment_option_listview.addHeaderView((LinearLayout) layoutInflater.inflate(R.layout.item_list_head, null));
 
+        optionAdapter = new OptionRecyclerViewAdapter(activity, optionBeenList, null,0, PRODUCT, layoutInflater, onItemClick);
+        fragment_option_listview.setAdapter(optionAdapter);
 
         PRODUCT = getIntent().getBooleanExtra("PRODUCT", false);
         mKeyWord = getIntent().getStringExtra("mKeyWord");
@@ -307,11 +310,9 @@ public class SearchActivity extends BaseButterKnifeActivity {
             if (current_page == 1) {
                 optionBeenList.clear();
                 optionBeenList.addAll(optionItem.list);
-                optionAdapter = null;
-                Size = optionItem_list_size;
-                optionAdapter = new OptionRecyclerViewAdapter(activity, optionBeenList, 0, PRODUCT, layoutInflater, onItemClick);
-                fragment_option_listview.setAdapter(optionAdapter);
 
+                Size = optionItem_list_size;
+             optionAdapter.notifyDataSetChanged();
                 activity_search_keywords_listview_noresult.setVisibility(View.GONE);
                 fragment_option_listview.setVisibility(View.VISIBLE);
                 activity_search_keywords_scrollview.setVisibility(View.GONE);

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.dazhongmianfei.dzmfreader.jinritoutiao.TodayOneAD;
 import com.google.gson.Gson;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -104,6 +107,10 @@ public class OptionFragment extends BaseButterKnifeFragment {
     int total_page, current_page = 1;
     OptionRecyclerViewAdapter optionAdapter;
     List<OptionBeen> optionBeenList;
+
+    Map<Integer,TodayOneAD> todayOneADS;
+
+
     LinearLayout temphead;
     LayoutInflater layoutInflater;
     Map<String, String> map;
@@ -203,6 +210,7 @@ public class OptionFragment extends BaseButterKnifeFragment {
 
         temphead = (LinearLayout) layoutInflater.inflate(R.layout.item_list_head, null);
         optionBeenList = new ArrayList<>();
+        todayOneADS= new HashMap<>();
         if (!PRODUCT) {
 
             switch (OPTION) {
@@ -294,11 +302,43 @@ public class OptionFragment extends BaseButterKnifeFragment {
         if (OPTION != SHUKU && OPTION != BAOYUE_SEARCH) {
             fragment_option_listview.addHeaderView(temphead);
         }
-        optionAdapter = new OptionRecyclerViewAdapter(activity, optionBeenList, OPTION, PRODUCT, layoutInflater, onItemClick);
+        optionAdapter = new OptionRecyclerViewAdapter(activity, optionBeenList,todayOneADS, OPTION, PRODUCT, layoutInflater, onItemClick);
         fragment_option_listview.setAdapter(optionAdapter);
 
         HttpData();
+        fragment_option_listview.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+                    if (layoutManager instanceof LinearLayoutManager) {
+                        LinearLayoutManager linearManager = (LinearLayoutManager) layoutManager;
+                        //获取最后一个可见view的位置
+                        int lastItemPosition = linearManager.findLastVisibleItemPosition();
+                        TodayOneAD todayOneAD;
+                        if((todayOneAD=todayOneADS.get(lastItemPosition))!=null){
+                            todayOneAD.nativeRender();
+                        }
+                        //获取第一个可见view的位置
+                        int firstItemPosition = linearManager.findFirstVisibleItemPosition();
+                        if((todayOneAD=todayOneADS.get(firstItemPosition))!=null){
+                            todayOneAD.nativeRender();
+                        }
+
+                    }
+                }
+            }
+        });
+
     }
+
+
 
     int LoadingListener = 0;
     boolean isRefarshHead;
@@ -330,27 +370,8 @@ public class OptionFragment extends BaseButterKnifeFragment {
         if (OPTION == BAOYUE) {
             fragment_option_listview.setLoadingMoreEnabled(false);
         }
-   /*     ArrowRefreshHeader arrowRefreshHeader=new ArrowRefreshHeader(activity);
-        arrowRefreshHeader.setProgressStyle(style);
-        arrowRefreshHeader.setArrowImageView(0);
-      //  XRecyclerView
-       // arrowRefreshHeader.removeAllViews();
-      //  arrowRefreshHeader.
-      //  arrowRefreshHeader.addView(layoutInflater.inflate(R.layout.xrecyview_refarsh_head,null));
-        fragment_option_listview.setRefreshHeader(arrowRefreshHeader);
-        refarsh_head.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ++style;
-                if(style<27){
-                    arrowRefreshHeader.setProgressStyle(style);
-                }
-            }
-        });*/
         initHttpUrl();
     }
-
-    int style = -1;
     OptionRecyclerViewAdapter.OnItemClick onItemClick = new OptionRecyclerViewAdapter.OnItemClick() {
         @Override
         public void OnItemClick(int position, OptionBeen optionBeen) {
@@ -468,8 +489,6 @@ public class OptionFragment extends BaseButterKnifeFragment {
                     } else {
                         fragment_option_noresult.setVisibility(View.GONE);
                     }
-
-
                 } else {
                     optionBeenList.clear();
                     optionBeenList.addAll(categoryItem.list.list);
@@ -520,7 +539,6 @@ public class OptionFragment extends BaseButterKnifeFragment {
     }
 
     int Size;
-
     private void CommonData(String result) {
         OptionItem optionItem = gson.fromJson(result, OptionItem.class);
         total_page = optionItem.total_page;

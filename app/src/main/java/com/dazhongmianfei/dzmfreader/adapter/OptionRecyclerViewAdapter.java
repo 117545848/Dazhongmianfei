@@ -2,8 +2,10 @@ package com.dazhongmianfei.dzmfreader.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,7 @@ import com.dazhongmianfei.dzmfreader.utils.MyToash;
 
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +40,8 @@ public class OptionRecyclerViewAdapter extends RecyclerView.Adapter<OptionRecycl
     Activity activity;
     LayoutInflater layoutInflater;
     List<OptionBeen> optionBeenList;
+
+    Map<Integer, TodayOneAD> todayOneADS;
     int OPTION, HEIGHT, WIDTH;
     boolean PRODUCT;
 
@@ -46,9 +51,10 @@ public class OptionRecyclerViewAdapter extends RecyclerView.Adapter<OptionRecycl
 
     OnItemClick onItemClick;
 
-    public OptionRecyclerViewAdapter(Activity activity, List<OptionBeen> optionBeenList, int OPTION, boolean PRODUCT, LayoutInflater layoutInflater, OnItemClick onItemClick) {
+    public OptionRecyclerViewAdapter(Activity activity, List<OptionBeen> optionBeenList, Map<Integer, TodayOneAD> todayOneADS, int OPTION, boolean PRODUCT, LayoutInflater layoutInflater, OnItemClick onItemClick) {
         this.activity = activity;
         this.optionBeenList = optionBeenList;
+        this.todayOneADS = todayOneADS;
         this.OPTION = OPTION;
         this.PRODUCT = PRODUCT;
         this.onItemClick = onItemClick;
@@ -95,7 +101,7 @@ public class OptionRecyclerViewAdapter extends RecyclerView.Adapter<OptionRecycl
         } else {
             viewHolder.item_store_label_male_vertical_layout.setVisibility(View.GONE);
             viewHolder.list_ad_view_layout.setVisibility(View.VISIBLE);
-            if (optionBeen.ad_type==1) {
+            if (optionBeen.ad_type == 1) {
                 FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) viewHolder.list_ad_view_img.getLayoutParams();
                 layoutParams.height = WIDTH * optionBeen.ad_height / optionBeen.ad_height;
                 viewHolder.list_ad_view_img.setLayoutParams(layoutParams);
@@ -114,8 +120,11 @@ public class OptionRecyclerViewAdapter extends RecyclerView.Adapter<OptionRecycl
                 });
             } else {
                 viewHolder.list_ad_view_img.setVisibility(View.GONE);
-                new TodayOneAD(activity, 2, optionBeen.ad_android_key).getTodayOneBanner(viewHolder.list_ad_view_layout, null, 2);
-
+                TodayOneAD todayOneAD = new TodayOneAD(activity, 1, optionBeen.ad_android_key);
+                todayOneAD.getTodayOneBanner(viewHolder.list_ad_view_layout, null, 1);
+                if (todayOneADS!=null) {
+                    todayOneADS.put(position,todayOneAD);
+                }
             }
         }
 
