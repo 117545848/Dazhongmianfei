@@ -72,10 +72,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TodayOneAD {
-    public int  position;
+    public int position;
+
     @Override
     public boolean equals(@Nullable Object obj) {
-        return position==((TodayOneAD)(obj)).position;
+        return position == ((TodayOneAD) (obj)).position;
     }
 
     @Override
@@ -90,7 +91,7 @@ public class TodayOneAD {
     public FrameLayout frameLayoutToday;
 
     public void nativeRender() {
-        if (is_getNativeInfoListView  && nativeAd != null&&mAdViewList!=null&&!mAdViewList.isEmpty()&&frameLayoutToday!=null) {
+        if (is_getNativeInfoListView && nativeAd != null && mAdViewList != null && !mAdViewList.isEmpty() && frameLayoutToday != null) {
             for (int i = 0; i < mAdViewList.size(); i++) {
                 View lyAdView = mAdViewList.get(i);
                 nativeAd.nativeRender(lyAdView);//这个方法需要广告真正显示到屏幕上的时候再去调用
@@ -117,7 +118,13 @@ public class TodayOneAD {
                 loadTodayOneBannerAdXINXILIU(frameLayoutToday, flag);
                 break;
             case 1:
-                nativeAd = new NativeAd(activity, "9040", 3, new NativeAdListener() {
+                if (flag == 0) {
+                    daimaweiID = "9040";
+                } else {
+                    daimaweiID = "9037";
+
+                }
+                nativeAd = new NativeAd(activity, daimaweiID, 1, new NativeAdListener() {
                     @Override
                     public void onAdFailed(int errorcode) {
                     }
@@ -136,7 +143,7 @@ public class TodayOneAD {
                             for (int i = 0; i < mAdViewList.size(); i++) {
                                 View lyAdView = mAdViewList.get(i);
                                 frameLayoutToday.addView(lyAdView);
-                                if(flag != 1&&flag != 0) {
+                                if (flag != 1 && flag != 0) {
                                     nativeAd.nativeRender(lyAdView);//这个方法需要广告真正显示到屏幕上的时候再去调用
                                 }
                             }

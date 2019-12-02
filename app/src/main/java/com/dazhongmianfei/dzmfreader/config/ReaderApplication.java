@@ -52,6 +52,7 @@ import java.io.File;
  */
 public class ReaderApplication extends LitePalApplication {
     public static DisplayImageOptions mOptions;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -61,7 +62,7 @@ public class ReaderApplication extends LitePalApplication {
         try {
             UMConfigure.setLogEnabled(false);
             String getChannelName = UpdateApp.getChannelName(this);
-            MyToash.Log("qihao"," 1"+getChannelName);
+            MyToash.Log("qihao", " 1" + getChannelName);
             UMConfigure.init(this, ReaderConfig.UMENG, getChannelName, UMConfigure.DEVICE_TYPE_PHONE, "");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
             if (ReaderConfig.USE_WEIXIN) {
                 PlatformConfig.setWeixin(ReaderConfig.WEIXIN_PAY_APPID, ReaderConfig.WEIXIN_APP_SECRET);
@@ -76,14 +77,15 @@ public class ReaderApplication extends LitePalApplication {
 
 
             if (ReaderConfig.USE_AD) {
-                 TTAdManagerHolder.init(this);
-              XMain.getInstance().setAppKey(this, "33fa1509584dff33263c3ac4a07baba4");
                 AdHub.init(this, "3044");
+                TTAdManagerHolder.init(this);
+                XMain.getInstance().setAppKey(this, "33fa1509584dff33263c3ac4a07baba4");
             }
         } catch (Exception E) {
         } catch (Error e) {
         }
     }
+
     public boolean isMainProcess() {
         int pid = android.os.Process.myPid();
         ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -105,7 +107,7 @@ public class ReaderApplication extends LitePalApplication {
             public void onSuccess(String response) {
 
                 ReaderConfig.PUSH_TOKEN = PushServiceFactory.getCloudPushService().getDeviceId();
-                MyToash.Log("PUSH_TOKEN",ReaderConfig.PUSH_TOKEN);
+                MyToash.Log("PUSH_TOKEN", ReaderConfig.PUSH_TOKEN);
 
                 ShareUitls.putString(applicationContext, "PUSH_TOKEN", ReaderConfig.PUSH_TOKEN);
             }
@@ -117,9 +119,9 @@ public class ReaderApplication extends LitePalApplication {
             }
         });
 
-       // MiPushRegister.register(applicationContext, "XIAOMI_ID", "XIAOMI_KEY"); // 初始化小米辅助推送
+        // MiPushRegister.register(applicationContext, "XIAOMI_ID", "XIAOMI_KEY"); // 初始化小米辅助推送
         HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
-       // OppoRegister.register(applicationContext, "appKey", "appSecret");
+        // OppoRegister.register(applicationContext, "appKey", "appSecret");
 
         //  GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
     }
