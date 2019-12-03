@@ -8,8 +8,8 @@ android {
         applicationId "com.dazhongmianfei.dzmfreader"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 3
-        versionName "1.2"
+        versionCode 5
+        versionName "1.5"
         multiDexEnabled true
         ndk {
             //选择要添加的对应cpu类型的.so库。为了兼容cpu，查看官网SDK的libs多添加几个
