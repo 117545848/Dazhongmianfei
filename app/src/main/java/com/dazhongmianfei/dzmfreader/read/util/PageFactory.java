@@ -566,8 +566,13 @@ public class PageFactory {
         }
     }
 
-    String AD_text = "大众免费";
+    String HUADONG = "点击或滑动可继续阅读";
+    int HUADONG_text_WIDTH;
+    String AD_text = "广告是为了更多的免费内容";
     int AD_text_WIDTH;
+
+
+
 
     private void drawBatteryAndDate(Canvas c) {
         if (c == null) {
@@ -1770,7 +1775,8 @@ public class PageFactory {
         mBitPaint.setDither(true);
         int top = (MHeight - Insert_todayone2) / 2;
         Bitmap bitmapAD = ViewToBitmapUtil.convertViewToBitmap(insert_todayone2, top, Insert_todayone2);
-        MyToash.Log("ViewToBitmapUtil", (bitmapAD == null) + "  " + top);
+
+
         Rect mDestRect = new Rect(0, top, mWidth, top + Insert_todayone2);
 
         c.drawBitmap(bitmapAD, mSrcRect, mDestRect, mBitPaint);
@@ -1789,8 +1795,23 @@ public class PageFactory {
         c.drawText(strPercent, mWidth - PercentWidth, mHeight - statusMarginBottom, mBatteryPaint);//x y为坐标值
         // 画时间
         drawBatteryAndDate(c);
-        //画书名
-        //  c.drawText(chapterTitle, marginWidth, statusMarginBottom + BookNameTop + tendp, mBatteryPaint);
+
+
+        if (HUADONG_text_WIDTH == 0) {
+            HUADONG_text_WIDTH = (int) (mPaint.measureText(HUADONG));//;
+        }
+        float huadong=(mHeight - statusMarginBottom-(top + Insert_todayone2))/2+top + Insert_todayone2;
+        c.drawText(HUADONG, (mWidth - HUADONG_text_WIDTH) / 2, huadong, mPaint);
+
+
+
+
+        if (AD_text_WIDTH == 0) {
+            AD_text_WIDTH = (int) (mBatteryPaint.measureText(AD_text));//;
+        }
+        c.drawText(AD_text, (mWidth - AD_text_WIDTH) / 2, mHeight - statusMarginBottom, mBatteryPaint);
+
+
         mBookPageWidget.postInvalidate();
 
     }

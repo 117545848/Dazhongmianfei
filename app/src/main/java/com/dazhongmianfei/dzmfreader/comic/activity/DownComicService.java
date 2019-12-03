@@ -96,6 +96,8 @@ public class DownComicService extends IntentService {
                 baseComicImage.chapter_id = chapter_id;
                 MyToash.Log("XXomicChapter33", baseComicImage.image);
                 ImgCount++;
+
+
                 String ImgName = "";
                 String localPath = FileManager.getManhuaSDCardRoot().concat(comic_id + "/").concat(chapter_id + "/");
                 if (baseComicImage.image.contains(".jpg")) {
@@ -112,6 +114,8 @@ public class DownComicService extends IntentService {
                     break Flag;
                 }
                 File file = new File(localPath.concat(ImgName));
+
+
                 MyToash.Log("XXomicChapter44", localPath.concat(ImgName));
                 if (file.exists()) {
                     process++;
@@ -129,7 +133,6 @@ public class DownComicService extends IntentService {
                     }
                     try {
                         file.createNewFile();
-
                         try {
                             File filee = Glide.with(activity)
                                     .load(baseComicImage.image)

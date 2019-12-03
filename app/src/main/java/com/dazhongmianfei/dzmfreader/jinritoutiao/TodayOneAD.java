@@ -103,9 +103,14 @@ public class TodayOneAD {
         this.flag = flag;
         this.frameLayoutToday = frameLayoutToday;
 //        int currentAD = (int) (Math.random() * 2);
-        int currentAD = 1;
+        int currentAD = 0;
         switch (currentAD) {
+
             case 0:
+                if (TextUtils.isEmpty(daimaweiID)) {
+                    daimaweiID = "925050236";
+                }
+                invoke();
                 is_getNativeInfoListView = false;
                 if (frameLayoutToday1 != null) {
                     frameLayoutToday1.setVisibility(View.GONE);
@@ -215,79 +220,6 @@ public class TodayOneAD {
         //  invoke();
     }
 
-    public void setShelftodayOneAD(Activity activity, RelativeLayout shelf, ImageView shelfImageView, TextView shelfttitle, TextView shelfdes) {
-        if (mTTAdNative == null) {
-            mTTAdNative = TTAdManagerHolder.get().createAdNative(activity);
-            if (mTTAdNative != null) {
-                AdSlot adSlot = new AdSlot.Builder()
-                        .setCodeId(daimaweiID)
-                        .setSupportDeepLink(true)
-                        .setImageAcceptedSize(228, 150)
-                        .setAdCount(1) //请求广告数量为1到3条
-                        .build();
-                mTTAdNative.loadFeedAd(adSlot, new TTAdNative.FeedAdListener() {
-                    @Override
-                    public void onError(int code, String mTTAdNative) {
-                        Log.i("mTTAdNative", code + "   " + mTTAdNative);
-                    }
-
-                    @Override
-                    public void onFeedAdLoad(List<TTFeedAd> ads) {
-                        MyToash.Log("onFeedAdLoad", (ads != null) ? (ads.size() + "") : "ssss");
-                        if (ads == null || ads.isEmpty()) {
-                            return;
-                        }
-                        TTFeedAd ad = ads.get(0);
-                        if (ad.getTitle() != null) {
-                            shelfttitle.setText(ad.getTitle()); //title为广告的简单信息提示
-                        }
-                        shelfdes.setText(ad.getDescription()); //description为广告的较长的说明
-                        boolean b = ad.getImageList() != null && !ad.getImageList().isEmpty();
-                        if (b) {
-                            TTImage image = ad.getImageList().get(0);
-                            if (image != null && image.isValid()) {
-                                MyPicasso.GlideImageNoSize(activity, image.getImageUrl(), shelfImageView);
-                            }
-                        }
-                        List<View> clickViewList = new ArrayList<>();
-                        clickViewList.add(shelf);
-                        List<View> creativeViewList = new ArrayList<>();
-                        creativeViewList.add(shelfttitle);
-                        creativeViewList.add(shelfImageView);
-                        creativeViewList.add(shelfdes);
-                        ad.registerViewForInteraction(shelf, clickViewList, creativeViewList, new TTNativeAd.AdInteractionListener() {
-                            @Override
-                            public void onAdClicked(View view, TTNativeAd ad) {
-                                if (ad != null) {
-                                    MyToash.Toash(activity, "广告" + ad.getTitle() + "被点击");
-                                }
-                            }
-
-                            @Override
-                            public void onAdCreativeClick(View view, TTNativeAd ad) {
-                                if (ad != null) {
-                                    ///  MyToash.Toash(mContext, "广告" + ad.getTitle() + "被创意按钮被点击");
-                                }
-                            }
-
-                            @Override
-                            public void onAdShow(TTNativeAd ad) {
-                                if (ad != null) {
-                                    // MyToash.Toash(mContext, "广告" + ad.getTitle() + "展示");
-                                }
-                            }
-                        });
-
-                    }
-                });
-            }
-
-        } else {
-
-        }
-
-
-    }
 
     public TodayOneAD(String daimaweiID) {
         if (daimaweiID == null) {
@@ -336,7 +268,7 @@ public class TodayOneAD {
     }
 
     private void loadTodayOneBannerAdXINXILIU(final FrameLayout frameLayoutToday, final int flag) {
-        invoke();
+
 
         //step4:创建feed广告请求类型参数AdSlot,具体参数含义参考文档
         AdSlot adSlot = null;
@@ -594,6 +526,7 @@ public class TodayOneAD {
         switch (flag) {
             case 0:
                 convertView = layoutInflater.inflate(R.layout.listitem_ad_large_pic2, null, false);
+                break;
             case 1:
             case 2:
                 convertView = layoutInflater.inflate(R.layout.listitem_ad_smallpage_pic, null, false);
