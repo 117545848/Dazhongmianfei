@@ -26,7 +26,7 @@ import java.util.List;
 import butterknife.BindView;
 
 import static com.dazhongmianfei.dzmfreader.book.config.BookConfig.mRankUrl;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_rank_index;
+
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.PAIHANG;
 
 /**
@@ -70,13 +70,7 @@ public class RankIndexFragment extends BaseButterKnifeFragment {
     private void initHttpUrl() {
         layoutInflater = LayoutInflater.from(activity);
         temphead = (LinearLayout) layoutInflater.inflate(R.layout.item_list_head, null);
-        if (!PRODUCT) {
-            httpUrl = COMIC_rank_index;
-        } else {
-
-            httpUrl = mRankUrl;
-        }
-
+        httpUrl = mRankUrl;
         fragment_rankindex_listview.addHeaderView(temphead);
         fragment_rankindex_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

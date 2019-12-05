@@ -44,7 +44,7 @@
         android:numColumns="5"
 
         />
-
+    <include layout="@layout/list_ad_view"/>
     <LinearLayout
         android:id="@+id/fragment_store_comic_content_commend"
         android:layout_width="match_parent"

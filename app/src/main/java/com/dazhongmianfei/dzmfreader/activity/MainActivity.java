@@ -35,11 +35,9 @@ import com.dazhongmianfei.dzmfreader.R;
 import com.dazhongmianfei.dzmfreader.adapter.MyFragmentPagerAdapter;
 import com.dazhongmianfei.dzmfreader.bean.AppUpdate;
 import com.dazhongmianfei.dzmfreader.book.been.BaseBook;
-import com.dazhongmianfei.dzmfreader.comic.been.BaseComic;
+;
 import com.dazhongmianfei.dzmfreader.dialog.MyPoPwindow;
 import com.dazhongmianfei.dzmfreader.eventbus.ToStore;
-import com.dazhongmianfei.dzmfreader.fragment.BookshelfFragment;
-import com.dazhongmianfei.dzmfreader.fragment.DiscoveryNewFragment;
 import com.dazhongmianfei.dzmfreader.fragment.MineNewFragment;
 import com.dazhongmianfei.dzmfreader.fragment.StroeNewFragment;
 import com.dazhongmianfei.dzmfreader.utils.LanguageUtil;
@@ -111,7 +109,6 @@ public class MainActivity extends BaseButterKnifeTransparentActivity {
 
     private AppUpdate mAppUpdate;
     List<BaseBook> bookLists;
-    List<BaseComic> comicList;
     MyFragmentPagerAdapter myFragmentPagerAdapter;
     private int possition = 5;
 
@@ -123,11 +120,9 @@ public class MainActivity extends BaseButterKnifeTransparentActivity {
         Intent intent = getIntent();
         if (intent != null) {
             bookLists = (List<BaseBook>) (intent.getSerializableExtra("mBaseBooks"));
-            comicList = (List<BaseComic>) (intent.getSerializableExtra("mBaseComics"));
         }
         mFragmentList = new ArrayList<>();
-      /*  BookshelfFragment bookshelfFragment = new BookshelfFragment(bookLists, comicList, shelf_book_delete_btn);
-        mFragmentList.add(bookshelfFragment);*/
+
         NovelFragmentNew     novelFragment = new <Fragment>NovelFragmentNew(bookLists, shelf_book_delete_btn);
 
         mFragmentList.add(novelFragment);
@@ -172,9 +167,7 @@ public class MainActivity extends BaseButterKnifeTransparentActivity {
                             setStatusTextColor(true, activity);
                             IntentFragment(2);
                         }
-                        if (discoveryBookFragment.todayOneAD != null) {
-                            discoveryBookFragment.todayOneAD.nativeRender();
-                        }
+
                         break;
                     case R.id.home_mine_layout:
 

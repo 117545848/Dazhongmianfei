@@ -13,7 +13,7 @@ android {
         multiDexEnabled true
         ndk {
             //选择要添加的对应cpu类型的.so库。为了兼容cpu，查看官网SDK的libs多添加几个
-            abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'mips', 'mips64', 'x86', 'x86_64'
+            abiFilters 'armeabi-v7a'
 
 
         }
@@ -40,9 +40,9 @@ android {
 
     buildTypes {
         debug {
-           minifyEnabled true
-           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
+          // minifyEnabled true
+           //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+           // signingConfig signingConfigs.debug
             resValue "string", "tray__authority", "tray__authority_dazhongmianfei"
         }
         release {
@@ -91,14 +91,13 @@ dependencies {
 
 
 
-    implementation(name: 'adhub_sdk_3.2.2', ext: 'aar')
-    implementation(name: 'adpoymer-4.1.25', ext: 'aar')
-    implementation(name: 'Baidu_MobAds_SDKV5.81', ext: 'aar')
-    implementation(name: 'GDTSDK.union.4.90.960', ext: 'aar')
+    implementation(name: 'adhub_sdk_3.3.1', ext: 'aar')
+    implementation(name: 'adpoymer-4.1.32', ext: 'aar')
+    implementation(name: 'Baidu_MobAds_SDK5.83', ext: 'aar')
+    implementation(name: 'GDTSDK.union.4.80.950', ext: 'aar')
 
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation(name: 'luomi_9.1.28', ext: 'aar')
     implementation(name: 'LayoutManagerGroup', ext: 'aar')
     implementation(name: 'open_ad_sdk', ext: 'aar')
     implementation(name: 'circleimageview-2.2.0', ext: 'aar')
@@ -122,8 +121,8 @@ dependencies {
     //http://jcenter.bintray.com/com/jakewharton/butterknife/
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     //数据库
 
     //数据库

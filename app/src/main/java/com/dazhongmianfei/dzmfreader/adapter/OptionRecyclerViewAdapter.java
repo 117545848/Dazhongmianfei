@@ -122,9 +122,9 @@ public class OptionRecyclerViewAdapter extends RecyclerView.Adapter<OptionRecycl
                 viewHolder.list_ad_view_img.setVisibility(View.GONE);
                 TodayOneAD todayOneAD = new TodayOneAD(activity, 1, optionBeen.ad_android_key);
                 todayOneAD.getTodayOneBanner(viewHolder.list_ad_view_layout, null, 1);
-                if (todayOneADS!=null) {
+               /* if (todayOneADS!=null) {
                     todayOneADS.put(position,todayOneAD);
-                }
+                }*/
             }
         }
 

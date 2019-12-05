@@ -24,9 +24,8 @@ import com.dazhongmianfei.dzmfreader.activity.LoginActivity;
 import com.dazhongmianfei.dzmfreader.adapter.CommentAdapter;
 import com.dazhongmianfei.dzmfreader.bean.CommentItem;
 import com.dazhongmianfei.dzmfreader.book.been.BookComment;
-import com.dazhongmianfei.dzmfreader.comic.been.ComicComment;
-import com.dazhongmianfei.dzmfreader.comic.been.RefreashComicInfoActivity;
-import com.dazhongmianfei.dzmfreader.comic.config.ComicConfig;
+
+;
 import com.dazhongmianfei.dzmfreader.config.ReaderConfig;
 import com.dazhongmianfei.dzmfreader.eventbus.RefreshBookInfo;
 import com.dazhongmianfei.dzmfreader.http.ReaderParams;

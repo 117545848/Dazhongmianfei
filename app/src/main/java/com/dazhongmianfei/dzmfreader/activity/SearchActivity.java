@@ -28,8 +28,8 @@ import com.dazhongmianfei.dzmfreader.bean.OptionBeen;
 import com.dazhongmianfei.dzmfreader.bean.OptionItem;
 import com.dazhongmianfei.dzmfreader.bean.SerachItem;
 import com.dazhongmianfei.dzmfreader.book.config.BookConfig;
-import com.dazhongmianfei.dzmfreader.comic.activity.ComicInfoActivity;
-import com.dazhongmianfei.dzmfreader.comic.config.ComicConfig;
+;
+;
 import com.dazhongmianfei.dzmfreader.http.ReaderParams;
 import com.dazhongmianfei.dzmfreader.utils.HttpUtils;
 import com.dazhongmianfei.dzmfreader.utils.LanguageUtil;
@@ -103,13 +103,8 @@ public class SearchActivity extends BaseButterKnifeActivity {
         public void OnItemClick(int position, OptionBeen optionBeen) {
 
             Intent intent = new Intent();
-            if (PRODUCT) {
-                intent.setClass(activity, BookInfoActivity.class);
-                intent.putExtra("book_id", optionBeen.getBook_id());
-            } else {
-                intent.setClass(activity, ComicInfoActivity.class);
-                intent.putExtra("comic_id", optionBeen.getComic_id());
-            }
+            intent.setClass(activity, BookInfoActivity.class);
+            intent.putExtra("book_id", optionBeen.getBook_id());
             startActivity(intent);
 
         }
@@ -193,15 +188,7 @@ public class SearchActivity extends BaseButterKnifeActivity {
         ReaderParams params = new ReaderParams(activity);
         String json = params.generateParamsJson();
         String url;
-        if (PRODUCT) {
-            url = BookConfig.mSearchIndexUrl;
-        } else {
-            url = ComicConfig.COMIC_search_index;
-        }
-     /*   if (true) {
-            MyToash.Log("mSearchIndexUrl",url+"     "+json);
-            return;
-        }*/
+        url = BookConfig.mSearchIndexUrl;
         HttpUtils.getInstance(activity).sendRequestRequestParams3(url, json, true, new HttpUtils.ResponseListener() {
                     @Override
                     public void onResponse(final String result) {
@@ -242,13 +229,8 @@ public class SearchActivity extends BaseButterKnifeActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent;
-                if (PRODUCT) {
-                    intent = new Intent(activity, BookInfoActivity.class);
-                    intent.putExtra("book_id", serachItem.list.get(position).getBook_id());
-                } else {
-                    intent = new Intent(activity, ComicInfoActivity.class);
-                    intent.putExtra("comic_id", serachItem.list.get(position).getComic_id());
-                }
+                intent = new Intent(activity, BookInfoActivity.class);
+                intent.putExtra("book_id", serachItem.list.get(position).getBook_id());
                 startActivity(intent);
             }
         });
@@ -279,11 +261,7 @@ public class SearchActivity extends BaseButterKnifeActivity {
         params.putExtraParams("page_num", current_page + "");
         String json = params.generateParamsJson();
         String url;
-        if (PRODUCT) {
-            url = BookConfig.mSearchUrl;
-        } else {
-            url = ComicConfig.COMIC_search;
-        }
+        url = BookConfig.mSearchUrl;
 
         HttpUtils.getInstance(activity).sendRequestRequestParams3(url, json, true, new HttpUtils.ResponseListener() {
                     @Override

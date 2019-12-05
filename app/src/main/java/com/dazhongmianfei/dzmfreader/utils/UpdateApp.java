@@ -98,11 +98,6 @@ public class UpdateApp {
                         ShareUitls.putString(activity, "Check_switch", response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-
-                            try {
-                                PUTPRODUCT_TYPE(activity, jsonObject.getInt("ui"));
-                            } catch (Exception e) {
-                            }
                             if (jsonObject.getInt("service") == 1) {//开启壳子
                                 activity.startActivity(new Intent(activity, com.dazhongmianfei.dzmfreader.localapp.MainActivity.class));
                             } else {
@@ -118,11 +113,6 @@ public class UpdateApp {
                         String response = ShareUitls.getString(activity, "Check_switch", "");
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-
-                            try {
-                                PUTPRODUCT_TYPE(activity, jsonObject.getInt("ui"));
-                            } catch (Exception e) {
-                            }
                             if (jsonObject.getInt("service") == 1) {//开启壳子
                                 activity.startActivity(new Intent(activity, com.dazhongmianfei.dzmfreader.localapp.MainActivity.class));
                             } else {

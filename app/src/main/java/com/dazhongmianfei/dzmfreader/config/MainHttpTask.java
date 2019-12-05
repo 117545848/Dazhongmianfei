@@ -11,7 +11,7 @@ import com.dazhongmianfei.dzmfreader.Task.TaskManager;
 import com.dazhongmianfei.dzmfreader.activity.LoginActivity;
 import com.dazhongmianfei.dzmfreader.bean.UserInfoItem;
 import com.dazhongmianfei.dzmfreader.book.config.BookConfig;
-import com.dazhongmianfei.dzmfreader.comic.config.ComicConfig;
+;
 import com.dazhongmianfei.dzmfreader.http.ReaderParams;
 import com.dazhongmianfei.dzmfreader.utils.HttpUtils;
 import com.dazhongmianfei.dzmfreader.utils.LanguageUtil;
@@ -65,12 +65,7 @@ public class MainHttpTask {
             httpSend(activity, BookConfig.mDiscoveryUrl, "DiscoverBook", null);
             httpSend(activity, BookConfig.mBookCollectUrl, "ShelfBook", null);
         }
-        if (GETPRODUCT_TYPE(activity) != XIAOSHUO) {
-            httpSend(activity, ComicConfig.COMIC_home_stock, "StoreComicMan", null);
-            httpSend(activity, ComicConfig.COMIC_home_stock, "StoreComicWoMan", null);
-            httpSend(activity, ComicConfig.COMIC_featured, "DiscoverComic", null);
-            httpSend(activity, ComicConfig.COMIC_SHELF, "ShelfComic", null);
-        }
+
         if (Utils.isLogin(activity)) {
             httpSend(activity, ReaderConfig.mUserCenterUrl, "Mine", null);
         }
@@ -166,16 +161,7 @@ public class MainHttpTask {
                         httpSend(activity, BookConfig.mBookCollectUrl, Option, getHttpData);
                     }
                     break;
-                case "ShelfComic":
-                    if (ShelfComic == null) {
-                        ShelfComic = ShareUitls.getMainHttpTaskString(activity, Option, null);
-                    }
-                    if (ShelfComic != null) {
-                        getHttpData.getHttpData(ShelfComic);
-                    } else {
-                        httpSend(activity, ComicConfig.COMIC_SHELF, Option, getHttpData);
-                    }
-                    break;
+
                 case "StoreBookMan":
                     if (StoreBookMan == null) {
                         StoreBookMan = ShareUitls.getMainHttpTaskString(activity, Option, null);
@@ -196,26 +182,7 @@ public class MainHttpTask {
                         httpSend(activity, BookConfig.mBookStoreUrl, Option, getHttpData);
                     }
                     break;
-                case "StoreComicMan":
-                    if (StoreComicMan == null) {
-                        StoreComicMan = ShareUitls.getMainHttpTaskString(activity, Option, null);
-                    }
-                    if (StoreComicMan != null) {
-                        getHttpData.getHttpData(StoreComicMan);
-                    } else {
-                        httpSend(activity, ComicConfig.COMIC_home_stock, Option, getHttpData);
-                    }
-                    break;
-                case "StoreComicWoMan":
-                    if (StoreComicWoMan == null) {
-                        StoreComicWoMan = ShareUitls.getMainHttpTaskString(activity, Option, null);
-                    }
-                    if (StoreComicWoMan != null) {
-                        getHttpData.getHttpData(StoreComicWoMan);
-                    } else {
-                        httpSend(activity, ComicConfig.COMIC_home_stock, Option, getHttpData);
-                    }
-                    break;
+
                 case "DiscoverBook":
                     if (DiscoverBook == null) {
                         DiscoverBook = ShareUitls.getMainHttpTaskString(activity, Option, null);
@@ -226,16 +193,7 @@ public class MainHttpTask {
                         httpSend(activity, BookConfig.mDiscoveryUrl, Option, getHttpData);
                     }
                     break;
-                case "DiscoverComic":
-                    if (DiscoverComic == null) {
-                        DiscoverComic = ShareUitls.getMainHttpTaskString(activity, Option, null);
-                    }
-                    if (DiscoverComic != null) {
-                        getHttpData.getHttpData(DiscoverComic);
-                    } else {
-                        httpSend(activity, ComicConfig.COMIC_featured, Option, getHttpData);
-                    }
-                    break;
+
                 case "Mine":
                     if (Mine == null) {
                         Mine = ShareUitls.getMainHttpTaskString(activity, Option, null);

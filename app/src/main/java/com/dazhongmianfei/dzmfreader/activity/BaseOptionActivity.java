@@ -17,8 +17,7 @@ import com.dazhongmianfei.dzmfreader.R2;
 import com.dazhongmianfei.dzmfreader.adapter.MyFragmentPagerAdapter;
 import com.dazhongmianfei.dzmfreader.book.fragment.DownMangerBookFragment;
 import com.dazhongmianfei.dzmfreader.book.fragment.ReadHistoryBookFragment;
-import com.dazhongmianfei.dzmfreader.comic.fragment.DownMangerComicFragment;
-import com.dazhongmianfei.dzmfreader.comic.fragment.ReadHistoryComicFragment;
+
 import com.dazhongmianfei.dzmfreader.fragment.LiushuijiluFragment;
 import com.dazhongmianfei.dzmfreader.fragment.MyCommentFragment;
 import com.dazhongmianfei.dzmfreader.fragment.OptionFragment;
@@ -32,7 +31,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.dazhongmianfei.dzmfreader.comic.fragment.ReadHistoryComicFragment.RefarchrequestCodee;
+
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.BAOYUE;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.BAOYUE_SEARCH;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.DOWN;
@@ -170,49 +169,12 @@ int  colroSChoose,colroNoSChoose;
                 baseButterKnifeFragment1 = new OptionFragment(PRODUCT, OPTION, 1);
                 break;
             case DOWN:
-                switch (GETPRODUCT_TYPE(activity)) {
-                    case XIAOSHUO:
-                        baseButterKnifeFragment1 = new DownMangerBookFragment();
-                        break;
-                    case MANHAU:
-                        baseButterKnifeFragment1 = new DownMangerComicFragment();
-                        break;
-                    case XIAOSHUOMAHUA:
-                        baseButterKnifeFragment1 = new DownMangerBookFragment();
-                        baseButterKnifeFragment2 = new DownMangerComicFragment();
-                        channel_bar_male_text.setText(LanguageUtil.getString(activity, R.string.noverfragment_xiaoshuo));
-                        channel_bar_female_text.setText(LanguageUtil.getString(activity, R.string.noverfragment_manhua));
-                        break;
-                    case MANHAUXIAOSHUO:
-                        baseButterKnifeFragment2 = new DownMangerBookFragment();
-                        baseButterKnifeFragment1 = new DownMangerComicFragment();
-                        channel_bar_female_text.setText(LanguageUtil.getString(activity, R.string.noverfragment_xiaoshuo));
-                        channel_bar_male_text.setText(LanguageUtil.getString(activity, R.string.noverfragment_manhua));
-                        break;
-                }
+                baseButterKnifeFragment1 = new DownMangerBookFragment();
+
                 break;
             case READHISTORY:
-                switch (GETPRODUCT_TYPE(activity)) {
-                    case XIAOSHUO:
-                        baseButterKnifeFragment1 = new ReadHistoryBookFragment();
-                        break;
-                    case MANHAU:
-                        baseButterKnifeFragment1 = new ReadHistoryComicFragment();
-                        break;
-                    case XIAOSHUOMAHUA:
-                        baseButterKnifeFragment1 = new ReadHistoryBookFragment();
-                        baseButterKnifeFragment2 = new ReadHistoryComicFragment();
-                        channel_bar_male_text.setText(LanguageUtil.getString(activity, R.string.noverfragment_xiaoshuo));
-                        channel_bar_female_text.setText(LanguageUtil.getString(activity, R.string.noverfragment_manhua));
-                        break;
-                    case MANHAUXIAOSHUO:
-                        baseButterKnifeFragment2 = new ReadHistoryBookFragment();
-                        baseButterKnifeFragment1 = new ReadHistoryComicFragment();
-                        channel_bar_female_text.setText(LanguageUtil.getString(activity, R.string.noverfragment_xiaoshuo));
-                        channel_bar_male_text.setText(LanguageUtil.getString(activity, R.string.noverfragment_manhua));
-                        break;
+                baseButterKnifeFragment1 = new ReadHistoryBookFragment();
 
-                }
                 break;
             case LIUSHUIJIELU:
 
@@ -279,26 +241,5 @@ int  colroSChoose,colroNoSChoose;
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RefarchrequestCodee) {//登录后刷新 阅读历史
-            switch (GETPRODUCT_TYPE(activity)) {
-                case XIAOSHUO:
-                    ((ReadHistoryBookFragment) (baseButterKnifeFragment1)).initdata();
-                    break;
-                case MANHAU:
-                    ((ReadHistoryComicFragment) (baseButterKnifeFragment1)).initdata();
-                    break;
-                case XIAOSHUOMAHUA:
-                    ((ReadHistoryBookFragment) (baseButterKnifeFragment1)).initdata();
-                    ((ReadHistoryComicFragment) (baseButterKnifeFragment2)).initdata();
-                    break;
-                case MANHAUXIAOSHUO:
-                    ((ReadHistoryBookFragment) (baseButterKnifeFragment2)).initdata();
-                    ((ReadHistoryComicFragment) (baseButterKnifeFragment1)).initdata();
-                    break;
-            }
-        }
-    }
+
 }

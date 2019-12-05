@@ -1,7 +1,7 @@
 package com.dazhongmianfei.dzmfreader.bean;
 
 import com.dazhongmianfei.dzmfreader.book.been.StroreBookcLable;
-import com.dazhongmianfei.dzmfreader.comic.been.ComicComment;
+
 
 import java.util.List;
 

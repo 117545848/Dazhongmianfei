@@ -150,9 +150,9 @@ public class ReadActivity extends BaseReadActivity {
     @BindView(R.id.auto_read_progress_bar)
     ProgressBar auto_read_progress_bar;
 
-    @BindView(R.id.list_ad_view_layout)
+  /*  @BindView(R.id.list_ad_view_layout)
     public FrameLayout insert_todayone2;
-
+*/
     @BindView(R.id.activity_read_buttom_ad_layout)
     public FrameLayout activity_read_buttom_ad_layout;
 
@@ -226,7 +226,7 @@ public class ReadActivity extends BaseReadActivity {
                 bookpage.setLayoutParams(layoutParams);
 
                 activity_read_buttom_ad_layout.setVisibility(View.GONE);
-                insert_todayone2.setVisibility(View.GONE);
+
                 tv_noad.setVisibility(View.GONE);
 
                 try {
@@ -277,12 +277,11 @@ public class ReadActivity extends BaseReadActivity {
             layoutParams.height = mScreenHeight - ImageUtil.dp2px(activity, READBUTTOM_HEIGHT);
             bookpage.setLayoutParams(layoutParams);
 
-            bookpage.setADview(insert_todayone2);
+
             tv_noad.setVisibility(View.VISIBLE);
             handler.sendEmptyMessageDelayed(1, 30000);
         } else {
             activity_read_buttom_ad_layout.setVisibility(View.GONE);
-            insert_todayone2.setVisibility(View.GONE);
             tv_noad.setVisibility(View.GONE);
         }
         config = ReadingConfig.getInstance();
@@ -291,13 +290,12 @@ public class ReadActivity extends BaseReadActivity {
         Intent intent = getIntent();
         chapter = (ChapterItem) intent.getSerializableExtra(EXTRA_CHAPTER);
         baseBook = (BaseBook) intent.getSerializableExtra(EXTRA_BOOK);
-        pageFactory = new PageFactory(baseBook,  insert_todayone2,
+        pageFactory = new PageFactory(baseBook,
                 this,isNotchEnable,NavigationBarHeight);
 
         activity_read_top_back_bookname.setText(baseBook.getName());
         pageFactory.setPurchaseLayout(activity_read_purchase_layout);
         if (ReaderConfig.USE_AD) {
-            pageFactory.getWebViewAD(ReadActivity.this);//获取广告
             handler.sendEmptyMessageDelayed(2, 20000);
             int noad_time = ShareUitls.getInt(activity, "close_AD", 0);
             if ((System.currentTimeMillis() - noad_time) / 60000 <= 20) {
@@ -611,7 +609,7 @@ public class ReadActivity extends BaseReadActivity {
             }
 
         }
-        return super.onKeyDown(keyCode, event);
+        return true;
     }
 
     /**
@@ -1060,8 +1058,7 @@ public class ReadActivity extends BaseReadActivity {
                     handler.sendEmptyMessageDelayed(1, 30000);
                     break;
                 case 2:
-                    pageFactory.getWebViewAD(ReadActivity.this);//获取广告
-                    handler.sendEmptyMessageDelayed(2, 20000);
+                   // handler.sendEmptyMessageDelayed(2, 20000);
                     break;
             }
 

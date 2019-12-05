@@ -21,8 +21,8 @@ import com.dazhongmianfei.dzmfreader.R2;
 import com.dazhongmianfei.dzmfreader.bean.Recommend;
 import com.dazhongmianfei.dzmfreader.book.been.BaseBook;
 import com.dazhongmianfei.dzmfreader.bean.SigninSuccess;
-import com.dazhongmianfei.dzmfreader.comic.been.BaseComic;
-import com.dazhongmianfei.dzmfreader.comic.eventbus.RefreshComic;
+;
+;
 import com.dazhongmianfei.dzmfreader.config.ReaderApplication;
 import com.dazhongmianfei.dzmfreader.eventbus.RefreshBookSelf;
 import com.dazhongmianfei.dzmfreader.eventbus.RefreshMine;
@@ -138,7 +138,6 @@ public class MyPoPwindow {
                         @Override
                         public void onClick(View view) {
                             List<BaseBook> list = new ArrayList<>();
-                            List<BaseComic> comics = new ArrayList<>();
                             for (Recommend.RecommendProduc addrecommendProducs : signBookList) {
                                 if (addrecommendProducs.book_id != null) {
                                     BaseBook mBaseBook = new BaseBook();
@@ -152,17 +151,6 @@ public class MyPoPwindow {
                                     mBaseBook.saveIsexist(1);
                                     mBaseBook.setAddBookSelf(1);
                                     list.add(mBaseBook);
-                                } else {
-                                    BaseComic baseComic = new BaseComic();
-                                    baseComic.setComic_id(addrecommendProducs.comic_id);
-                                    baseComic.setName(addrecommendProducs.name);
-                                    baseComic.setVertical_cover(addrecommendProducs.cover);
-                                    baseComic.setRecentChapter(addrecommendProducs.total_chapter);
-                                    baseComic.setTotal_chapters(addrecommendProducs.total_chapter);
-                                    baseComic.setDescription(addrecommendProducs.description);
-                                    baseComic.saveIsexist(true);
-                                    baseComic.setAddBookSelf(true);
-                                    comics.add(baseComic);
                                 }
                             }
 
@@ -175,27 +163,11 @@ public class MyPoPwindow {
                                         if (!list.isEmpty()) {
                                             EventBus.getDefault().post(new RefreshBookSelf(list));
                                         }
-                                        if (!comics.isEmpty()) {
-                                            EventBus.getDefault().post(new RefreshComic(comics));
-                                        }
+
                                     }
                                 }
                             });
-                            LitePal.saveAllAsync(comics).listen(new SaveCallback() {
-                                @Override
-                                public void onFinish(boolean success) {
-                                    comicadd = true;
-                                    if (bookadd) {
-                                        comicadd = false;
-                                        if (!list.isEmpty()) {
-                                            EventBus.getDefault().post(new RefreshBookSelf(list));
-                                        }
-                                        if (!comics.isEmpty()) {
-                                            EventBus.getDefault().post(new RefreshComic(comics));
-                                        }
-                                    }
-                                }
-                            });
+
 
                             popupWindow.dismiss();
                         }

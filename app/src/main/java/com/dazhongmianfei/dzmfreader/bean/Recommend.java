@@ -1,7 +1,7 @@
 package com.dazhongmianfei.dzmfreader.bean;
 
 import com.dazhongmianfei.dzmfreader.book.been.BaseBook;
-import com.dazhongmianfei.dzmfreader.comic.been.BaseComic;
+;
 
 import java.util.List;
 

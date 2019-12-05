@@ -8,7 +8,7 @@ import com.dazhongmianfei.dzmfreader.activity.BindPhoneActivity;
 import com.dazhongmianfei.dzmfreader.activity.model.LoginModel;
 import com.dazhongmianfei.dzmfreader.activity.view.LoginResultCallback;
 import com.dazhongmianfei.dzmfreader.activity.view.LoginView;
-import com.dazhongmianfei.dzmfreader.comic.eventbus.RefreshComic;
+;
 import com.dazhongmianfei.dzmfreader.eventbus.RefreshBookSelf;
 import com.dazhongmianfei.dzmfreader.eventbus.RefreshMine;
 import com.dazhongmianfei.dzmfreader.utils.LanguageUtil;
@@ -52,9 +52,7 @@ public class BindPresenter {
                 if (GETPRODUCT_TYPE((Activity) mLoginView) != 2) {
                     EventBus.getDefault().post(new RefreshBookSelf(null));
                 }
-                if (GETPRODUCT_TYPE((Activity) mLoginView) != 1) {
-                    EventBus.getDefault().post(new RefreshComic(null));
-                }
+
                 ((Activity) mLoginView).finish();
             }
         });

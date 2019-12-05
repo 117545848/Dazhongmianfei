@@ -71,6 +71,8 @@ public class DiscoveryBookFragment extends BaseButterKnifeFragment {
 
     @BindView(R2.id.fragment_discovery_banner_male)
     public ConvenientBanner mStoreBannerMale;
+    @BindView(R2.id.list_ad_view_layout)
+    FrameLayout list_ad_view_layout;
 
     @BindView(R2.id.refreshLayoutMale)
     public PullToRefreshLayout pullToRefreshLayout;
@@ -78,6 +80,19 @@ public class DiscoveryBookFragment extends BaseButterKnifeFragment {
     LayoutInflater layoutInflater;
     Gson gson = new Gson();
     public boolean is_getNativeInfoListView;
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser&&list_ad_view_layout!=null&&activity!=null) {
+            if (todayOneAD == null) {
+                todayOneAD = new TodayOneAD(activity, 2, "");
+            }
+            todayOneAD. getTodayOneBanner(list_ad_view_layout, null, 2);
+        }
+    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -88,10 +103,11 @@ public class DiscoveryBookFragment extends BaseButterKnifeFragment {
                 MainHttpTask.getInstance().httpSend(activity, ReaderConfig.mDiscoveryUrl, "DiscoverBook", new MainHttpTask.GetHttpData() {
                     @Override
                     public void getHttpData(String result) {
+                        is_getNativeInfoListView=true;
                         if (result != null) {
                             initInfo(result);
                         }
-                        is_getNativeInfoListView=true;
+
                         if (pullToRefreshLayout != null) {
                             pullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
                         }
@@ -147,6 +163,8 @@ public class DiscoveryBookFragment extends BaseButterKnifeFragment {
         }
 
     }
+
+
     public  TodayOneAD todayOneAD;
     public void initWaterfall(String jsonObject) {
         fragment_discovery_container.removeAllViews();
@@ -155,20 +173,6 @@ public class DiscoveryBookFragment extends BaseButterKnifeFragment {
         for (JsonElement jsonElement : jsonElements) {
             StroreBookcLable stroreComicLable = gson.fromJson(jsonElement, StroreBookcLable.class);//解析
             if (stroreComicLable.ad_type != 0) {
-                FrameLayout list_ad_view = (FrameLayout) layoutInflater.inflate(R.layout.list_ad_view_main, null, false);
-
-                if(is_getNativeInfoListView) {
-                    new TodayOneAD(activity, 2, stroreComicLable.ad_android_key).
-                            getTodayOneBanner(list_ad_view, null, 1);
-                }else {
-                    todayOneAD = new TodayOneAD(activity, 2, stroreComicLable.ad_android_key);
-                }
-
-               LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                // params.height = WIDTHH/3;
-                params.setMargins(0, 10, 0, 0);
-                fragment_discovery_container.addView(list_ad_view, params);
-
 
 
                 continue;

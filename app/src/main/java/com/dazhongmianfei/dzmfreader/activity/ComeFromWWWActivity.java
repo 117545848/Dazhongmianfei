@@ -10,7 +10,7 @@ import android.os.Message;
 
 import com.alibaba.sdk.android.push.AndroidPopupActivity;
 import com.dazhongmianfei.dzmfreader.R;
-import com.dazhongmianfei.dzmfreader.comic.activity.ComicInfoActivity;
+;
 
 //.view.annotation.ContentView;
 //.x;
@@ -33,9 +33,6 @@ public class ComeFromWWWActivity extends AndroidPopupActivity {
             } else if (book_id != null) {
                 intent.setClass(ComeFromWWWActivity.this, BookInfoActivity.class);
                 intent.putExtra("book_id", book_id);
-            } else if (comic_id != null) {
-                intent.setClass(ComeFromWWWActivity.this, ComicInfoActivity.class);
-                intent.putExtra("comic_id", comic_id);
             }
             startActivity(intent);
             finish();
@@ -87,10 +84,7 @@ public class ComeFromWWWActivity extends AndroidPopupActivity {
                     intent.putExtra("url", content);
                     intent.putExtra("flag", "skip_url");
                     break;
-                case "3":
-                    intent.setClass(ComeFromWWWActivity.this, ComicInfoActivity.class);
-                    intent.putExtra("comic_id", content);
-                    break;
+
                 default:
                     intent.setClass(ComeFromWWWActivity.this, MainActivity.class);
                     break;

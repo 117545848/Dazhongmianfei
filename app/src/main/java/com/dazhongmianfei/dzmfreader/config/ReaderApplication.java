@@ -18,7 +18,6 @@ import com.alibaba.sdk.android.push.noonesdk.PushServiceFactory;
 import com.alibaba.sdk.android.push.register.OppoRegister;
 import com.fm.openinstall.OpenInstall;
 import com.hubcloud.adhubsdk.AdHub;
-import com.hz.yl.b.mian.XMain;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
@@ -56,13 +55,10 @@ public class ReaderApplication extends LitePalApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (isMainProcess()) {
-            OpenInstall.init(this);
-        }
+
         try {
             UMConfigure.setLogEnabled(false);
             String getChannelName = UpdateApp.getChannelName(this);
-            MyToash.Log("qihao", " 1" + getChannelName);
             UMConfigure.init(this, ReaderConfig.UMENG, getChannelName, UMConfigure.DEVICE_TYPE_PHONE, "");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
             if (ReaderConfig.USE_WEIXIN) {
                 PlatformConfig.setWeixin(ReaderConfig.WEIXIN_PAY_APPID, ReaderConfig.WEIXIN_APP_SECRET);
@@ -75,11 +71,12 @@ public class ReaderApplication extends LitePalApplication {
             Bugly.init(this, "d763f529c6", false);
             initCloudChannel(this);
 
-
+          AdHub.init(this, "3044");
+            if (isMainProcess()) {
+                OpenInstall.init(this);
+            }
             if (ReaderConfig.USE_AD) {
-                AdHub.init(this, "3044");
                 TTAdManagerHolder.init(this);
-                XMain.getInstance().setAppKey(this, "33fa1509584dff33263c3ac4a07baba4");
             }
         } catch (Exception E) {
         } catch (Error e) {

@@ -3,8 +3,7 @@ package com.dazhongmianfei.dzmfreader.utils;
 import android.content.Context;
 import android.os.Environment;
 
-import com.dazhongmianfei.dzmfreader.comic.been.BaseComic;
-import com.dazhongmianfei.dzmfreader.comic.been.BaseComicImage;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -60,54 +59,6 @@ public class FileManager {
         return FileManager.getSDCardRoot() + "image/comic/";
     }
 
-    //获取漫画图片
-    public static final File getManhuaSDCardRootImg(BaseComicImage baseComicImage) {
-
-        String ImgName = "";
-        String localPath = getManhuaSDCardRoot().concat(baseComicImage.comic_id + "/").concat(baseComicImage.chapter_id + "/");
-        if (baseComicImage.image.contains(".jpg")) {
-            ImgName = baseComicImage.image_id + ".jpg";
-        } else if (baseComicImage.image.contains(".jpeg")) {
-            ImgName = baseComicImage.image_id + ".jpeg";
-        } else if (baseComicImage.image.contains(".png")) {
-            ImgName = baseComicImage.image_id + ".png";
-        } else {
-            return null;
-        }
-
-        String s = localPath.concat(ImgName);
-        MyToash.Log("XXomicChapterRR", s);
-        File file = new File(localPath.concat(ImgName));
-        if (file.exists()) {
-            MyToash.Log("XXomicChapterRR","true");
-            return file;
-        }
-        MyToash.Log("XXomicChapterRR","false");
-        return null;
-    }
-
-    //获取漫画图片
-    public static final String getManhuaSDCardRootImgString(BaseComicImage baseComicImage) {
-
-        String ImgName = "";
-        String localPath = getManhuaSDCardRoot().concat(baseComicImage.comic_id + "/").concat(baseComicImage.chapter_id + "/").concat(baseComicImage.getUpdate_time() + "/");
-        if (baseComicImage.image.contains(".jpg")) {
-            ImgName = baseComicImage.image_id + ".jpg";
-        } else if (baseComicImage.image.contains(".jpeg")) {
-            ImgName = baseComicImage.image_id + ".jpeg";
-        } else if (baseComicImage.image.contains(".png")) {
-            ImgName = baseComicImage.image_id + ".png";
-        } else {
-            return null;
-        }
-        File file = new File(localPath.concat(ImgName));
-        if (file.exists()) {
-
-            return localPath.concat(ImgName);
-        }
-
-        return null;
-    }
 
     /**
      * <p>

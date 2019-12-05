@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Scroller;
 
 import com.dazhongmianfei.dzmfreader.config.ReaderConfig;
@@ -31,7 +32,7 @@ import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.READBUTTOM_HEIGH
 /**
  * Created by scb on 2018/8/29 0029.
  */
-public class PageWidget extends View {
+public class PageWidget extends RelativeLayout {
     private final static String TAG = "BookPageWidget";
     private int mScreenWidth = 0; // 屏幕宽
     public int mScreenHeight = 0; // 屏幕高

@@ -6,9 +6,9 @@
 
     <list>
         <mapping class="com.dazhongmianfei.dzmfreader.book.been.BaseBook"/>
-        <mapping class="com.dazhongmianfei.dzmfreader.comic.been.BaseComic"/>
+
         <mapping class="com.dazhongmianfei.dzmfreader.bean.Downoption"/>
-        <mapping class="com.dazhongmianfei.dzmfreader.comic.been.ComicChapter"/>
+
         <mapping class="com.dazhongmianfei.dzmfreader.bean.ChapterItem"/>
         <mapping class="com.dazhongmianfei.dzmfreader.localapp.bean.Book"/>
     </list>

@@ -32,7 +32,7 @@ import com.dazhongmianfei.dzmfreader.R;
 import com.dazhongmianfei.dzmfreader.R2;
 import com.dazhongmianfei.dzmfreader.book.been.BaseBook;
 import com.dazhongmianfei.dzmfreader.bean.Recommend;
-import com.dazhongmianfei.dzmfreader.comic.been.BaseComic;
+;
 import com.dazhongmianfei.dzmfreader.config.ReaderConfig;
 import com.dazhongmianfei.dzmfreader.dialog.WaitDialog;
 import com.dazhongmianfei.dzmfreader.http.ReaderParams;
@@ -165,7 +165,6 @@ public class FirstStartActivity extends BaseButterKnifeActivity {
                     activity_home_viewpager_book_ok.setClickable(false);
                     waitDialog.showDailog();
                     List<BaseBook> list = new ArrayList<>();
-                    List<BaseComic> comics = new ArrayList<>();
                     for (Recommend.RecommendProduc addrecommendProducs : addrecommendProducs) {
 
                         if (addrecommendProducs.book_id != null) {
@@ -180,17 +179,6 @@ public class FirstStartActivity extends BaseButterKnifeActivity {
                             mBaseBook.setAddBookSelf(1);
                             // mBaseBook.saveIsexist(1);
                             list.add(mBaseBook);
-                        } else {
-                            BaseComic baseComic = new BaseComic();
-                            baseComic.setComic_id(addrecommendProducs.comic_id);
-                            baseComic.setName(addrecommendProducs.name);
-                            baseComic.setVertical_cover(addrecommendProducs.cover);
-                            baseComic.setRecentChapter(addrecommendProducs.total_chapter);
-                            baseComic.setTotal_chapters(addrecommendProducs.total_chapter);
-                            baseComic.setDescription(addrecommendProducs.description);
-                            baseComic.setAddBookSelf(true);
-                            // baseComic.saveIsexist(true);
-                            comics.add(baseComic);
                         }
                     }
 

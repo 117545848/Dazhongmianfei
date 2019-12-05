@@ -29,7 +29,6 @@ import java.util.List;
 import butterknife.BindView;
 
 import static com.dazhongmianfei.dzmfreader.book.config.BookConfig.mUserCommentsUrl;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_comment_list_MY;
 
 
 public class MyCommentFragment extends BaseButterKnifeFragment {
@@ -159,11 +158,8 @@ public class MyCommentFragment extends BaseButterKnifeFragment {
     private void HttpData() {
 
         String URL;
-        if (PRODUCT) {
-            URL = mUserCommentsUrl;
-        } else {
-            URL = COMIC_comment_list_MY;
-        }
+        URL = mUserCommentsUrl;
+
         ReaderParams params = new ReaderParams(activity);
 
         params.putExtraParams("page_num", current_page + "");

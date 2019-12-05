@@ -1,4 +1,4 @@
-package com.dazhongmianfei.dzmfreader.comic.adapter;
+package com.dazhongmianfei.dzmfreader.banner;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,16 +7,11 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.dazhongmianfei.dzmfreader.R;
 import com.dazhongmianfei.dzmfreader.banner.holder.Holder;
-import com.dazhongmianfei.dzmfreader.bean.BannerItem;
 import com.dazhongmianfei.dzmfreader.bean.BannerItemStore;
-import com.dazhongmianfei.dzmfreader.comic.been.MyGlide;
-import com.dazhongmianfei.dzmfreader.config.ReaderApplication;
 import com.dazhongmianfei.dzmfreader.utils.ImageUtil;
 import com.dazhongmianfei.dzmfreader.utils.MyPicasso;
 import com.dazhongmianfei.dzmfreader.utils.ScreenSizeUtils;

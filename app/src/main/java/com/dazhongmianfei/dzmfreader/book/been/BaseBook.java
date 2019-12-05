@@ -3,7 +3,7 @@ package com.dazhongmianfei.dzmfreader.book.been;
 
 import android.content.ContentValues;
 
-import com.dazhongmianfei.dzmfreader.comic.been.BaseComic;
+;
 import com.dazhongmianfei.dzmfreader.utils.MyToash;
 
 import org.litepal.LitePal;

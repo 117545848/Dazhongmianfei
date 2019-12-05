@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dazhongmianfei.dzmfreader.eventbus.StoreEventbus;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -36,7 +37,7 @@ import com.dazhongmianfei.dzmfreader.bean.BannerItemStore;
 import com.dazhongmianfei.dzmfreader.bean.EntranceItem;
 import com.dazhongmianfei.dzmfreader.book.been.StroreBookcLable;
 
-import com.dazhongmianfei.dzmfreader.comic.eventbus.StoreEventbus;
+;
 import com.dazhongmianfei.dzmfreader.config.MainHttpTask;
 import com.dazhongmianfei.dzmfreader.config.ReaderConfig;
 import com.dazhongmianfei.dzmfreader.fragment.BaseButterKnifeFragment;
@@ -54,6 +55,7 @@ import com.dazhongmianfei.dzmfreader.view.AdaptionGridView;
 
 import com.dazhongmianfei.dzmfreader.view.ObservableScrollView;
 import com.dazhongmianfei.dzmfreader.view.PullToRefreshLayout;
+import com.hubcloud.adhubsdk.NativeAd;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -97,8 +99,6 @@ public class StoreBookFragment extends BaseButterKnifeFragment {
     LayoutInflater layoutInflater;
 
 
-
-
     public ImageView fragment_store_sex;
     StroeNewFragment.Hot_word hot_word;
 
@@ -138,6 +138,23 @@ public class StoreBookFragment extends BaseButterKnifeFragment {
     @BindView(R2.id.refreshLayoutMale)
     PullToRefreshLayout malePullLayout;
 
+    @BindView(R2.id.list_ad_view_layout)
+    FrameLayout list_ad_view_layout;
+
+
+    public TodayOneAD todayOneAD;
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser&&list_ad_view_layout!=null&&activity!=null) {
+            if (todayOneAD == null) {
+                todayOneAD = new TodayOneAD(activity, 2, "");
+            }
+            todayOneAD. getTodayOneBanner(list_ad_view_layout, null, 2);
+        }
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -171,7 +188,7 @@ public class StoreBookFragment extends BaseButterKnifeFragment {
                 MainHttpTask.getInstance().httpSend(activity, ReaderConfig.mBookStoreUrl, StoreBoo, new MainHttpTask.GetHttpData() {
                     @Override
                     public void getHttpData(String result) {
-                        is_getNativeInfoListView=true;
+                        is_getNativeInfoListView = true;
                         if (result != null) {
                             initInfo(result);
                         }
@@ -337,7 +354,7 @@ public class StoreBookFragment extends BaseButterKnifeFragment {
      *
      * @param jsonObject
      */
-   public TodayOneAD todayOneAD;
+
 
     public void initWaterfall(String jsonObject) {
         mContainerMale.removeAllViews();
@@ -346,18 +363,7 @@ public class StoreBookFragment extends BaseButterKnifeFragment {
         for (JsonElement jsonElement : jsonElements) {
             StroreBookcLable stroreComicLable = gson.fromJson(jsonElement, StroreBookcLable.class);//解析
             if (stroreComicLable.ad_type != 0) {
-                FrameLayout list_ad_view = (FrameLayout) layoutInflater.inflate(R.layout.list_ad_view_main, null, false);
-                ImageView list_ad_view_img = list_ad_view.findViewById(R.id.list_ad_view_img);
-                list_ad_view_img.setVisibility(View.GONE);
-                if(is_getNativeInfoListView||currentSex==1) {
-                    new TodayOneAD(activity, 2, stroreComicLable.ad_android_key).
-                            getTodayOneBanner(list_ad_view, null, 1);
-                }else {
-                   todayOneAD = new TodayOneAD(activity, 2, stroreComicLable.ad_android_key);
-                }
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                params.setMargins(0, 10, 0, 0);
-                mContainerMale.addView(list_ad_view, params);
+
                 continue;
             }
             int size = stroreComicLable.list.size();

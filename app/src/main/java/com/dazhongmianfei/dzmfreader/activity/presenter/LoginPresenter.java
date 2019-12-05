@@ -10,7 +10,7 @@ import com.dazhongmianfei.dzmfreader.activity.model.LoginModel;
 import com.dazhongmianfei.dzmfreader.activity.view.LoginResultCallback;
 import com.dazhongmianfei.dzmfreader.activity.view.LoginView;
 import com.dazhongmianfei.dzmfreader.bean.LoginInfo;
-import com.dazhongmianfei.dzmfreader.comic.eventbus.RefreshComic;
+
 import com.dazhongmianfei.dzmfreader.config.ReaderConfig;
 import com.dazhongmianfei.dzmfreader.eventbus.BuyLoginSuccess;
 import com.dazhongmianfei.dzmfreader.eventbus.RefreshBookSelf;
@@ -80,9 +80,7 @@ public class LoginPresenter {
                         if (GETPRODUCT_TYPE(activity) != 2) {
                             EventBus.getDefault().post(new RefreshBookSelf(null));
                         }
-                        if (GETPRODUCT_TYPE(activity) != 1) {
-                            EventBus.getDefault().post(new RefreshComic(null));
-                        }
+
                         loginSuccess.success();
                         activity.finish();
                     }

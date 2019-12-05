@@ -39,9 +39,8 @@ import com.dazhongmianfei.dzmfreader.banner.listener.OnItemClickListener;
 import com.dazhongmianfei.dzmfreader.banner.view.CBLoopViewPager;
 import com.dazhongmianfei.dzmfreader.bean.BannerItemStore;
 import com.dazhongmianfei.dzmfreader.book.adapter.DiscoverBannerHolderViewBook;
-import com.dazhongmianfei.dzmfreader.comic.activity.ComicInfoActivity;
-import com.dazhongmianfei.dzmfreader.comic.adapter.DiscoveryBannerHolderViewComic;
-import com.dazhongmianfei.dzmfreader.comic.adapter.HomeBannerHolderViewComic;
+;
+
 import com.dazhongmianfei.dzmfreader.utils.LanguageUtil;
 import com.dazhongmianfei.dzmfreader.utils.ScreenSizeUtils;
 import com.dazhongmianfei.dzmfreader.view.PullToRefreshLayout;
@@ -463,20 +462,7 @@ public class ConvenientBanner<T> extends LinearLayout {
                                 }
                             });
                 } else {
-                    mStoreBannerMale.setPages(new CBViewHolderCreator<DiscoveryBannerHolderViewComic>() {
-                        @Override
-                        public DiscoveryBannerHolderViewComic createHolder() {
-                            return new DiscoveryBannerHolderViewComic(activity, WIDTH);
 
-                        }
-                    }, mBannerItemListMale).setPageIndicator(new int[]{R.mipmap.banner_indicator, R.mipmap.banner_indicator_focused})
-                            .setOnItemClickListener(new OnItemClickListener() {
-
-                                @Override
-                                public void onItemClick(int position) {
-                                    Onclick(mBannerItemListMale.get(position), activity,flag);
-                                }
-                            });
                 }
 
             } else {
@@ -493,13 +479,8 @@ public class ConvenientBanner<T> extends LinearLayout {
         switch (bannerItemStore.getAction()) {
             case 1:
                 Intent intent;
-                if (flag == 0) {
-                    intent = new Intent(activity, BookInfoActivity.class);
-                    intent.putExtra("book_id", bannerItemStore.getContent());
-                } else {
-                    intent = new Intent(activity, ComicInfoActivity.class);
-                    intent.putExtra("comic_id", bannerItemStore.getContent());
-                }
+                intent = new Intent(activity, BookInfoActivity.class);
+                intent.putExtra("book_id", bannerItemStore.getContent());
                 activity.startActivity(intent);
                 break;
             case 2:

@@ -22,7 +22,7 @@ import com.dazhongmianfei.dzmfreader.activity.FirstStartActivity;
 import com.dazhongmianfei.dzmfreader.activity.LoginActivity;
 import com.dazhongmianfei.dzmfreader.activity.UserInfoActivity;
 import com.dazhongmianfei.dzmfreader.bean.LoginInfo;
-import com.dazhongmianfei.dzmfreader.comic.eventbus.RefreshComic;
+;
 import com.dazhongmianfei.dzmfreader.config.ReaderConfig;
 import com.dazhongmianfei.dzmfreader.eventbus.BuyLoginSuccess;
 import com.dazhongmianfei.dzmfreader.eventbus.RefreshBookSelf;
@@ -180,10 +180,6 @@ public class  WXEntryActivity extends WXCallbackActivity implements IWXAPIEventH
                             if (GETPRODUCT_TYPE(finalActivity) != 2) {
                                 EventBus.getDefault().post(new RefreshBookSelf(null));
                             }
-                            if (GETPRODUCT_TYPE(finalActivity) != 1) {
-                                EventBus.getDefault().post(new RefreshComic(null));
-                            }
-                            //EventBus.getDefault().post(new RefreshDiscoveryFragment());
 
                             syncDevice(finalActivity);
                             FirstStartActivity.save_recommend(finalActivity, new FirstStartActivity.Save_recommend() {

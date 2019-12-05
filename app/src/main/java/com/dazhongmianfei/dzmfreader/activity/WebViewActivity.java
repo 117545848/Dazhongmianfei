@@ -18,7 +18,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.dazhongmianfei.dzmfreader.R;
 import com.dazhongmianfei.dzmfreader.R2;
 import com.dazhongmianfei.dzmfreader.bean.BaseAd;
-import com.dazhongmianfei.dzmfreader.comic.config.ComicConfig;
+;
 import com.dazhongmianfei.dzmfreader.config.ReaderApplication;
 import com.dazhongmianfei.dzmfreader.config.ReaderConfig;
 import com.dazhongmianfei.dzmfreader.http.ReaderParams;

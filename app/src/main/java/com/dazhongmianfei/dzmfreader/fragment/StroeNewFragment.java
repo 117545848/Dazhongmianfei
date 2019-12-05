@@ -24,8 +24,8 @@ import com.dazhongmianfei.dzmfreader.activity.SearchActivity;
 
 import com.dazhongmianfei.dzmfreader.adapter.MyFragmentPagerAdapter;
 import com.dazhongmianfei.dzmfreader.book.fragment.StoreBookFragment;
-import com.dazhongmianfei.dzmfreader.comic.eventbus.StoreEventbus;
-import com.dazhongmianfei.dzmfreader.comic.fragment.StoreComicFragment;
+
+import com.dazhongmianfei.dzmfreader.eventbus.StoreEventbus;
 import com.dazhongmianfei.dzmfreader.eventbus.ToStore;
 import com.dazhongmianfei.dzmfreader.utils.ImageUtil;
 import com.dazhongmianfei.dzmfreader.utils.LanguageUtil;
@@ -201,31 +201,7 @@ public class StroeNewFragment extends BaseButterKnifeFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void ToStore(ToStore toStore) {
-        if (GETPRODUCT_TYPE(activity) == XIAOSHUOMAHUA) {
-            if (toStore.PRODUCT == 1) {
-                if (chooseWho) {
-                    fragment_store_viewpage.setCurrentItem(0);
-                    chooseWho = false;
-                }
-            } else if (toStore.PRODUCT == 2) {
-                if (!chooseWho) {
-                    fragment_store_viewpage.setCurrentItem(1);
-                    chooseWho = true;
-                }
-            }
-        } else if (GETPRODUCT_TYPE(activity) == MANHAUXIAOSHUO) {
-            if (toStore.PRODUCT == 1) {
-                if (!chooseWho) {
-                    fragment_store_viewpage.setCurrentItem(1);
-                    chooseWho = true;
-                }
-            } else if (toStore.PRODUCT == 2) {
-                if (chooseWho) {
-                    fragment_store_viewpage.setCurrentItem(0);
-                    chooseWho = false;
-                }
-            }
-        }
+
 
     }
     // boolean position = true;
@@ -331,9 +307,6 @@ public class StroeNewFragment extends BaseButterKnifeFragment {
                     fragment_store_xiaoshuo.setTextSize(fragment_store_xiaoshuo_dp);
                     fragment_store_manhau.setTextSize(fragment_store_manhau_dp);
                 } else {
-                    if(fragment2.todayOneAD!=null){
-                        fragment2.todayOneAD.nativeRender();
-                    }
                     fragment_store_xiaoshuo.setTextSize(fragment_store_manhau_dp);
                     fragment_store_manhau.setTextSize(fragment_store_xiaoshuo_dp);
                 }

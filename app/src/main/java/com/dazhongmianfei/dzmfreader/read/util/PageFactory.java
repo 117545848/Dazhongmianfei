@@ -16,6 +16,8 @@ import android.graphics.Region;
 import android.graphics.Typeface;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -235,13 +237,13 @@ public class PageFactory {
         }
     }
 
-    public PageFactory(BaseBook baseBook, FrameLayout insert_todayone2, Context context, int isNotchEnable, int NavigationBarHeight
+    public PageFactory(BaseBook baseBook, Context context, int isNotchEnable, int NavigationBarHeight
     ) {
-
-
         mActivity = (Activity) context;
+        insert_todayone2 = (FrameLayout) LayoutInflater.from(mActivity).inflate(R.layout.activity_read_ad, null);
+
+
         this.baseBook = baseBook;
-        this.insert_todayone2 = insert_todayone2;
         Insert_todayone2 = ImageUtil.dp2px(mActivity, 340);
         mPurchaseDialog = new PurchaseDialog(context, false);
         mBookUtil = new BookUtil();
@@ -320,6 +322,7 @@ public class PageFactory {
 
         initBg(config.getDayOrNight());
         measureMarginWidth();
+        top = (MHeight - Insert_todayone2) / 2;
     }
 
 
@@ -572,8 +575,6 @@ public class PageFactory {
     int AD_text_WIDTH;
 
 
-
-
     private void drawBatteryAndDate(Canvas c) {
         if (c == null) {
             return;
@@ -702,7 +703,7 @@ public class PageFactory {
 
     //向前翻页
     public void prePage() {
-
+/*
         if (ReaderConfig.USE_AD && !close_AD && IS_CHAPTERFirst && mBookPageWidget.Current_Page > 5 && mBookPageWidget.Current_Page % 5 == 0) {
             cancelPage = currentPage;
             onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);
@@ -713,15 +714,20 @@ public class PageFactory {
             mBookPageWidget.setOnSwitchPreListener(new PageWidget.OnSwitchPreListener() {
                 @Override
                 public void switchPreChapter() {
-                    insert_todayone2.setVisibility(View.VISIBLE);
-                    todayOneAD.nativeRender();
+
+
+                    mBookPageWidget.removeView(insert_todayone2);
+
+                    getWebViewAD();
+                    mBookPageWidget.addView(insert_todayone2);
+
                     IS_CHAPTERFirst = false;
                     mPurchaseLayout.setVisibility(View.GONE);
                 }
 
             });
             return;
-        }
+        }*/
 
 
         boolean last_chapter = currentPage.getBegin() <= 0;
@@ -810,20 +816,37 @@ public class PageFactory {
 
     //向后翻页
     public void nextPage() {
+        mBookPageWidget.removeView(insert_todayone2);
+
         if (ReaderConfig.USE_AD && !close_AD && IS_CHAPTERLast && mBookPageWidget.Current_Page > 5 && mBookPageWidget.Current_Page % 5 == 0) {
             cancelPage = currentPage;
             onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);
             prePage = currentPage;
-            //    currentPage = getNextPage();
-
             drawAD(mBookPageWidget.getNextPage());
+
+            Log.i("nativeRender", "---AAA");
+
+            getWebViewAD();
+
+
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.topMargin=top;
+            mBookPageWidget.addView(insert_todayone2,layoutParams);
+
+
             mBookPageWidget.setOnSwitchNextListener(new PageWidget.OnSwitchNextListener() {
                 @Override
                 public void switchNextChapter() {
-                    insert_todayone2.setVisibility(View.VISIBLE);
+                    Log.i("nativeRender", "---cccc");
+
+                   // mBookPageWidget.removeView(insert_todayone2);
+
+                    //getWebViewAD();
+                   // mBookPageWidget.addView(insert_todayone2);
+
                     IS_CHAPTERLast = false;
-                    todayOneAD.nativeRender();
                     mPurchaseLayout.setVisibility(View.GONE);
+
 
                 }
             });
@@ -849,22 +872,7 @@ public class PageFactory {
                 return;
             }
             if (false) {
-                cancelPage = currentPage;
-                onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);
-                prePage = currentPage;
-                //    currentPage = getNextPage();
 
-                drawAD(mBookPageWidget.getNextPage());
-                mBookPageWidget.setOnSwitchNextListener(new PageWidget.OnSwitchNextListener() {
-                    @Override
-                    public void switchNextChapter() {
-                        insert_todayone2.setVisibility(View.VISIBLE);
-                        IS_CHAPTERLast = false;
-                        todayOneAD.nativeRender();
-                        mPurchaseLayout.setVisibility(View.GONE);
-
-                    }
-                });
             } else {
                 try {
                     final String nextChapterId = mBookUtil.getCurrentChapter().getNext_chapter_id();
@@ -1051,15 +1059,27 @@ public class PageFactory {
     }
 
     public void cancelPage() {
-
         currentPage = cancelPage;
+      /*  currentPage = cancelPage;
         if (ReaderConfig.USE_AD && !close_AD) {
             if (IS_CHAPTERLast && IS_CHAPTERFirst) {
                 insert_todayone2.setVisibility(View.INVISIBLE);
             } else {
                 insert_todayone2.setVisibility(View.VISIBLE);
             }
-        }
+        }*/
+
+        drawAD(mBookPageWidget.getNextPage());
+
+        Log.i("nativeRender", "---AAA");
+
+        getWebViewAD();
+
+
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.topMargin=top;
+        mBookPageWidget.addView(insert_todayone2,layoutParams);
+
     }
 
     public void downloadWithoutAutoBuy(final String book_id, final String chapter_id) {
@@ -1443,7 +1463,7 @@ public class PageFactory {
             //    try {
             insert_todayone2.setBackgroundColor(bg_color);
             try {
-                if (ReaderConfig.USE_AD && todayOneAD_buttom != null&&!todayOneAD_buttom.is_getNativeInfoListView) {
+                if (ReaderConfig.USE_AD && todayOneAD_buttom != null && !todayOneAD_buttom.is_getNativeInfoListView) {
                     insert_todayone_button.setBackgroundColor(bg_color);
                     todayOneAD_buttom.adViewHolder.mDescription.setTextColor(color);
                     todayOneAD_buttom.adViewHolder.mTitle.setTextColor(color);
@@ -1749,7 +1769,9 @@ public class PageFactory {
     // ImageView list_ad_view_img;
 
     //加载webview 广告
-    public void getWebViewAD(Activity activity) {
+    public void getWebViewAD() {
+        Log.i("nativeRender", "---xxx");
+
         if (todayOneAD == null) {
             todayOneAD = new TodayOneAD(mActivity, 0, "925050236");
         }
@@ -1761,7 +1783,7 @@ public class PageFactory {
 
     private int Insert_todayone2;
     private boolean AD_SHOW, CANCLE_AD_SHOW;
-
+    int top;
     private void drawAD(Bitmap bitmap) {
         Canvas c = new Canvas(bitmap);
         try {
@@ -1769,20 +1791,20 @@ public class PageFactory {
         } catch (Exception e) {
             c.drawBitmap(getBgBitmap2(), 0, 0, null);
         }
-        Rect mSrcRect = new Rect(0, 0, mWidth, Insert_todayone2);
+
+       /* Rect mSrcRect = new Rect(0, 0, mWidth, Insert_todayone2);
         Paint mBitPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mBitPaint.setFilterBitmap(true);
         mBitPaint.setDither(true);
-        int top = (MHeight - Insert_todayone2) / 2;
+
         Bitmap bitmapAD = ViewToBitmapUtil.convertViewToBitmap(insert_todayone2, top, Insert_todayone2);
 
 
         Rect mDestRect = new Rect(0, top, mWidth, top + Insert_todayone2);
 
         c.drawBitmap(bitmapAD, mSrcRect, mDestRect, mBitPaint);
-
         //画进度及时间
-
+*/
         float fPercent = (float) (currentPage.getBegin() * 1.0 / mBookUtil.getBookLen());//进度
 
         if (mPageEvent != null) {
@@ -1800,10 +1822,8 @@ public class PageFactory {
         if (HUADONG_text_WIDTH == 0) {
             HUADONG_text_WIDTH = (int) (mPaint.measureText(HUADONG));//;
         }
-        float huadong=(mHeight - statusMarginBottom-(top + Insert_todayone2))/2+top + Insert_todayone2;
+        float huadong = (mHeight - statusMarginBottom - (top + Insert_todayone2)) / 2 + top + Insert_todayone2;
         c.drawText(HUADONG, (mWidth - HUADONG_text_WIDTH) / 2, huadong, mPaint);
-
-
 
 
         if (AD_text_WIDTH == 0) {

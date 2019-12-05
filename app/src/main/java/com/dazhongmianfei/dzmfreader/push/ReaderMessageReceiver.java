@@ -20,7 +20,7 @@ import com.dazhongmianfei.dzmfreader.R;
 import com.dazhongmianfei.dzmfreader.activity.AboutActivity;
 import com.dazhongmianfei.dzmfreader.activity.BookInfoActivity;
 import com.dazhongmianfei.dzmfreader.activity.MainActivity;
-import com.dazhongmianfei.dzmfreader.comic.activity.ComicInfoActivity;
+;
 import com.dazhongmianfei.dzmfreader.dialog.GetDialog;
 import com.dazhongmianfei.dzmfreader.utils.MyToash;
 import com.dazhongmianfei.dzmfreader.utils.Utils;
@@ -108,10 +108,6 @@ public class ReaderMessageReceiver extends MessageReceiver {
                     intent.setClass(context, AboutActivity.class);
                     intent.putExtra("url", content);
                     intent.putExtra("flag", "skip_url");
-                    break;
-                case "3":
-                    intent.setClass(context, ComicInfoActivity.class);
-                    intent.putExtra("comic_id", content);
                     break;
                 default:
                     intent.setClass(context, MainActivity.class);

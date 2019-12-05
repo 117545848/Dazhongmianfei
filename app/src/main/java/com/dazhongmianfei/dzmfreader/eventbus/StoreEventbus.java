@@ -1,4 +1,4 @@
-package com.dazhongmianfei.dzmfreader.comic.eventbus;
+package com.dazhongmianfei.dzmfreader.eventbus;
 
 public class StoreEventbus {
     public  boolean chooseWho;

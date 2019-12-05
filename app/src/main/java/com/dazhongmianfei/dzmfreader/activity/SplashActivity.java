@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -47,30 +48,16 @@ import butterknife.ButterKnife;
 
 public class SplashActivity extends Activity {
 
-    public  Activity activity;
+    public Activity activity;
     String isfirst;
     UpdateApp updateApp;
     @BindView(R2.id.activity_splash_im)
     public ImageView activity_splash_im;
     @BindView(R2.id.splash_container)
     public FrameLayout mSplashContainer;
-
-    private WeakHandler mHandler;
     //开屏广告加载超时时间,建议大于3000,这里为了冷启动第一次加载到广告并且展示,示例设置了3000ms
     private static final int AD_TIME_OUT = 3000;
     private static final int MSG_GO_MAIN = 1;
-    //开屏广告是否已经加载
-    private boolean mHasLoaded;
-    private WeakHandler.IHandler iHandler = new WeakHandler.IHandler() {
-        @Override
-        public void handleMsg(Message msg) {
-            if (msg.what == MSG_GO_MAIN) {
-                if (!mHasLoaded) {
-                    // goToMainActivity();
-                }
-            }
-        }
-    };
 
 
     @Override
@@ -80,18 +67,6 @@ public class SplashActivity extends Activity {
         //获取唤醒参数
         activity = SplashActivity.this;
 
-
-        //首次启动 Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT 为 0，再次点击图标启动时就不为零了
-        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
-            finish();
-            return;
-        }
-        OpenInstall.getWakeUp(getIntent(), wakeUpAdapter);
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         updateApp = new UpdateApp(activity);
@@ -100,28 +75,30 @@ public class SplashActivity extends Activity {
         if (isfirst.equals("yes")) {//首次使用删除文件
             FileManager.deleteFile(FileManager.getSDCardRoot());
         }
+        OpenInstall.getWakeUp(getIntent(), wakeUpAdapter);
 
         //获取OpenInstall安装数据
         requestReadPhoneState();
 
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        // 此处要调用，否则App在后台运行时，会无法截获
+        OpenInstall.getWakeUp(intent, wakeUpAdapter);
+    }
+
+    AppWakeUpAdapter wakeUpAdapter = new AppWakeUpAdapter() {
         @Override
-        protected void onNewIntent(Intent intent) {
-            super.onNewIntent(intent);
-            // 此处要调用，否则App在后台运行时，会无法截获
-            OpenInstall.getWakeUp(intent, wakeUpAdapter);
+        public void onWakeUp(AppData appData) {
+            //获取渠道数据
+            String channelCode = appData.getChannel();
+            //获取绑定数据
+            String bindData = appData.getData();
+            Log.d("OpenInstall", "getWakeUp : wakeupData = " + appData.toString());
         }
-        AppWakeUpAdapter wakeUpAdapter = new AppWakeUpAdapter() {
-            @Override
-            public void onWakeUp(AppData appData) {
-                //获取渠道数据
-                String channelCode = appData.getChannel();
-                //获取绑定数据
-                String bindData = appData.getData();
-                Log.d("OpenInstall", "getWakeUp : wakeupData = " + appData.toString());
-            }
-        };
+    };
 
     //开屏广告
     SplashAd splashAd;
@@ -133,7 +110,10 @@ public class SplashActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        splashAd.cancel();
+        if(splashAd!=null){
+            splashAd.cancel();
+        }
+
         super.onDestroy();
         //  wakeUpAdapter = null;
     }
@@ -164,19 +144,14 @@ public class SplashActivity extends Activity {
                             Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.READ_PHONE_STATE,
                             Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    true, new PermissionsUtil.TipInfo("开启权限", "「 " + activity.getString(R.string.app_name) + " 」需要开启储存卡使用权限才能正常使用", "取消", "设置"));
+                    true, new PermissionsUtil.TipInfo("开启权限",
+                            "「 " + activity.getString(R.string.app_name) + " 」需要开启储存卡使用权限才能正常使用",
+                            "取消", "设置"));
         }
     }
 
     private void hasPermission() {
-        loadspad();
-
-        // mTTAdNative = TTAdManagerHolder.get().createAdNative(this);
-        mHandler = new WeakHandler(iHandler);
-        mHandler.sendEmptyMessageDelayed(MSG_GO_MAIN, AD_TIME_OUT);
-
-
-        //判断是否开启壳子
+        //loadspad();
         updateApp.getCheck_switch(new UpdateApp.UpdateAppInterface() {
             @Override
             public void Next(String response) {
@@ -194,6 +169,7 @@ public class SplashActivity extends Activity {
         updateApp.getRequestData(new UpdateApp.UpdateAppInterface() {
             @Override
             public void Next(String response) {
+                goToMainActivity();
             }
         });
 
@@ -275,7 +251,7 @@ public class SplashActivity extends Activity {
     private void jumpWhenCanClick() {
         Log.d("lance", "canJumpImmediately:" + canJumpImmediately);
         if (canJumpImmediately) {
-          goToMainActivity();
+            goToMainActivity();
         } else {
             canJumpImmediately = true;
         }

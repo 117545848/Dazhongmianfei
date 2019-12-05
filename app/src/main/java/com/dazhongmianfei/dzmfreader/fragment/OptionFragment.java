@@ -32,7 +32,7 @@ import com.dazhongmianfei.dzmfreader.bean.OptionBeen;
 import com.dazhongmianfei.dzmfreader.bean.OptionItem;
 import com.dazhongmianfei.dzmfreader.bean.SearchBox;
 import com.dazhongmianfei.dzmfreader.book.config.BookConfig;
-import com.dazhongmianfei.dzmfreader.comic.activity.ComicInfoActivity;
+
 import com.dazhongmianfei.dzmfreader.http.ReaderParams;
 import com.dazhongmianfei.dzmfreader.utils.HttpUtils;
 import com.dazhongmianfei.dzmfreader.utils.ImageUtil;
@@ -63,13 +63,6 @@ import static com.dazhongmianfei.dzmfreader.book.config.BookConfig.mFinishUrl;
 import static com.dazhongmianfei.dzmfreader.book.config.BookConfig.mFreeTimeUrl;
 import static com.dazhongmianfei.dzmfreader.book.config.BookConfig.mRankListUrl;
 import static com.dazhongmianfei.dzmfreader.book.config.BookConfig.mRecommendUrl;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_baoyue;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_baoyue_list;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_finish;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_free_time;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_list;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_rank_list;
-import static com.dazhongmianfei.dzmfreader.comic.config.ComicConfig.COMIC_recommend;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.BAOYUE;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.BAOYUE_SEARCH;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.LOOKMORE;
@@ -213,43 +206,7 @@ public class OptionFragment extends BaseButterKnifeFragment {
         todayOneADS= new HashMap<>();
         if (!PRODUCT) {
 
-            switch (OPTION) {
-                case MIANFEI:
-                    httpUrl = COMIC_free_time;
-                    break;
-                case WANBEN:
-                    httpUrl = COMIC_finish;
-                    break;
-                case SHUKU:
-                    temphead = new LinearLayout(activity);
-                    temphead.setOrientation(LinearLayout.VERTICAL);
 
-                    httpUrl = COMIC_list;
-                    map = new <String, String>HashMap();
-
-                    break;
-                case PAIHANG:
-                    httpUrl = COMIC_rank_list;
-                    break;
-                case BAOYUE_SEARCH:
-                    temphead = new LinearLayout(activity);
-                    temphead.setOrientation(LinearLayout.VERTICAL);
-
-                    httpUrl = COMIC_baoyue_list;
-                    map = new <String, String>HashMap();
-                    break;
-                case BAOYUE:
-                    httpUrl = COMIC_baoyue;
-                    temphead = (LinearLayout) layoutInflater.inflate(R.layout.header_baoyue, null, false);
-                    baoyueHeadHolder = new BaoyueHeadHolder(temphead);
-                    break;
-
-                case LOOKMORE:
-                    httpUrl = COMIC_recommend;
-                    break;
-
-
-            }
         } else {
             switch (OPTION) {
                 case MIANFEI:
@@ -315,7 +272,7 @@ public class OptionFragment extends BaseButterKnifeFragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                /*if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
                     if (layoutManager instanceof LinearLayoutManager) {
                         LinearLayoutManager linearManager = (LinearLayoutManager) layoutManager;
@@ -332,7 +289,7 @@ public class OptionFragment extends BaseButterKnifeFragment {
                         }
 
                     }
-                }
+                }*/
             }
         });
 
@@ -381,9 +338,6 @@ public class OptionFragment extends BaseButterKnifeFragment {
             if (PRODUCT) {
                 intent.setClass(activity, BookInfoActivity.class);
                 intent.putExtra("book_id", optionBeen.getBook_id());
-            } else {
-                intent.setClass(activity, ComicInfoActivity.class);
-                intent.putExtra("comic_id", optionBeen.getComic_id());
             }
             startActivity(intent);
             //   }
