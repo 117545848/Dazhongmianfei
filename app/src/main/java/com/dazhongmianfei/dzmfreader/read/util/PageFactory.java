@@ -238,7 +238,7 @@ public class PageFactory {
     }
 
     int isNotchEnable;
-
+    float dianchi;
     public PageFactory(BaseBook baseBook, Context context, int isNotchEnable, int NavigationBarHeight
     ) {
         mActivity = (Activity) context;
@@ -281,6 +281,14 @@ public class PageFactory {
 
             BookNameTop = ImageUtil.dp2px(mActivity, 15);
         }
+
+
+        if (isNotchEnable == 0) {
+            dianchi=statusMarginBottom / 3;
+        } else {
+            dianchi=statusMarginBottom / 2;
+        }
+
 
         reading_shangxia_textsize = 0;
         chapterRight = ImageUtil.dp2px(mActivity, 15);
@@ -408,7 +416,7 @@ public class PageFactory {
 
             // 画白分例
             String strPercent = df.format(myfPercent * 100);//进度文字
-            c.drawText(strPercent + "%", mWidth - PercentWidth, mHeight - statusMarginBottom, mBatteryPaint);//x y为坐标值
+            c.drawText(strPercent + "%", mWidth - PercentWidth, mHeight - dianchi, mBatteryPaint);//x y为坐标值
 
             baseBook.setAllPercent(strPercent);
 
@@ -552,7 +560,7 @@ public class PageFactory {
 
             // 画白分例
             String strPercent = df.format(myfPercent * 100) + "%";//进度文字
-            c.drawText(strPercent, mWidth - PercentWidth, mHeight - statusMarginBottom, mBatteryPaint);//x y为坐标值
+            c.drawText(strPercent, mWidth - PercentWidth, mHeight - dianchi, mBatteryPaint);//x y为坐标值
 
             baseBook.setAllPercent(strPercent);
             if (baseBook.isAddBookSelf() == 1) {
@@ -597,12 +605,7 @@ public class PageFactory {
         if (c == null) {
             return;
         }
-        float dianchi;
-        if (isNotchEnable == 0) {
-            dianchi=statusMarginBottom / 3;
-        } else {
-            dianchi=statusMarginBottom / 2;
-        }
+
 
 
         if (ReaderConfig.USE_AD) {
@@ -713,7 +716,7 @@ public class PageFactory {
 
             // 画白分例
             String strPercent = df.format(myfPercent * 100) + "%";//进度文字
-            c.drawText(strPercent, mWidth - PercentWidth, mHeight - statusMarginBottom, mBatteryPaint);//x y为坐标值
+            c.drawText(strPercent, mWidth - PercentWidth, mHeight - dianchi, mBatteryPaint);//x y为坐标值
             baseBook.setAllPercent(strPercent);
             if (baseBook.isAddBookSelf() == 1) {
                 ContentValues values = new ContentValues();
