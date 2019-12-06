@@ -51,7 +51,12 @@ import java.io.File;
  */
 public class ReaderApplication extends LitePalApplication {
     public static DisplayImageOptions mOptions;
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
 
+    }
     @Override
     public void onCreate() {
         super.onCreate();

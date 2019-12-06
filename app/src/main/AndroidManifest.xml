@@ -94,15 +94,7 @@
             android:name="com.qq.e.comm.DownloadService"
             android:exported="false" />
         <!-- targetSDKVersion >= 24时才需要添加这些个provider。请开发者根据自己的包名来替换${applicationId}这个值 -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/gdt_file_path" />
-        </provider>
+
 
         <!-- BaiDu Ad -->
         <activity
@@ -120,19 +112,19 @@
                 android:resource="@xml/bd_file_paths" />
         </provider>
 
-
         <provider
             android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
-            android:authorities="com.dazhongmianfei.dzmfreader.fileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/pathlist" />
         </provider>
+
         <provider
             android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
-            android:authorities="com.dazhongmianfei.dzmfreader.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
             android:exported="false" />
 
 

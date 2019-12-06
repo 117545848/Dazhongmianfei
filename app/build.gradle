@@ -10,13 +10,8 @@ android {
         targetSdkVersion 28
         versionCode 5
         versionName "1.5"
+
         multiDexEnabled true
-        ndk {
-            //选择要添加的对应cpu类型的.so库。为了兼容cpu，查看官网SDK的libs多添加几个
-            abiFilters 'armeabi-v7a'
-
-
-        }
     }
 
     lintOptions {
@@ -40,9 +35,9 @@ android {
 
     buildTypes {
         debug {
-          // minifyEnabled true
-           //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-           // signingConfig signingConfigs.debug
+           minifyEnabled true
+           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+           signingConfig signingConfigs.debug
             resValue "string", "tray__authority", "tray__authority_dazhongmianfei"
         }
         release {
