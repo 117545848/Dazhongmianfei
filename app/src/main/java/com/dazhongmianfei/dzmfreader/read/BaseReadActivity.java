@@ -35,17 +35,15 @@ public abstract class BaseReadActivity extends Activity {
         mScreenHeight = ScreenSizeUtils.getInstance(activity).getScreenHeight();
         StatusBarUtil.setTransparent(activity);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-
         if ( ScreenSizeUtils.isAllScreenDevice(activity)) {
             isNotchEnable = 1;
         }
         setContentView(initContentView());
         // 初始化View注入
         ButterKnife.bind(activity);
-        if (isNotchEnable==0 && AndroidWorkaround.checkDeviceHasNavigationBar(activity)) {                                  //适配华为手机虚拟键遮挡tab的问题
+        if (AndroidWorkaround.checkDeviceHasNavigationBar(activity)) {                                  //适配华为手机虚拟键遮挡tab的问题
             AndroidWorkaround.assistActivity(findViewById(android.R.id.content));                   //需要在setContentView()方法后面执行
-            mScreenHeight -= getNavigationBarHeight2(activity);
+           // mScreenHeight -= getNavigationBarHeight2(activity);
         }
         initView();
         initData();

@@ -54,7 +54,7 @@ public class ReaderApplication extends LitePalApplication {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        MultiDex.install(base);
+        //MultiDex.install(base);
 
     }
     @Override

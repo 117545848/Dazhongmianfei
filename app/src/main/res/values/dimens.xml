@@ -48,5 +48,5 @@
 
 
     <dimen name="public_read_buttom_ad_hegth">45dp</dimen>
-    <dimen name="public_read_buttom_ad_hegth2">60dp</dimen>
+    <dimen name="public_read_buttom_ad_hegth2">90dp</dimen>
 </resources>

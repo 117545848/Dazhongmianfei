@@ -111,7 +111,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/bd_file_paths" />
         </provider>
-
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/pathlist" />
+        </provider>
         <provider
             android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
             android:authorities="${applicationId}.TTFileProvider"
