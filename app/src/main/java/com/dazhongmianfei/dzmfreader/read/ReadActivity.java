@@ -100,6 +100,7 @@ import static com.dazhongmianfei.dzmfreader.book.fragment.NovelFragmentNew.BookS
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.READBUTTOM_HEIGHT;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.USE_AD;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.XIAOSHUO;
+import static com.dazhongmianfei.dzmfreader.utils.StatusBarUtil.setStatusTextColor;
 
 //.TodayOneAD;
 //.http.RequestParams;
@@ -717,6 +718,8 @@ public class ReadActivity extends BaseReadActivity {
     //设置菜单
     private void showReadSetting() {
         isShow = true;
+        setStatusTextColor(true, activity);
+
         Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.menu_ins);
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.menu_in);
         activity_read_bottom_view.startAnimation(topAnim);
@@ -729,6 +732,8 @@ public class ReadActivity extends BaseReadActivity {
 
     private void hideReadSetting() {
         isShow = false;
+        setStatusTextColor(false, activity);
+
         Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.menu_outs);
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.menu_out);
         if (activity_read_bottom_view.getVisibility() == View.VISIBLE) {
