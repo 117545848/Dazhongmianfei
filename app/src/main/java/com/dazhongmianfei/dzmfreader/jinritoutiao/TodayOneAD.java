@@ -92,28 +92,19 @@ public class TodayOneAD {
 
     public void getTodayOneBanner(final FrameLayout frameLayoutToday, final FrameLayout frameLayoutToday1, int flag) {
 
-        Log.i("nativeRender", "---"+ flag);
 
         this.flag = flag;
         this.frameLayoutToday = frameLayoutToday;
-//        int currentAD = (int) (Math.random() * 2);
-        int currentAD = 1;
+        frameLayoutToday.removeAllViews();
+      int currentAD = (int) (Math.random() * 2);
+     //   int currentAD = 0;
         switch (currentAD) {
 
             case 0:
-                if (TextUtils.isEmpty(daimaweiID)) {
-                    daimaweiID = "925050236";
-                }
-                invoke();
+                daimaweiID = "925050236";
+
                 is_getNativeInfoListView = false;
-                if (frameLayoutToday1 != null) {
-                    frameLayoutToday1.setVisibility(View.GONE);
-                    frameLayoutToday.setVisibility(View.VISIBLE);
-                }
-                adViewHolder.iv_listitem_icon_.setImageResource(R.mipmap.chuanshanjia);
-                if (mTTAdNative == null) {
-                    mTTAdNative = TTAdManagerHolder.get().createAdNative(activity);
-                }
+               // adViewHolder.iv_listitem_icon_.setImageResource(R.mipmap.chuanshanjia);
                 loadTodayOneBannerAdXINXILIU(frameLayoutToday, flag);
                 break;
             case 1:
@@ -199,98 +190,6 @@ public class TodayOneAD {
     public interface LordComplete {
         void success(NativeAd nativeAd, List<? extends View> mAdViewList,FrameLayout frameLayout);
     }
-    public void getTodayOneBanner(final FrameLayout frameLayoutToday,int flag,LordComplete lordComplete) {
-        this.frameLayoutToday = frameLayoutToday;
-        this.flag=flag;
-        int currentAD = 1;
-        switch (currentAD) {
-
-            case 0:
-                if (TextUtils.isEmpty(daimaweiID)) {
-                    daimaweiID = "925050236";
-                }
-                invoke();
-                is_getNativeInfoListView = false;
-                adViewHolder.iv_listitem_icon_.setImageResource(R.mipmap.chuanshanjia);
-                if (mTTAdNative == null) {
-                    mTTAdNative = TTAdManagerHolder.get().createAdNative(activity);
-                }
-                loadTodayOneBannerAdXINXILIU(frameLayoutToday, flag);
-                break;
-            case 1:
-                if (flag == 0) {
-                    daimaweiID = "9040";
-                } else {
-                    daimaweiID = "9037";
-                }
-                nativeAd = new NativeAd(activity, daimaweiID, 1, new NativeAdListener() {
-                    @Override
-                    public void onAdFailed(int errorcode) {
-                    }
-
-                    @Override
-                    public void onAdClick() {
-                    }
-
-                    @Override
-                    public void onAdLoaded(NativeAdResponse response) {
-                       // Log.i("nativeRender", (response.getNativeInfoListView() != null) + " " + flag);
-                        if (response.getNativeInfoListView() != null) {
-                            mAdViewList = response.getNativeInfoListView();
-                            frameLayoutToday.removeAllViews();
-                            for (int i = 0; i < mAdViewList.size(); i++) {
-                                View lyAdView = mAdViewList.get(i);
-                                frameLayoutToday.addView(lyAdView);
-                            }
-                            lordComplete.success(nativeAd,mAdViewList,frameLayoutToday);
-
-                        } else {
-                            invoke();
-                            adViewHolder.mTitle.setText(response.getHeadline());
-                            //需要开发者自己处理图片URL，可使用图片加载框架去处理，本示例使用glide加载仅供参考
-                            try {
-                                Glide.with(activity).load(Uri.parse(response.getImageUrls().get(0))).into(adViewHolder.mImage);
-                                // Glide.with(activity).load(Uri.parse(response.getImageUrls().get(1))).into((ImageView) findViewById(R.id.iv_native2));
-                                // Glide.with(activity).load(Uri.parse(response.getImageUrls().get(2))).into((ImageView) findViewById(R.id.iv_native3));
-                            } catch (Exception ignored) {
-                                Log.e("lance", "Exception:" + ignored.getMessage());
-                            }
-                            try {
-                                adViewHolder.mCreativeButton.setText(response.getTexts().get(0));
-                                adViewHolder.mDescription.setText(response.getTexts().get(1));
-                            } catch (Exception ignored) {
-                                Log.e("lance", "Exception:" + ignored.getMessage());
-                            }
-                            //sdk内部提供了以下方法，可以将一个view加上logo并返回一个加入了logo的framelayout替代原本无logo的view;
-                            //注意调用了此方法之后原来的view将不存在于之前的布局之中，须将返回的framelayout加入之前的布局。
-                            //若此方法不满足要求，请开发者自己实现加入logo及广告字样
-                            FrameLayout frameLayout = NativeAdUtil.addADLogo(frameLayoutToday, response);
-                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER);
-                            layoutParams.gravity = Gravity.CENTER;
-                            frameLayoutToday.addView(frameLayout, 0, layoutParams);
-
-                            // This must be called.
-                            //注册原生广告展示及点击曝光，必须调用。
-                            NativeAdUtil.registerTracking(response, frameLayoutToday, new NativeAdEventListener() {
-                                @Override
-                                public void onAdWasClicked() {
-                                    //Toast.makeText(NativeActivity.this, "onAdWasClicked", Toast.LENGTH_SHORT).show();
-                                }
-
-                                @Override
-                                public void onAdWillLeaveApplication() {
-                                    // Toast.makeText(NativeActivity.this, "onAdWillLeaveApplication", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-                    }
-                });
-                //加载广告
-                nativeAd.loadAd();
-                break;
-        }
-
-    }
 
 
     TTAdNative mTTAdNative;
@@ -327,7 +226,7 @@ public class TodayOneAD {
         //  @BindView(R2.id.iv_listitem_icon)
         //  ImageView mIcon;
         @BindView(R2.id.btn_listitem_creative)
-        public Button mCreativeButton;
+        public TextView mCreativeButton;
         @BindView(R2.id.tv_listitem_ad_title)
         public TextView mTitle;
         @BindView(R2.id.tv_listitem_ad_desc)
@@ -359,22 +258,18 @@ public class TodayOneAD {
     }
 
     private void loadTodayOneBannerAdXINXILIU(final FrameLayout frameLayoutToday, final int flag) {
-
-
         //step4:创建feed广告请求类型参数AdSlot,具体参数含义参考文档
         AdSlot adSlot = null;
         switch (flag) {
-            case 0:
+           /* case 0:
                 adSlot = new AdSlot.Builder()
                         .setCodeId(daimaweiID)
                         .setSupportDeepLink(true)
                         .setImageAcceptedSize(690, 388)
                         .setAdCount(1) //请求广告数量为1到3条
                         .build();
-                break;
-            case 1:
-            case 2:
-            case 3:
+                break;*/
+           default:
                 adSlot = new AdSlot.Builder()
                         .setCodeId(daimaweiID)
                         .setSupportDeepLink(true)
@@ -383,25 +278,22 @@ public class TodayOneAD {
                         .build();
                 break;
         }
-      /*  if (flag == 0) {
-            if (frameLayoutToday.getVisibility() == View.VISIBLE) {
-                return;
-            }
-        }
-*/
+        mTTAdNative = TTAdManagerHolder.get().createAdNative(activity);
         //step5:请求广告，调用feed广告异步请求接口，加载到广告后，拿到广告素材自定义渲染
         mTTAdNative.loadFeedAd(adSlot, new TTAdNative.FeedAdListener() {
             @Override
             public void onError(int code, String mTTAdNative) {
-                Log.i("mTTAdNative", code + "   " + mTTAdNative + "  " + daimaweiID);
+                Log.i("mTTAdNative", flag+"  "+code + "   " + mTTAdNative + "  " + daimaweiID);
             }
 
             @Override
             public void onFeedAdLoad(List<TTFeedAd> ads) {
-                MyToash.Log("onFeedAdLoad", (ads != null) ? (ads.size() + "    " + daimaweiID) : "  AA   " + daimaweiID);
+
+                MyToash.Log("onFeedAdLoad", flag+"  "+((ads != null) ? (ads.size() + "    " + daimaweiID) : "  AA   " + daimaweiID));
                 if (ads == null || ads.isEmpty()) {
                     return;
                 }
+                invoke();
 
                 ttFeedAd = ads.get(0);
                 bindData(frameLayoutToday, flag);
@@ -413,16 +305,16 @@ public class TodayOneAD {
 
 
     public void bindData(final FrameLayout frameLayoutToday, int flag) {
-        frameLayoutToday.removeAllViews();
         if (ttFeedAd == null) {
             return;
         }
+        MyToash.Log("frameLayoutToday",flag+" "+ttFeedAd.toString());
         TTFeedAd ad = ttFeedAd;
         if (ad.getTitle() != null) {
             adViewHolder.mTitle.setText(ad.getTitle()); //title为广告的简单信息提示
         }
         adViewHolder.mDescription.setText(ad.getDescription()); //description为广告的较长的说明
-        Button adCreativeButton = adViewHolder.mCreativeButton;
+        TextView adCreativeButton = adViewHolder.mCreativeButton;
         switch (ad.getInteractionType()) {
             case TTAdConstant.INTERACTION_TYPE_DOWNLOAD:
                 adCreativeButton.setText("立即下载");
@@ -521,11 +413,19 @@ public class TodayOneAD {
                 @Override
                 public void onDownloadFinished(long totalBytes, String fileName, String appName) {
 
-                    Toast.makeText(activity, "下载完成点击安装", Toast.LENGTH_LONG).show();
+
+                /*    String fileNameLocal = ShareUitls.getString(activity,appName, "");
+
+
+                    MyToash.Log("onDownloadFinished---",fileName+"  "+appName+"  "+fileNameLocal);
+
+                    if (TextUtils.isEmpty(fileNameLocal)) {
+                        UpdateApp.installApp(activity, new File(fileName));
+                    }
                     ShareUitls.putString(activity, appName, fileName);
+*/
 
                     // Toast.makeText(activity,"下载完成点击图片安装",Toast.LENGTH_LONG).show();
-
                     // MyToash.Log("onDownloadFinished---",fileName+"  "+appName);
                     // UpdateApp.installApp(activity,new File(fileName));
                 }
@@ -533,7 +433,7 @@ public class TodayOneAD {
                 @Override
                 public void onInstalled(String fileName, String appName) {
                     // TToast.show(NativeExpressActivity.this, "安装完成，点击图片打开", Toast.LENGTH_LONG);
-                    Toast.makeText(activity, "安装完成，点击图片打开", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(activity, "安装完成，点击图片打开", Toast.LENGTH_LONG).show();
 
                     // MyToash.Log("onDownloadFinished---aa",fileName+"  "+appName);
                     //UpdateApp.installApp(activity,new File(fileName));

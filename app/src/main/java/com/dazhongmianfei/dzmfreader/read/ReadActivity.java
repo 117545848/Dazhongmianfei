@@ -33,6 +33,8 @@ import android.widget.TextView;
 
 import com.dazhongmianfei.dzmfreader.dialog.GetDialog;
 import com.google.gson.Gson;
+import com.gyf.immersionbar.BarHide;
+import com.gyf.immersionbar.ImmersionBar;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.dazhongmianfei.dzmfreader.R;
 import com.dazhongmianfei.dzmfreader.R;
@@ -151,9 +153,9 @@ public class ReadActivity extends BaseReadActivity {
     @BindView(R.id.auto_read_progress_bar)
     ProgressBar auto_read_progress_bar;
 
-  /*  @BindView(R.id.list_ad_view_layout)
+  @BindView(R.id.list_ad_view_layout)
     public FrameLayout insert_todayone2;
-*/
+
     @BindView(R.id.activity_read_buttom_ad_layout)
     public FrameLayout activity_read_buttom_ad_layout;
 
@@ -292,7 +294,7 @@ public class ReadActivity extends BaseReadActivity {
         chapter = (ChapterItem) intent.getSerializableExtra(EXTRA_CHAPTER);
         baseBook = (BaseBook) intent.getSerializableExtra(EXTRA_BOOK);
         pageFactory = new PageFactory(baseBook,
-                this,isNotchEnable,NavigationBarHeight);
+                this,isNotchEnable,NavigationBarHeight,insert_todayone2);
 
         activity_read_top_back_bookname.setText(baseBook.getName());
         pageFactory.setPurchaseLayout(activity_read_purchase_layout);
@@ -337,6 +339,9 @@ public class ReadActivity extends BaseReadActivity {
         }
 
         bookpage.setPageMode(config.getPageMode());
+
+        bookpage. setADview(insert_todayone2);
+
         pageFactory.setPageWidget(bookpage);
         pageFactory.setLineSpacingMode(config.getLineSpacingMode());
         pageFactory.setFontSize((int) config.getFontSize());
@@ -353,6 +358,8 @@ public class ReadActivity extends BaseReadActivity {
 
         initDayOrNight();
         initListener();
+
+
 
 
     }
@@ -718,7 +725,7 @@ public class ReadActivity extends BaseReadActivity {
     //设置菜单
     private void showReadSetting() {
         isShow = true;
-        setStatusTextColor(true, activity);
+       // setStatusTextColor(true, activity);
 
         Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.menu_ins);
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.menu_in);
@@ -727,12 +734,15 @@ public class ReadActivity extends BaseReadActivity {
         activity_read_bottom_view.setVisibility(View.VISIBLE);
         activity_read_top_menu.setVisibility(View.VISIBLE);
 
+        if (ImmersionBar.hasNavigationBar(this)) {
+            ImmersionBar.with(this).hideBar(BarHide.FLAG_HIDE_BAR).init();
+        }
 
     }
 
     private void hideReadSetting() {
         isShow = false;
-        setStatusTextColor(false, activity);
+        //setStatusTextColor(false, activity);
 
         Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.menu_outs);
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.menu_out);

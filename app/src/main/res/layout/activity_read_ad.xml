@@ -3,5 +3,6 @@
     android:id="@+id/list_ad_view_layout"
     android:layout_width="match_parent"
     android:layout_height="340dp"
-    android:layout_gravity="center">
+    android:visibility="invisible"
+    >
 </FrameLayout>

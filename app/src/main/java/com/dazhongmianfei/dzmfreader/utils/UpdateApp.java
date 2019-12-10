@@ -311,7 +311,7 @@ ios
         Uri _uri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             _Intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            _uri = FileProvider.getUriForFile(pContext, pContext.getPackageName() + ".fileProvider", pFile);
+            _uri = FileProvider.getUriForFile(pContext, pContext.getPackageName() + ".fileprovider", pFile);
         } else {
             _uri = Uri.fromFile(pFile);
             _Intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

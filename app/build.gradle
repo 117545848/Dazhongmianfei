@@ -215,6 +215,10 @@ dependencies {
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
 
 
+    //状态栏
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+
 }
 String SDK_DIR = System.getenv("ANDROID_SDK_HOME")
 if (SDK_DIR == null) {

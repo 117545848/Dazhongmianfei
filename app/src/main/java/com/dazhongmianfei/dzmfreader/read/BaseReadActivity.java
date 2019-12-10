@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.core.content.ContextCompat;
 
 import com.dazhongmianfei.dzmfreader.view.AndroidWorkaround;
+import com.gyf.immersionbar.BarHide;
+import com.gyf.immersionbar.ImmersionBar;
 import com.jaeger.library.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.dazhongmianfei.dzmfreader.utils.ScreenSizeUtils;
@@ -33,7 +35,9 @@ public abstract class BaseReadActivity extends Activity {
 
         activity = this;
         mScreenHeight = ScreenSizeUtils.getInstance(activity).getScreenHeight();
-        StatusBarUtil.setTransparent(activity);
+       // StatusBarUtil.setTransparent(activity);
+        ImmersionBar.with(this).hideBar(BarHide.FLAG_HIDE_BAR).init();
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         if ( ScreenSizeUtils.isAllScreenDevice(activity)) {
             isNotchEnable = 1;
@@ -41,10 +45,10 @@ public abstract class BaseReadActivity extends Activity {
         setContentView(initContentView());
         // 初始化View注入
         ButterKnife.bind(activity);
-        if (AndroidWorkaround.checkDeviceHasNavigationBar(activity)) {                                  //适配华为手机虚拟键遮挡tab的问题
+       /* if (AndroidWorkaround.checkDeviceHasNavigationBar(activity)) {                                  //适配华为手机虚拟键遮挡tab的问题
             AndroidWorkaround.assistActivity(findViewById(android.R.id.content));                   //需要在setContentView()方法后面执行
-           // mScreenHeight -= getNavigationBarHeight2(activity);
-        }
+           //mScreenHeight -= getNavigationBarHeight2(activity);
+        }*/
         initView();
         initData();
 

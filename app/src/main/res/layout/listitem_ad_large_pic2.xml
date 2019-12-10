@@ -50,6 +50,7 @@
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
                     android:text="关闭广告"
+                    android:gravity="center"
                     android:textColor="#DDA31B" />
             </RelativeLayout>
         </RelativeLayout>
@@ -135,7 +136,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/public_14_dp" />
 
-            <Button
+            <TextView
                 android:id="@+id/btn_listitem_creative"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
