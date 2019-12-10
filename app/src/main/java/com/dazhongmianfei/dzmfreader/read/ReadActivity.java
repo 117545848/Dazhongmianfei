@@ -724,26 +724,19 @@ public class ReadActivity extends BaseReadActivity {
 
     //设置菜单
     private void showReadSetting() {
+        ImmersionBar.with(this).hideBar(BarHide.FLAG_SHOW_BAR).statusBarDarkFont(true).init();
         isShow = true;
-       // setStatusTextColor(true, activity);
-
         Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.menu_ins);
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.menu_in);
         activity_read_bottom_view.startAnimation(topAnim);
         activity_read_top_menu.startAnimation(bottomAnim);
         activity_read_bottom_view.setVisibility(View.VISIBLE);
         activity_read_top_menu.setVisibility(View.VISIBLE);
-
-        if (ImmersionBar.hasNavigationBar(this)) {
-            ImmersionBar.with(this).hideBar(BarHide.FLAG_HIDE_BAR).init();
-        }
-
     }
 
     private void hideReadSetting() {
-        isShow = false;
-        //setStatusTextColor(false, activity);
 
+        ImmersionBar.with(this).hideBar(BarHide.FLAG_HIDE_BAR).init();
         Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.menu_outs);
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.menu_out);
         if (activity_read_bottom_view.getVisibility() == View.VISIBLE) {
