@@ -91,6 +91,18 @@ public class ShareUitls {
         e.commit();
     }
 
+    public static long getLong(Context c, String key, long d) {
+        SharedPreferences sp = c.getSharedPreferences("LONGVIDEEOAD.xml", Context.MODE_PRIVATE);
+        return sp.getLong(key, d);
+    }
+
+    public static void putLong(Context c, String key, long msg) {
+        SharedPreferences sp = c.getSharedPreferences("LONGVIDEEOAD.xml", Context.MODE_PRIVATE);
+        SharedPreferences.Editor e = sp.edit();
+        e.putLong(key, msg);
+        e.commit();
+    }
+
     public static String getString(Context c, String key, String d) {
         SharedPreferences sp = c.getSharedPreferences("dazhongmianfeistring.xml", Context.MODE_PRIVATE);
         return sp.getString(key, d);

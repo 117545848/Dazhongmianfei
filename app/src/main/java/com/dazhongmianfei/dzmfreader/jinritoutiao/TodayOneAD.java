@@ -96,15 +96,15 @@ public class TodayOneAD {
         this.flag = flag;
         this.frameLayoutToday = frameLayoutToday;
         frameLayoutToday.removeAllViews();
-      int currentAD = (int) (Math.random() * 2);
-     //   int currentAD = 0;
+        int currentAD = (int) (Math.random() * 2);
+        //   int currentAD = 0;
         switch (currentAD) {
 
             case 0:
                 daimaweiID = "925050236";
 
                 is_getNativeInfoListView = false;
-               // adViewHolder.iv_listitem_icon_.setImageResource(R.mipmap.chuanshanjia);
+                // adViewHolder.iv_listitem_icon_.setImageResource(R.mipmap.chuanshanjia);
                 loadTodayOneBannerAdXINXILIU(frameLayoutToday, flag);
                 break;
             case 1:
@@ -188,7 +188,7 @@ public class TodayOneAD {
     }
 
     public interface LordComplete {
-        void success(NativeAd nativeAd, List<? extends View> mAdViewList,FrameLayout frameLayout);
+        void success(NativeAd nativeAd, List<? extends View> mAdViewList, FrameLayout frameLayout);
     }
 
 
@@ -269,7 +269,7 @@ public class TodayOneAD {
                         .setAdCount(1) //请求广告数量为1到3条
                         .build();
                 break;*/
-           default:
+            default:
                 adSlot = new AdSlot.Builder()
                         .setCodeId(daimaweiID)
                         .setSupportDeepLink(true)
@@ -283,13 +283,13 @@ public class TodayOneAD {
         mTTAdNative.loadFeedAd(adSlot, new TTAdNative.FeedAdListener() {
             @Override
             public void onError(int code, String mTTAdNative) {
-                Log.i("mTTAdNative", flag+"  "+code + "   " + mTTAdNative + "  " + daimaweiID);
+                Log.i("mTTAdNative", flag + "  " + code + "   " + mTTAdNative + "  " + daimaweiID);
             }
 
             @Override
             public void onFeedAdLoad(List<TTFeedAd> ads) {
 
-                MyToash.Log("onFeedAdLoad", flag+"  "+((ads != null) ? (ads.size() + "    " + daimaweiID) : "  AA   " + daimaweiID));
+                MyToash.Log("onFeedAdLoad", flag + "  " + ((ads != null) ? (ads.size() + "    " + daimaweiID) : "  AA   " + daimaweiID));
                 if (ads == null || ads.isEmpty()) {
                     return;
                 }
@@ -308,7 +308,7 @@ public class TodayOneAD {
         if (ttFeedAd == null) {
             return;
         }
-        MyToash.Log("frameLayoutToday",flag+" "+ttFeedAd.toString());
+        MyToash.Log("frameLayoutToday", flag + " " + ttFeedAd.toString());
         TTFeedAd ad = ttFeedAd;
         if (ad.getTitle() != null) {
             adViewHolder.mTitle.setText(ad.getTitle()); //title为广告的简单信息提示
@@ -433,7 +433,7 @@ public class TodayOneAD {
                 @Override
                 public void onInstalled(String fileName, String appName) {
                     // TToast.show(NativeExpressActivity.this, "安装完成，点击图片打开", Toast.LENGTH_LONG);
-                   // Toast.makeText(activity, "安装完成，点击图片打开", Toast.LENGTH_LONG).show();
+                    // Toast.makeText(activity, "安装完成，点击图片打开", Toast.LENGTH_LONG).show();
 
                     // MyToash.Log("onDownloadFinished---aa",fileName+"  "+appName);
                     //UpdateApp.installApp(activity,new File(fileName));
@@ -454,9 +454,145 @@ public class TodayOneAD {
 
     }
 
-    public void loadJiliAd(OnRewardVerify onRewardVerify) {
+    TTRewardVideoAd mttRewardVideoAd;
 
-        RewardedVideoAd mRewardedVideoAd = AdHub.getRewardedVideoAdInstance(activity);
+    public void loadJiliAd(OnRewardVerify onRewardVerify) {
+        if (mTTAdNative == null) {
+            mTTAdNative = TTAdManagerHolder.get().createAdNative(activity);
+        }
+        if (mTTAdNative == null) {
+            MyToash.Toash(activity, "广告加载异常");
+            return;
+        }
+        AdSlot adSlot = new AdSlot.Builder()
+                .setCodeId("925050918")
+                .setSupportDeepLink(true)
+                .setAdCount(1)
+                .setImageAcceptedSize(1080, 1920)
+                .setRewardName("金币") //奖励的名称
+                .setRewardAmount(10)   //奖励的数量
+                //必传参数，表来标识应用侧唯一用户；若非服务器回调模式或不需sdk透传
+                //可设置为空字符串
+                .setUserID("")
+                .setOrientation(TTAdConstant.VERTICAL)  //设置期望视频播放的方向，为TTAdConstant.HORIZONTAL或TTAdConstant.VERTICAL
+                // .setMediaExtra("") //用户透传的信息，可不传
+                .build();
+        mTTAdNative.loadRewardVideoAd(adSlot, new TTAdNative.RewardVideoAdListener() {
+            @Override
+            public void onError(int code, String message) {
+                MyToash.Log("JavascriptInterface  ad", code + "   " + message);
+                //Toast.makeText(RewardVideoActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+
+            //视频广告加载后的视频文件资源缓存到本地的回调
+            @Override
+            public void onRewardVideoCached() {
+                //Toast.makeText(RewardVideoActivity.this, "rewardVideoAd video cached", Toast.LENGTH_SHORT).show();
+            }
+
+            //视频广告素材加载到，如title,视频url等，不包括视频文件
+            @Override
+            public void onRewardVideoAdLoad(TTRewardVideoAd ad) {
+                MyToash.Log("JavascriptInterface  ad", ad.getInteractionType());
+                //Toast.makeText(RewardVideoActivity.this, "rewardVideoAd loaded", Toast.LENGTH_SHORT).show();
+                mttRewardVideoAd = ad;
+                //mttRewardVideoAd.setShowDownLoadBar(false);
+
+              /*  activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {*/
+                mttRewardVideoAd.showRewardVideoAd(activity);
+                onRewardVerify.OnRewardVerify();
+                mttRewardVideoAd.setRewardAdInteractionListener(new TTRewardVideoAd.RewardAdInteractionListener() {
+                    @Override
+                    public void onAdShow() {
+                        MyToash.Log("JavascriptInterface  ad", "onAdShow");
+
+                        //Toast.makeText(RewardVideoActivity.this, "rewardVideoAd show", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onAdVideoBarClick() {
+                        MyToash.Log("JavascriptInterface  ad", "onAdVideoBarClick");
+
+                        //Toast.makeText(RewardVideoActivity.this, "rewardVideoAd bar click", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onAdClose() {
+                        MyToash.Log("JavascriptInterface  ad", "onAdClose");
+
+                        mttRewardVideoAd = null;
+                        //Toast.makeText(RewardVideoActivity.this, "rewardVideoAd close", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onVideoComplete() {
+
+                        MyToash.Log("JavascriptInterface  ad", "onVideoComplete");
+                        //Toast.makeText(RewardVideoActivity.this, "rewardVideoAd complete", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onVideoError() {
+                        MyToash.Log("JavascriptInterface  ad", "onVideoError");
+                    }
+
+                    @Override
+                    public void onRewardVerify(boolean rewardVerify, int rewardAmount, String rewardName) {
+                        // onRewardVerify.OnRewardVerify();
+                        MyToash.Log("JavascriptInterface", "verify:" + rewardVerify + " amount:" + rewardAmount +
+                                " name:" + rewardName);
+
+
+                    }
+
+                    @Override
+                    public void onSkippedVideo() {
+                        MyToash.Log("JavascriptInterface  ad", "onSkippedVideo");
+                    }
+                });
+
+                //
+
+
+                mttRewardVideoAd.setDownloadListener(new TTAppDownloadListener() {
+                    @Override
+                    public void onIdle() {
+
+                    }
+
+                    @Override
+                    public void onDownloadActive(long totalBytes, long currBytes, String fileName, String appName) {
+
+                    }
+
+                    @Override
+                    public void onDownloadPaused(long totalBytes, long currBytes, String fileName, String appName) {
+
+                    }
+
+                    @Override
+                    public void onDownloadFailed(long totalBytes, long currBytes, String fileName, String appName) {
+
+                    }
+
+                    @Override
+                    public void onDownloadFinished(long totalBytes, String fileName, String appName) {
+
+                    }
+
+                    @Override
+                    public void onInstalled(String fileName, String appName) {
+
+                    }
+                });
+              /*      }
+                });*/
+            }
+        });
+
+       /* RewardedVideoAd mRewardedVideoAd = AdHub.getRewardedVideoAdInstance(activity);
 
         mRewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
             @Override
@@ -505,7 +641,7 @@ public class TodayOneAD {
 
         if (!mRewardedVideoAd.isLoaded()) {
             mRewardedVideoAd.loadAd("435", new AdRequest.Builder().build());
-        }
+        }*/
     }
 
     LayoutInflater layoutInflater;

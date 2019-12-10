@@ -841,7 +841,9 @@ public class PageFactory {
 
     //向后翻页
     public void nextPage() {
-        if (ReaderConfig.USE_AD && !close_AD && IS_CHAPTERLast && mBookPageWidget.Current_Page > 5 && mBookPageWidget.Current_Page % 5 == 0) {
+        MyToash.Log("onTouchEvent", "333");
+
+        if (!close_AD && IS_CHAPTERLast && mBookPageWidget.Current_Page > 5 && mBookPageWidget.Current_Page % 5 == 0) {
             cancelPage = currentPage;
             onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);
             prePage = currentPage;

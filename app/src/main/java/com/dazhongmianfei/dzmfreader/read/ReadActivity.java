@@ -153,7 +153,7 @@ public class ReadActivity extends BaseReadActivity {
     @BindView(R.id.auto_read_progress_bar)
     ProgressBar auto_read_progress_bar;
 
-  @BindView(R.id.list_ad_view_layout)
+    @BindView(R.id.list_ad_view_layout)
     public FrameLayout insert_todayone2;
 
     @BindView(R.id.activity_read_buttom_ad_layout)
@@ -182,7 +182,6 @@ public class ReadActivity extends BaseReadActivity {
     private AutoSettingDialog mAutoSettingDialog;
     private Boolean mDayOrNight;
     private boolean isSpeaking = false;
-
 
 
     @BindView(R.id.activity_read_purchase_layout)
@@ -246,7 +245,7 @@ public class ReadActivity extends BaseReadActivity {
 
     @Override
     public void initView() {
-        if (isNotchEnable==0) {
+        if (isNotchEnable == 0) {
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) activity_read_top_menu.getLayoutParams();
             layoutParams.height = ImageUtil.dp2px(this, 70);
             activity_read_top_menu.setLayoutParams(layoutParams);
@@ -294,7 +293,7 @@ public class ReadActivity extends BaseReadActivity {
         chapter = (ChapterItem) intent.getSerializableExtra(EXTRA_CHAPTER);
         baseBook = (BaseBook) intent.getSerializableExtra(EXTRA_BOOK);
         pageFactory = new PageFactory(baseBook,
-                this,isNotchEnable,NavigationBarHeight,insert_todayone2);
+                this, isNotchEnable, NavigationBarHeight, insert_todayone2);
 
         activity_read_top_back_bookname.setText(baseBook.getName());
         pageFactory.setPurchaseLayout(activity_read_purchase_layout);
@@ -340,7 +339,7 @@ public class ReadActivity extends BaseReadActivity {
 
         bookpage.setPageMode(config.getPageMode());
 
-        bookpage. setADview(insert_todayone2);
+        bookpage.setADview(insert_todayone2);
 
         pageFactory.setPageWidget(bookpage);
         pageFactory.setLineSpacingMode(config.getLineSpacingMode());
@@ -358,8 +357,6 @@ public class ReadActivity extends BaseReadActivity {
 
         initDayOrNight();
         initListener();
-
-
 
 
     }
@@ -724,7 +721,7 @@ public class ReadActivity extends BaseReadActivity {
 
     //设置菜单
     private void showReadSetting() {
-        ImmersionBar.with(this).hideBar(BarHide.FLAG_SHOW_BAR).statusBarDarkFont(true).init();
+    ImmersionBar.with(this).hideBar(BarHide.FLAG_SHOW_BAR).statusBarDarkFont(true).init();
         isShow = true;
         Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.menu_ins);
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.menu_in);
@@ -735,8 +732,9 @@ public class ReadActivity extends BaseReadActivity {
     }
 
     private void hideReadSetting() {
+        isShow = false;
+      ImmersionBar.with(this).hideBar(BarHide.FLAG_HIDE_BAR).init();
 
-        ImmersionBar.with(this).hideBar(BarHide.FLAG_HIDE_BAR).init();
         Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.menu_outs);
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.menu_out);
         if (activity_read_bottom_view.getVisibility() == View.VISIBLE) {
@@ -802,46 +800,25 @@ public class ReadActivity extends BaseReadActivity {
                 break;
             case R.id.tv_noad:
                 hideReadSetting();
-                if (ReaderConfig.USE_AD) {
-                    if (pageFactory.close_AD) {
-                        MyToash.ToashSuccess(activity, "阅读界面广告已关闭");
-                        return;
-                    }
-                    if (todayOneAD != null) {
-                        GetDialog.IsOperation(ReadActivity.this, "去广告", "观看完整视频可以免广告阅读20分钟,是否观看？", new GetDialog.IsOperationInterface() {
-                            @Override
-                            public void isOperation() {
-                                todayOneAD.loadJiliAd(new TodayOneAD.OnRewardVerify() {
-                                    @Override
-                                    public void OnRewardVerify() {
-                                        pageFactory.close_AD = true;
-                                    }
-                                });
-                            }
-                        });
-
-                    }
-                    /*if (MainHttpTask.getInstance().Gotologin(activity)) {
-                        startActivityForResult(new Intent(activity, AcquireBaoyueActivity.class), 301);
-                    }*/
-                    // NoAD(this, pageFactory, null, true);
-
-                 /*   GetDialog.IsOperation(ReadActivity.this, "去广告", "是否观看视频消除后10个章节的广告?", new GetDialog.IsOperationInterface() {
+                if (pageFactory.close_AD) {
+                    MyToash.ToashSuccess(activity, "阅读界面广告已关闭");
+                    return;
+                }
+                if (todayOneAD != null) {
+                    GetDialog.IsOperation(ReadActivity.this, "去广告", "观看完整视频可以免广告阅读20分钟,是否观看？", new GetDialog.IsOperationInterface() {
                         @Override
                         public void isOperation() {
-                            todayOneAD.loadJiliAd("912218745", TTAdConstant.VERTICAL, new OnRewardVerify() {
+                            todayOneAD.loadJiliAd(new TodayOneAD.OnRewardVerify() {
                                 @Override
                                 public void OnRewardVerify() {
-                                    adVideo_complete();
+                                    pageFactory.close_AD = true;
+                                    ShareUitls.putLong(activity, "OnRewardVerify", System.currentTimeMillis());
+
                                 }
                             });
-                            if (todayOneAD.mttRewardVideoAd != null) {
-                                todayOneAD.mttRewardVideoAd.showRewardVideoAd(ReadActivity.this);
-                            } else {
-                                handler.sendEmptyMessage(1);
-                            }
                         }
-                    });*/
+                    });
+
                 }
                 break;
         }
@@ -1066,7 +1043,7 @@ public class ReadActivity extends BaseReadActivity {
                     handler.sendEmptyMessageDelayed(1, 30000);
                     break;
                 case 2:
-                   // handler.sendEmptyMessageDelayed(2, 20000);
+                    // handler.sendEmptyMessageDelayed(2, 20000);
                     break;
             }
 

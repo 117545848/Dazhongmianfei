@@ -25,6 +25,7 @@ import com.dazhongmianfei.dzmfreader.read.view.animation.SlideAnimation;
 import com.dazhongmianfei.dzmfreader.utils.ImageUtil;
 import com.dazhongmianfei.dzmfreader.utils.MyToash;
 import com.dazhongmianfei.dzmfreader.utils.ScreenSizeUtils;
+import com.dazhongmianfei.dzmfreader.utils.ShareUitls;
 import com.dazhongmianfei.dzmfreader.utils.Utils;
 
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.READBUTTOM_HEIGHT;
@@ -32,7 +33,7 @@ import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.READBUTTOM_HEIGH
 /**
  * Created by scb on 2018/8/29 0029.
  */
-public class PageWidget extends RelativeLayout {
+public class PageWidget extends View {
     private final static String TAG = "BookPageWidget";
     private int mScreenWidth = 0; // 屏幕宽
     public int mScreenHeight = 0; // 屏幕高
@@ -95,7 +96,7 @@ public class PageWidget extends RelativeLayout {
         mScreenWidth = ScreenSizeUtils.getInstance(mContext).getScreenWidth();
         mScreenHeight = ScreenSizeUtils.getInstance(mContext).getScreenHeight();  //RGB_565
         if (ReaderConfig.USE_AD) {
-            mScreenHeight = mScreenHeight-ImageUtil.dp2px(mContext, READBUTTOM_HEIGHT);
+            mScreenHeight = mScreenHeight - ImageUtil.dp2px(mContext, READBUTTOM_HEIGHT);
         }
 
         MyToash.Log("mScreenHeight", mScreenHeight + "");
@@ -202,13 +203,26 @@ public class PageWidget extends RelativeLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         super.onTouchEvent(event);
+        MyToash.Log("onTouchEvent", "11111");
         if (ADview != null) {
             ADview.setVisibility(INVISIBLE);
+        }
+
+        long time1 = System.currentTimeMillis();
+        long time = ShareUitls.getLong(getContext(), "OnRewardVerify", 0);
+
+        if (Math.abs((time - time1)) > 1200000) {
+            PageFactory.close_AD = false;
+        } else {
+            PageFactory.close_AD = true;
         }
         if (PageFactory.getStatus() == PageFactory.Status.OPENING) {
             onTouchEventing = false;
             return false;
         }
+
+        MyToash.Log("onTouchEvent", "222");
+
         int x = (int) event.getX();
         int y = (int) event.getY();
 
