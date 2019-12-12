@@ -19,12 +19,18 @@ import android.widget.FrameLayout;
 
 import android.widget.ImageView;
 
+import com.dazhongmianfei.dzmfreader.bean.UserInfoItem;
+import com.dazhongmianfei.dzmfreader.config.ReaderConfig;
+import com.dazhongmianfei.dzmfreader.http.ReaderParams;
 import com.dazhongmianfei.dzmfreader.jinritoutiao.WeakHandler;
+import com.dazhongmianfei.dzmfreader.utils.HttpUtils;
+import com.dazhongmianfei.dzmfreader.utils.Utils;
 import com.fm.openinstall.OpenInstall;
 import com.fm.openinstall.listener.AppWakeUpAdapter;
 import com.fm.openinstall.model.AppData;
 import com.github.dfqin.grantor.PermissionListener;
 import com.github.dfqin.grantor.PermissionsUtil;
+import com.google.gson.Gson;
 import com.hubcloud.adhubsdk.AdListener;
 import com.hubcloud.adhubsdk.SplashAd;
 import com.dazhongmianfei.dzmfreader.R;
@@ -39,6 +45,9 @@ import com.umeng.analytics.MobclickAgent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.dazhongmianfei.dzmfreader.read.util.PageFactory.IS_VIP;
+import static com.dazhongmianfei.dzmfreader.read.util.PageFactory.close_AD;
 
 
 /**
@@ -76,9 +85,27 @@ public class SplashActivity extends Activity {
             FileManager.deleteFile(FileManager.getSDCardRoot());
         }
         OpenInstall.getWakeUp(getIntent(), wakeUpAdapter);
-
         //获取OpenInstall安装数据
         requestReadPhoneState();
+        if (Utils.isLogin(activity)) {
+            ReaderParams params = new ReaderParams(activity);
+            String json = params.generateParamsJson();
+            HttpUtils.getInstance(activity).sendRequestRequestParams3(ReaderConfig.mUserCenterUrl, json, true, new HttpUtils.ResponseListener() {
+                        @Override
+                        public void onResponse(final String result) {
+                            UserInfoItem mUserInfo = new Gson().fromJson(result, UserInfoItem.class);
+                            if (mUserInfo!=null&&mUserInfo.getIs_vip() == 1) {
+                                IS_VIP=true;
+                            }
+                        }
+
+                        @Override
+                        public void onErrorResponse(String ex) {
+
+                        }
+                    }
+            );
+        }
 
     }
 
@@ -110,7 +137,7 @@ public class SplashActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        if(splashAd!=null){
+        if (splashAd != null) {
             splashAd.cancel();
         }
 

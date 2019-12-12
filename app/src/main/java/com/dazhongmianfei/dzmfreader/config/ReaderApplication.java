@@ -80,9 +80,8 @@ public class ReaderApplication extends LitePalApplication {
             if (isMainProcess()) {
                 OpenInstall.init(this);
             }
-            if (ReaderConfig.USE_AD) {
-                TTAdManagerHolder.init(this);
-            }
+            TTAdManagerHolder.init(this);
+
         } catch (Exception E) {
         } catch (Error e) {
         }

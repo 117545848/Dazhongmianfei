@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Path;
 import android.widget.Switch;
 
+import com.dazhongmianfei.dzmfreader.read.util.PageFactory;
 import com.google.gson.Gson;
 import com.dazhongmianfei.dzmfreader.R;
 import com.dazhongmianfei.dzmfreader.Task.TaskManager;
@@ -118,9 +119,9 @@ public class MainHttpTask {
                                     ReaderConfig.REFREASH_USERCENTER = false;
                                     UserInfoItem mUserInfo = new Gson().fromJson(result, UserInfoItem.class);
                                     if (mUserInfo.getIs_vip() == 1) {
-                                        ReaderConfig.USE_AD = false;
+                                        PageFactory.close_AD = true;
                                     } else {
-                                        ReaderConfig.USE_AD = ReaderConfig.ad_switch == 1;
+                                        PageFactory.close_AD = false;
                                     }
                                 }
                                 break;

@@ -402,40 +402,8 @@ public class BookInfoActivity extends BaseButterKnifeTransparentActivity {
             }
             MyToash.Log("advertisement",ReaderConfig.USE_AD+"");
 
-            if (ReaderConfig.USE_AD /*&& infoBookItem.advert != null*/) {
-               // activity_book_info_ad.setVisibility(View.GONE);
-               // MyToash.Log("advertisement",1+"");
+            new TodayOneAD(activity, 2, infoBookItem.advert.ad_android_key).getTodayOneBanner(list_ad_view_layout_chuanshanjia, null, 2);;
 
-              //  new TodayOneAD(activity, 2).getTodayOneBanner(list_ad_view_layout_chuanshanjia, null, 2);
-               new TodayOneAD(activity, 2, infoBookItem.advert.ad_android_key).getTodayOneBanner(list_ad_view_layout_chuanshanjia, null, 2);;
-
-                /*if (infoBookItem.advert.ad_type == 2) {
-                    activity_book_info_ad.setVisibility(View.GONE);
-                    new TodayOneAD(activity, 2).getTodayOneBanner(list_ad_view_layout_chuanshanjia, null, 2);
-
-                   // new TodayOneAD(activity, 2).getLuomiAD(list_ad_view_layout_chuanshanjia, 2);
-
-                } else {
-                    list_ad_view_layout_chuanshanjia.setVisibility(View.GONE);
-                    BaseAd baseAd = infoBookItem.advert;
-                    activity_book_info_ad.setVisibility(View.VISIBLE);
-                    activity_book_info_ad.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent();
-                            intent.setClass(activity, WebViewActivity.class);
-                            intent.putExtra("url", baseAd.ad_skip_url);
-                            intent.putExtra("title", baseAd.ad_title);
-                            intent.putExtra("advert_id", baseAd.advert_id);
-
-                            activity.startActivity(intent);
-                        }
-                    });
-                    ImageLoader.getInstance().displayImage(baseAd.ad_image, list_ad_view_img, ReaderApplication.getOptions());
-                }*/
-            } else {
-                list_ad_layout.setVisibility(View.GONE);
-            }
 
 
         } catch (Exception e) {

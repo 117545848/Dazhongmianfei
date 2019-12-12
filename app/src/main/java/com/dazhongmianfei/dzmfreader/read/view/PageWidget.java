@@ -95,9 +95,7 @@ public class PageWidget extends View {
         wm.getDefaultDisplay().getMetrics(metric);*/
         mScreenWidth = ScreenSizeUtils.getInstance(mContext).getScreenWidth();
         mScreenHeight = ScreenSizeUtils.getInstance(mContext).getScreenHeight();  //RGB_565
-        if (ReaderConfig.USE_AD) {
-            mScreenHeight = mScreenHeight - ImageUtil.dp2px(mContext, READBUTTOM_HEIGHT);
-        }
+        mScreenHeight = mScreenHeight - ImageUtil.dp2px(mContext, READBUTTOM_HEIGHT);
 
         MyToash.Log("mScreenHeight", mScreenHeight + "");
         try {
@@ -210,7 +208,6 @@ public class PageWidget extends View {
 
         long time1 = System.currentTimeMillis();
         long time = ShareUitls.getLong(getContext(), "OnRewardVerify", 0);
-
         if (Math.abs((time - time1)) > 1200000) {
             PageFactory.close_AD = false;
         } else {

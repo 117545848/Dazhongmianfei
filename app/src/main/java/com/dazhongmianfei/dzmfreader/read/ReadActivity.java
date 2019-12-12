@@ -218,7 +218,7 @@ public class ReadActivity extends BaseReadActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 301) {
+       /* if (requestCode == 301) {
             int is_vip = data.getIntExtra("is_vip", 0);
             if (USE_AD && is_vip == 1) {
                 ReaderConfig.USE_AD = false;
@@ -239,7 +239,7 @@ public class ReadActivity extends BaseReadActivity {
 
             }
 
-        }
+        }*/
     }
 
 
@@ -274,7 +274,7 @@ public class ReadActivity extends BaseReadActivity {
     @Override
     public void initData() {
         // try {
-        if (ReaderConfig.USE_AD) {
+     /*   if (ReaderConfig.USE_AD) {
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) bookpage.getLayoutParams();
             layoutParams.height = mScreenHeight - ImageUtil.dp2px(activity, READBUTTOM_HEIGHT);
             bookpage.setLayoutParams(layoutParams);
@@ -285,7 +285,7 @@ public class ReadActivity extends BaseReadActivity {
         } else {
             activity_read_buttom_ad_layout.setVisibility(View.GONE);
             tv_noad.setVisibility(View.GONE);
-        }
+        }*/
         config = ReadingConfig.getInstance();
         //  阅读管理器
         //获取intent中的携带的信息
@@ -297,14 +297,17 @@ public class ReadActivity extends BaseReadActivity {
 
         activity_read_top_back_bookname.setText(baseBook.getName());
         pageFactory.setPurchaseLayout(activity_read_purchase_layout);
-        if (ReaderConfig.USE_AD) {
-            handler.sendEmptyMessageDelayed(2, 20000);
-            int noad_time = ShareUitls.getInt(activity, "close_AD", 0);
-            if ((System.currentTimeMillis() - noad_time) / 60000 <= 20) {
-                pageFactory.close_AD = true;
-            }
-            getWebViewAD(activity);
+
+
+        handler.sendEmptyMessageDelayed(2, 20000);
+        int noad_time = ShareUitls.getInt(activity, "close_AD", 0);
+        if ((System.currentTimeMillis() - noad_time) / 60000 <= 20) {
+            PageFactory.close_AD = true;
         }
+        getWebViewAD(activity);
+
+
+
         IntentFilter mfilter = new IntentFilter();
         mfilter.addAction(Intent.ACTION_BATTERY_CHANGED);
         mfilter.addAction(Intent.ACTION_TIME_TICK);
@@ -1055,11 +1058,8 @@ public class ReadActivity extends BaseReadActivity {
         super.onDestroy();
         // ReadTime();
         try {
-            //handler.removeMessages(4);
-            if (USE_AD) {
-                handler.removeMessages(1);
-                handler.removeMessages(2);
-            }
+            handler.removeMessages(1);
+            handler.removeMessages(2);
         } catch (Exception e) {
         }
         pageFactory.clear();

@@ -69,18 +69,11 @@ import java.util.List;
 import java.util.Map;
 
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.READBUTTOM_HEIGHT;
-import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.USE_AD;
-import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.XIAOSHUO;
 
-//.TodayOneAD;
-//.ViewToBitmapUtil;
-
-/**
- * Created by Administrator on 2016/7/20 0020.
- */
 public class PageFactory {
     //&&(chapterItem.getChapter_uid() == null || !chapterItem.getChapter_uid().contains(uid))
     public static boolean close_AD;//关闭广告
+    public static boolean IS_VIP;//关闭广告
     int AD_PAGE;//
     // private static PageFactory pageFactory;
 
@@ -228,7 +221,7 @@ public class PageFactory {
     public void setTodayOneAD(TodayOneAD todayOneAD_buttom, FrameLayout insert_todayone_button) {
         this.insert_todayone_button = insert_todayone_button;
         this.todayOneAD_buttom = todayOneAD_buttom;
-        if (ReaderConfig.USE_AD && todayOneAD_buttom != null && todayOneAD_buttom.adViewHolder != null) {
+        if ( todayOneAD_buttom != null && todayOneAD_buttom.adViewHolder != null) {
             insert_todayone_button.setBackgroundColor(bg_color);
             todayOneAD_buttom.adViewHolder.mDescription.setTextColor(color);
             todayOneAD_buttom.adViewHolder.mTitle.setTextColor(color);
@@ -258,9 +251,8 @@ public class PageFactory {
 
         mHeight = MHeight;
         button_ad_heigth = ImageUtil.dp2px(mActivity, READBUTTOM_HEIGHT);
-        if (ReaderConfig.USE_AD) {
-            mHeight -= button_ad_heigth;
-        }
+        mHeight -= button_ad_heigth;
+
         mWidth = ScreenSizeUtils.getInstance(mActivity).getScreenWidth();
         sdf = new SimpleDateFormat("HH:mm");//HH:mm为24小时制,hh:mm为12小时制
         date = sdf.format(new java.util.Date());
@@ -729,7 +721,7 @@ public class PageFactory {
     public void prePage() {
 
 /*
-        if (ReaderConfig.USE_AD && !close_AD && IS_CHAPTERFirst && mBookPageWidget.Current_Page > 5 && mBookPageWidget.Current_Page % 5 == 0) {
+        if (ReaderConfig. !IS_VIP&&!close_AD && IS_CHAPTERFirst && mBookPageWidget.Current_Page > 5 && mBookPageWidget.Current_Page % 5 == 0) {
             cancelPage = currentPage;
             onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);
             //    currentPage = getPrePage();
@@ -843,7 +835,7 @@ public class PageFactory {
     public void nextPage() {
         MyToash.Log("onTouchEvent", "333");
 
-        if (!close_AD && IS_CHAPTERLast && mBookPageWidget.Current_Page > 5 && mBookPageWidget.Current_Page % 5 == 0) {
+        if (!IS_VIP&&!close_AD && IS_CHAPTERLast && mBookPageWidget.Current_Page > 5 && mBookPageWidget.Current_Page % 5 == 0) {
             cancelPage = currentPage;
             onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);
             prePage = currentPage;
@@ -1072,7 +1064,7 @@ public class PageFactory {
     public void cancelPage() {
         currentPage = cancelPage;
         currentPage = cancelPage;
-        if (ReaderConfig.USE_AD && !close_AD) {
+        if (!IS_VIP&&!close_AD) {
             if (IS_CHAPTERLast && IS_CHAPTERFirst) {
                 insert_todayone2.setVisibility(View.INVISIBLE);
             } else {
@@ -1275,7 +1267,7 @@ public class PageFactory {
 
     //绘制当前页面
     public void currentPage(Boolean updateChapter) {
-        if (ReaderConfig.USE_AD && !close_AD && (!IS_CHAPTERFirst || !IS_CHAPTERLast)) {
+        if (close_AD && (!IS_CHAPTERFirst || !IS_CHAPTERLast)) {
             //  drawAD(mBookPageWidget.getNextPage());
         } else {
             onDraw(mBookPageWidget.getNextPage(), currentPage.getLines(), updateChapter);
@@ -1288,7 +1280,9 @@ public class PageFactory {
             if (currentPage != null && mBookPageWidget != null && !mBookPageWidget.isRunning()) {
                 if (level != mLevel) {
                     level = mLevel;
-                    currentPage(false);
+                    if(insert_todayone2.getVisibility()!=View.VISIBLE) {
+                        currentPage(false);
+                    }
                     //drawBatteryAndDate(onDrawCanvas);
                 }
             }
@@ -1301,7 +1295,9 @@ public class PageFactory {
                 String mDate = sdf.format(new java.util.Date());
                 if (date != mDate) {
                     date = mDate;
-                    currentPage(false);
+                    if(insert_todayone2.getVisibility()!=View.VISIBLE) {
+                        currentPage(false);
+                    }
                     // drawBatteryAndDate(onDrawCanvas);
 
                 }
@@ -1464,7 +1460,7 @@ public class PageFactory {
             //    try {
             insert_todayone2.setBackgroundColor(bg_color);
             try {
-                if (ReaderConfig.USE_AD && todayOneAD_buttom != null && !todayOneAD_buttom.is_getNativeInfoListView) {
+                if (todayOneAD_buttom != null && !todayOneAD_buttom.is_getNativeInfoListView) {
                     insert_todayone_button.setBackgroundColor(bg_color);
                     todayOneAD_buttom.adViewHolder.mDescription.setTextColor(color);
                     todayOneAD_buttom.adViewHolder.mTitle.setTextColor(color);
@@ -1685,7 +1681,7 @@ public class PageFactory {
                 }
             }
         });
-        if (USE_AD && !close_AD & !IS_CHAPTERFirst) {
+        if ( !IS_VIP&&!close_AD & !IS_CHAPTERFirst) {
             drawAD(mBookPageWidget.getCurPage());
         } else
             onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);
@@ -1751,7 +1747,7 @@ public class PageFactory {
                 IS_CHAPTERLast = true;
             }
         });
-        if (USE_AD && !close_AD && !IS_CHAPTERLast) {
+        if ( !IS_VIP&&!close_AD && !IS_CHAPTERLast) {
             drawAD(mBookPageWidget.getCurPage());
         } else
             onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);

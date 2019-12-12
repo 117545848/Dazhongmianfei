@@ -246,6 +246,7 @@ public class TodayOneAD {
                     if (MainHttpTask.getInstance().Gotologin(activity)) {
                         activity.startActivityForResult(new Intent(activity, AcquireBaoyueActivity.class), 301);
                     }
+                    frameLayoutToday.setVisibility(View.INVISIBLE);
                     break;
 
 

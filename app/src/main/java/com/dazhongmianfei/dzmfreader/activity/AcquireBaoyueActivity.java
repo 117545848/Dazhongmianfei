@@ -35,6 +35,8 @@ import butterknife.BindView;
 
 import com.dazhongmianfei.dzmfreader.R2;
 
+import static com.dazhongmianfei.dzmfreader.read.util.PageFactory.IS_VIP;
+
 /**
  * 包月购买页
  * Created by scb on 2018/8/12.
@@ -102,7 +104,7 @@ public class AcquireBaoyueActivity extends BaseActivity implements ShowTitle {
                 String nickName = userObj.getString("nickname");
                 //    String avatar = userObj.getString("avatar");
                 activity_acquire_avatar_name.setText(nickName);
-                is_vip = userObj.getInt("baoyue_status");
+                IS_VIP = userObj.getInt("baoyue_status")==1;
                 activity_acquire_avatar_desc.setText(userObj.getString("display_date"));
                 MyPicasso.IoadImage(this, mAvatar, R.mipmap.hold_user_avatar, activity_acquire_avatar);
 

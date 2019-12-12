@@ -50,6 +50,8 @@ import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.READHISTORY;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.USE_AD_FINAL;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.getCurrencyUnit;
 import static com.dazhongmianfei.dzmfreader.config.ReaderConfig.getSubUnit;
+import static com.dazhongmianfei.dzmfreader.read.util.PageFactory.IS_VIP;
+import static com.dazhongmianfei.dzmfreader.read.util.PageFactory.close_AD;
 
 /**
  * 我的
@@ -181,14 +183,9 @@ public class MineNewFragment extends BaseButterKnifeFragment {
                 mUserInfo = gson.fromJson(info, UserInfoItem.class);
             if (mUserInfo.getIs_vip() == 1) {
                 fragment_mine_user_info_isvip.setImageResource(R.mipmap.icon_isvip);
-                if (USE_AD_FINAL) {
-                    ReaderConfig.USE_AD = false;
-                }
+                IS_VIP=true;
             } else {
-                fragment_mine_user_info_isvip.setImageResource(R.mipmap.icon_novip);
-                if (USE_AD_FINAL) {
-                    ReaderConfig.USE_AD = ReaderConfig.ad_switch == 1;
-                }
+
             }
             if (mUserInfo.getAuto_sub() == 0) {
                 AppPrefs.putSharedBoolean(activity, ReaderConfig.AUTOBUY, false);
@@ -352,13 +349,6 @@ public class MineNewFragment extends BaseButterKnifeFragment {
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void refresh(RefreshMine refreshMine) {
-        // MyToash.Log("RefreshMine",(refreshMine.userInfoItem==null)?"":refreshMine.userInfoItem.toString());
-        if (refreshMine.userInfoItem == null) {
-            refreshData();
-        } else {
-            initInfo(null, refreshMine.userInfoItem);
-
-        }
-
+        refreshData();
     }
 }
