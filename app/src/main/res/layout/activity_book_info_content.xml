@@ -203,19 +203,15 @@
         android:orientation="vertical"
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
-
         <FrameLayout
             android:id="@+id/list_ad_view_layout_chuanshanjia"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@color/white" />
-
-        <include
-            layout="@layout/list_ad_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
+             />
     </LinearLayout>
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

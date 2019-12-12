@@ -136,17 +136,18 @@ public class BookInfoActivity extends BaseButterKnifeTransparentActivity {
     public TextView activity_book_info_start_read;
     @BindView(R2.id.activity_book_info_tag)
     LinearLayout activity_book_info_tag;
-    @BindView(R2.id.list_ad_view_layout)
-    FrameLayout activity_book_info_ad;
-    @BindView(R2.id.list_ad_view_img)
-    ImageView list_ad_view_img;
-
+    /*
+   @BindView(R2.id.list_ad_view_layout)
+   FrameLayout activity_book_info_ad;
+@BindView(R2.id.list_ad_view_img)
+   ImageView list_ad_view_img;
+*/
     @BindView(R2.id.list_ad_view_layout_chuanshanjia)
     FrameLayout list_ad_view_layout_chuanshanjia;
 
-    @BindView(R2.id.list_ad_layout)
+  /*  @BindView(R2.id.list_ad_layout)
     LinearLayout list_ad_layout;
-
+*/
     @OnClick(value = {R.id.titlebar_back, R.id.activity_book_info_content_category_layout,
             R.id.activity_book_info_add_shelf, R.id.activity_book_info_start_read,
             R.id.titlebar_share,
@@ -262,7 +263,6 @@ public class BookInfoActivity extends BaseButterKnifeTransparentActivity {
     Gson gson = new Gson();
 
     public void initInfo(String json) {
-        try {
             InfoBookItem infoBookItem = gson.fromJson(json, InfoBookItem.class);
             InfoBook infoBook = infoBookItem.book;
             mBaseBook.setName(infoBook.name);
@@ -401,13 +401,10 @@ public class BookInfoActivity extends BaseButterKnifeTransparentActivity {
 
             }
             MyToash.Log("advertisement",ReaderConfig.USE_AD+"");
-
-            new TodayOneAD(activity, 2, infoBookItem.advert.ad_android_key).getTodayOneBanner(list_ad_view_layout_chuanshanjia, null, 2);;
-
+           new TodayOneAD(activity, 2, null).getTodayOneBanner(list_ad_view_layout_chuanshanjia, null, 2);
 
 
-        } catch (Exception e) {
-        }
+
     }
 
     boolean falseDialg;

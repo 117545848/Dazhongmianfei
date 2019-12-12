@@ -96,13 +96,12 @@ public class TodayOneAD {
         this.flag = flag;
         this.frameLayoutToday = frameLayoutToday;
         frameLayoutToday.removeAllViews();
-        int currentAD = (int) (Math.random() * 2);
-        //   int currentAD = 0;
+        //int currentAD = (int) (Math.random() * 2);
+          int currentAD = 0;
         switch (currentAD) {
 
             case 0:
                 daimaweiID = "925050236";
-
                 is_getNativeInfoListView = false;
                 // adViewHolder.iv_listitem_icon_.setImageResource(R.mipmap.chuanshanjia);
                 loadTodayOneBannerAdXINXILIU(frameLayoutToday, flag);
@@ -199,24 +198,16 @@ public class TodayOneAD {
     public AdViewHolder adViewHolder;
     String daimaweiID;
 
-    public TodayOneAD(Activity activity, int flag/*,String daimaweiID*/) {
-        this.activity = activity;
-        //    invoke();
-    }
+
 
     public TodayOneAD(Activity activity, int flag, String daimaweiID) {
+        this.flag=flag;
         this.daimaweiID = daimaweiID;
         this.activity = activity;
-        //  invoke();
+        invoke();
     }
 
 
-    public TodayOneAD(String daimaweiID) {
-        if (daimaweiID == null) {
-            daimaweiID = "925050605";
-        }
-        this.daimaweiID = daimaweiID;
-    }
 
     public TodayOneAD() {
 
@@ -294,7 +285,7 @@ public class TodayOneAD {
                 if (ads == null || ads.isEmpty()) {
                     return;
                 }
-                invoke();
+
 
                 ttFeedAd = ads.get(0);
                 bindData(frameLayoutToday, flag);
