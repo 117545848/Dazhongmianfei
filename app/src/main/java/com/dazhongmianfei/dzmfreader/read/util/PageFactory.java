@@ -226,7 +226,7 @@ public class PageFactory {
             todayOneAD_buttom.adViewHolder.mDescription.setTextColor(color);
             todayOneAD_buttom.adViewHolder.mTitle.setTextColor(color);
             todayOneAD_buttom.adViewHolder.mSource.setTextColor(color);
-            todayOneAD_buttom.adViewHolder.mCreativeButton.setTextColor(color);
+           // todayOneAD_buttom.adViewHolder.mCreativeButton.setTextColor(color);
         }
     }
 
@@ -840,7 +840,6 @@ public class PageFactory {
             onDraw(mBookPageWidget.getCurPage(), currentPage.getLines(), true);
             prePage = currentPage;
             drawAD(mBookPageWidget.getNextPage());
-            getWebViewAD();
             mBookPageWidget.setOnSwitchNextListener(new PageWidget.OnSwitchNextListener() {
                 @Override
                 public void switchNextChapter() {
@@ -853,8 +852,11 @@ public class PageFactory {
                 }
             });
             return;
+        }else {
+            if (!IS_VIP && !close_AD && (mBookPageWidget.Current_Page+1) % 5 == 0) {
+                getWebViewAD();
+            }
         }
-
 
         boolean nextChapter = currentPage.getEnd() >= mBookUtil.getBookLen();
 
@@ -877,6 +879,7 @@ public class PageFactory {
 
             } else {
                 try {
+
                     final String nextChapterId = mBookUtil.getCurrentChapter().getNext_chapter_id();
                     ChapterManager.getInstance(mActivity).getChapter(mBookUtil.getCurrentChapter().getDisplay_order() + 1, nextChapterId, new ChapterManager.QuerychapterItemInterface() {
                         @Override
@@ -955,6 +958,7 @@ public class PageFactory {
         if (isfirst == 0 || isfirst == 3) {
             initBg(config.getDayOrNight());
         }
+
         this.chapterItem = chapterItem;
         ;
         bookName = chapterItem.getBook_name();
@@ -1063,7 +1067,6 @@ public class PageFactory {
 
     public void cancelPage() {
         currentPage = cancelPage;
-        currentPage = cancelPage;
         if (!IS_VIP&&!close_AD) {
             if (IS_CHAPTERLast && IS_CHAPTERFirst) {
                 insert_todayone2.setVisibility(View.INVISIBLE);
@@ -1071,8 +1074,6 @@ public class PageFactory {
                 insert_todayone2.setVisibility(View.VISIBLE);
             }
         }
-        drawAD(mBookPageWidget.getNextPage());
-        getWebViewAD();
     }
 
     public void downloadWithoutAutoBuy(final String book_id, final String chapter_id) {
@@ -1465,7 +1466,7 @@ public class PageFactory {
                     todayOneAD_buttom.adViewHolder.mDescription.setTextColor(color);
                     todayOneAD_buttom.adViewHolder.mTitle.setTextColor(color);
                     todayOneAD_buttom.adViewHolder.mSource.setTextColor(color);
-                    todayOneAD_buttom.adViewHolder.mCreativeButton.setTextColor(color);
+                   // todayOneAD_buttom.adViewHolder.mCreativeButton.setTextColor(color);
                 }
             } catch (Exception E) {
             }
@@ -1790,7 +1791,7 @@ public class PageFactory {
             c.drawBitmap(getBgBitmap2(), 0, 0, null);
         }
 
-       /* Rect mSrcRect = new Rect(0, 0, mWidth, Insert_todayone2);
+        Rect mSrcRect = new Rect(0, 0, mWidth, Insert_todayone2);
         Paint mBitPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mBitPaint.setFilterBitmap(true);
         mBitPaint.setDither(true);
@@ -1802,7 +1803,6 @@ public class PageFactory {
 
         c.drawBitmap(bitmapAD, mSrcRect, mDestRect, mBitPaint);
         //画进度及时间
-*/
         float fPercent = (float) (currentPage.getBegin() * 1.0 / mBookUtil.getBookLen());//进度
 
         if (mPageEvent != null) {

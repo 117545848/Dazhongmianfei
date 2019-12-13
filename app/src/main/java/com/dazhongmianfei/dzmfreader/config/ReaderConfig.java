@@ -77,7 +77,7 @@ public class ReaderConfig {
     public static final int REFRESH_HEIGHT = 120;//书城 发现 向下滑动距离 改变bar 背景
     public static  int    MAXheigth;//获取手机能显示图片的最高高度
     public static  boolean BookShelfOpen = false;
-    public static final int READBUTTOM_HEIGHT = 90;//yeudulibu AD
+    public static final int READBUTTOM_HEIGHT = 60;//yeudulibu AD
 
     public  static  int  getMAXheigth(){
         if(MAXheigth==0){

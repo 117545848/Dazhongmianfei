@@ -85,7 +85,7 @@
             android:layout_height="25dp"
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
-            android:background="@mipmap/icon_jinritoutiao_bg"
+            android:background="@drawable/shape_upapp"
             android:textColor="@color/white"
             android:textSize="@dimen/public_9_dp"
             android:visibility="gone" />
