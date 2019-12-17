@@ -17,7 +17,7 @@ import com.alibaba.sdk.android.push.noonesdk.PushServiceFactory;
 
 import com.alibaba.sdk.android.push.register.OppoRegister;
 import com.fm.openinstall.OpenInstall;
-import com.hubcloud.adhubsdk.AdHub;
+
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
@@ -76,7 +76,6 @@ public class ReaderApplication extends LitePalApplication {
             Bugly.init(this, "d763f529c6", false);
             initCloudChannel(this);
 
-          AdHub.init(this, "3044");
             if (isMainProcess()) {
                 OpenInstall.init(this);
             }

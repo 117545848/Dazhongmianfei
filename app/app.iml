@@ -90,6 +90,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/.gradle/caches/transforms-2/files-2.1/b9909d3e61a9419743bd1f451281f47f/jars/classes.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Library/Android/sdk/platforms/android-29/data/layoutlib.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/OpenInstall_v2.2.2.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/umeng-share-wechat-simplify-6.9.3.jar:unspecified@jar" level="project" />
@@ -97,6 +98,7 @@
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/umeng-sharetool-6.9.3.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/juniversalchardet-2.3.0.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/umeng-share-core-6.9.3.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/adview-android-bid-4.0.9.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/universal-image-loader-1.9.4.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/umeng-share-QQ-simplify-6.9.3.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/alipaySdk-20170725.jar:unspecified@jar" level="project" />
@@ -124,6 +126,12 @@
     <orderEntry type="library" name="Gradle: com.github.bumptech.glide:compiler:4.9.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.bumptech.glide:annotations:4.9.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.bumptech.glide:disklrucache:4.9.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/WSSDKAds_v1.0.1.aar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/miit_mdid_1.0.10.aar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/gdt_mob_release.aar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/open_ad_sdk.aar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/android-gif-drawable-1.2.6.aar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/scb/Documents/DZMianfei/app/libs/Baidu_MobAds_SDK.aar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.legacy:legacy-support-v4:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.jaeger.statusbaruitl:library:1.5.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.jcodecraeer:xrecyclerview:1.5.9@aar" level="project" />
@@ -180,13 +188,5 @@
     <orderEntry type="library" name="Gradle: com.wang.avi:library:2.1.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.gyf.immersionbar:immersionbar:3.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.gyf.immersionbar:immersionbar-components:3.0.0@aar" level="project" />
-    <orderEntry type="library" name="Gradle: :adhub_sdk_3.3.1:@aar" level="project" />
-    <orderEntry type="library" name="Gradle: :adpoymer-4.1.32:@aar" level="project" />
-    <orderEntry type="library" name="Gradle: :Baidu_MobAds_SDK5.83:@aar" level="project" />
-    <orderEntry type="library" name="Gradle: :GDTSDK.union.4.80.950:@aar" level="project" />
-    <orderEntry type="library" name="Gradle: :LayoutManagerGroup:@aar" level="project" />
-    <orderEntry type="library" name="Gradle: :open_ad_sdk:@aar" level="project" />
-    <orderEntry type="library" name="Gradle: :circleimageview-2.2.0:@aar" level="project" />
-    <orderEntry type="library" name="Gradle: :android-gif-drawable-1.2.6:@aar" level="project" />
   </component>
 </module>

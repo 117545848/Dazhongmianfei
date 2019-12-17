@@ -8,8 +8,8 @@ android {
         applicationId "com.dazhongmianfei.dzmfreader"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 7
-        versionName "1.7"
+        versionCode 9
+        versionName "1.9"
 
         multiDexEnabled true
     }
@@ -86,18 +86,10 @@ dependencies {
 
 
 
-    implementation(name: 'adhub_sdk_3.3.1', ext: 'aar')
-    implementation(name: 'adpoymer-4.1.32', ext: 'aar')
-    implementation(name: 'Baidu_MobAds_SDK5.83', ext: 'aar')
-    implementation(name: 'GDTSDK.union.4.80.950', ext: 'aar')
 
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation(name: 'LayoutManagerGroup', ext: 'aar')
-    implementation(name: 'open_ad_sdk', ext: 'aar')
-    implementation(name: 'circleimageview-2.2.0', ext: 'aar')
-    implementation(name: 'android-gif-drawable-1.2.6', ext: 'aar')
-
+    api fileTree(include: '*.aar', dir: 'libs')
     //noinspection GradleCompatible
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'junit:junit:4.12'

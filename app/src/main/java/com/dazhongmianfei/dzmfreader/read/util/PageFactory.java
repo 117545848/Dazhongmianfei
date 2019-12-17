@@ -1771,7 +1771,7 @@ public class PageFactory {
     public void getWebViewAD() {
 
         if (todayOneAD == null) {
-            todayOneAD = new TodayOneAD(mActivity, 0, "925050236");
+            todayOneAD = new TodayOneAD(mActivity, 0, "POSID2oxtf4pvfp2y");
         }
         todayOneAD.getTodayOneBanner(insert_todayone2, null, 0);
     }

@@ -297,15 +297,10 @@ public class ReadActivity extends BaseReadActivity {
 
         activity_read_top_back_bookname.setText(baseBook.getName());
         pageFactory.setPurchaseLayout(activity_read_purchase_layout);
-
-
-        handler.sendEmptyMessageDelayed(2, 20000);
         int noad_time = ShareUitls.getInt(activity, "close_AD", 0);
         if ((System.currentTimeMillis() - noad_time) / 60000 <= 20) {
             PageFactory.close_AD = true;
         }
-        getWebViewAD(activity);
-
 
 
         IntentFilter mfilter = new IntentFilter();
@@ -361,68 +356,11 @@ public class ReadActivity extends BaseReadActivity {
         initDayOrNight();
         initListener();
 
+        getWebViewAD(activity);
+        handler.sendEmptyMessageDelayed(1, 30000);
+
 
     }
-
-    private void chengeChapter(boolean flag) {
-        int chapter_possition = flag ? (pageFactory.chapterItem.getDisplay_order() + 1) : (pageFactory.chapterItem.getDisplay_order() - 1);
-        String chapter_id = flag ? pageFactory.chapterItem.getNext_chapter_id() : pageFactory.chapterItem.getPre_chapter_id();
-
-        ChapterManager.getInstance(ReadActivity.this).getChapter(chapter_possition, chapter_id, new ChapterManager.QuerychapterItemInterface() {
-            @Override
-            public void success(final ChapterItem querychapterItem) {
-
-                final String nextChapterId = querychapterItem.getChapter_id();
-                if (querychapterItem.getChapter_path() == null) {
-                    String path = FileManager.getSDCardRoot().concat("Reader/book/").concat(mBookId + "/").concat(nextChapterId + "/").concat(querychapterItem.getIs_preview() + "/").concat(querychapterItem.getUpdate_time()).concat(".txt");
-
-                    if (FileManager.isExist(path)) {
-                        ContentValues values = new ContentValues();
-                        values.put("chapter_path", path);
-                        LitePal.updateAll(ChapterItem.class, values, "book_id = ? and chapter_id = ?", mBookId, nextChapterId);
-                        querychapterItem.setChapter_path(path);
-                        if (SettingDialog.scroll) {
-                            SettingDialog.scroll = false;
-                            pageFactory.openBook(4, querychapterItem, null);
-                            SettingDialog.scroll = true;
-                        }
-                    } else {
-                        ChapterManager.notfindChapter(pageFactory.chapterItem, mBookId, pageFactory.chapterItem.getChapter_id(), new ChapterManager.ChapterDownload() {
-                            @Override
-                            public void finish() {
-                                if (SettingDialog.scroll) {
-                                    SettingDialog.scroll = false;
-                                    pageFactory.openBook(4, querychapterItem, null);
-                                    SettingDialog.scroll = true;
-                                }
-                            }
-                        });
-                    }
-                } else {
-                    if (SettingDialog.scroll) {
-                        SettingDialog.scroll = false;
-                        pageFactory.openBook(4, querychapterItem, null);
-                        SettingDialog.scroll = true;
-                    }
-                }
-
-
-                ChapterManager.getInstance(ReadActivity.this).addDownloadTask(true, flag ? querychapterItem.getNext_chapter_id() : querychapterItem.getPre_chapter_id(), new ChapterManager.ChapterDownload() {
-                    @Override
-                    public void finish() {
-
-                    }
-                });
-
-            }
-
-            @Override
-            public void fail() {
-
-            }
-        });
-    }
-
 
     protected void initListener() {
 
@@ -1059,7 +997,6 @@ public class ReadActivity extends BaseReadActivity {
         // ReadTime();
         try {
             handler.removeMessages(1);
-            handler.removeMessages(2);
         } catch (Exception e) {
         }
         pageFactory.clear();
@@ -1075,7 +1012,7 @@ public class ReadActivity extends BaseReadActivity {
     public void getWebViewAD(Activity activity) {
 
         if (todayOneAD == null) {
-            todayOneAD = new TodayOneAD(activity, 3, "925050875");
+            todayOneAD = new TodayOneAD(activity, 3, "925050191");
             pageFactory.setTodayOneAD(todayOneAD, activity_read_buttom_ad_layout);
         }
         todayOneAD.getTodayOneBanner(activity_read_buttom_ad_layout, activity_read_buttom_ad_layout_qq, 3);

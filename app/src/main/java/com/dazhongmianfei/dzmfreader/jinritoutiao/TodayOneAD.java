@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -40,19 +41,14 @@ import com.dazhongmianfei.dzmfreader.utils.MyToash;
 import com.dazhongmianfei.dzmfreader.utils.ScreenSizeUtils;
 import com.dazhongmianfei.dzmfreader.utils.ShareUitls;
 import com.dazhongmianfei.dzmfreader.utils.UpdateApp;
-import com.hubcloud.adhubsdk.AdHub;
-import com.hubcloud.adhubsdk.AdRequest;
-import com.hubcloud.adhubsdk.NativeAd;
-import com.hubcloud.adhubsdk.NativeAdListener;
-import com.hubcloud.adhubsdk.NativeAdResponse;
-import com.hubcloud.adhubsdk.RewardItem;
-import com.hubcloud.adhubsdk.RewardedVideoAd;
-import com.hubcloud.adhubsdk.RewardedVideoAdListener;
-import com.hubcloud.adhubsdk.internal.nativead.NativeAdEventListener;
-import com.hubcloud.adhubsdk.internal.nativead.NativeAdUtil;
+import com.kuaiyou.loader.AdViewBannerManager;
+import com.kuaiyou.loader.AdViewNativeManager;
+import com.kuaiyou.loader.loaderInterface.AdViewBannerListener;
+import com.kuaiyou.loader.loaderInterface.AdViewNativeListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -75,20 +71,11 @@ public class TodayOneAD {
 
     boolean finash;
     public int flag;
-    private NativeAd nativeAd;
     private List<? extends View> mAdViewList;
     public boolean is_getNativeInfoListView;
     public FrameLayout frameLayoutToday;
 
-    public void nativeRender() {
-        MyToash.Log("nativeRender", "111" + is_getNativeInfoListView + " ");
-        if (is_getNativeInfoListView && nativeAd != null && mAdViewList != null && !mAdViewList.isEmpty() && frameLayoutToday != null) {
-            for (int i = 0; i < mAdViewList.size(); i++) {
-                View lyAdView = mAdViewList.get(i);
-                nativeAd.nativeRender(lyAdView);//这个方法需要广告真正显示到屏幕上的时候再去调用
-            }
-        }
-    }
+    AdViewNativeManager adViewNative;
 
     public void getTodayOneBanner(final FrameLayout frameLayoutToday, final FrameLayout frameLayoutToday1, int flag) {
 
@@ -97,100 +84,147 @@ public class TodayOneAD {
         this.frameLayoutToday = frameLayoutToday;
         frameLayoutToday.removeAllViews();
         //int currentAD = (int) (Math.random() * 2);
-          int currentAD = 0;
+        int currentAD = 1;
         switch (currentAD) {
 
             case 0:
-                daimaweiID = "925050236";
+
                 is_getNativeInfoListView = false;
                 // adViewHolder.iv_listitem_icon_.setImageResource(R.mipmap.chuanshanjia);
                 loadTodayOneBannerAdXINXILIU(frameLayoutToday, flag);
                 break;
             case 1:
-                if (flag == 0) {
-                    daimaweiID = "9040";
+
+                if (flag != 3) {
+                    if (flag == 0) {
+                        daimaweiID = "POSIDyfapv3xjqb3y";
+                    } else {
+                        daimaweiID = "POSID3e53ss2bla6g";
+                    }
+                    adViewNative = new AdViewNativeManager(activity, ReaderConfig.appId, daimaweiID, adViewNativeListener);
+                    adViewNative.setAdSize(1080, 400);
+                    adViewNative.requestAd();
                 } else {
-                    daimaweiID = "9037";
+                    AdViewBannerManager adViewBIDView = new AdViewBannerManager(activity,
+                            ReaderConfig.appId, AdViewBannerManager.BANNER_AUTO_FILL, false);
+//		adViewBIDView.logMode=false;
+                    adViewBIDView.setShowCloseBtn(true);
+                    adViewBIDView.setRefreshTime(15);
+                    adViewBIDView.setOpenAnim(true);
+                    adViewBIDView.setOnAdViewListener(adViewBannerListener);
+                    frameLayoutToday.addView(adViewBIDView.getAdViewLayout());
+
                 }
-                nativeAd = new NativeAd(activity, daimaweiID, 1, new NativeAdListener() {
-                    @Override
-                    public void onAdFailed(int errorcode) {
-                    }
-
-                    @Override
-                    public void onAdClick() {
-                    }
-
-                    @Override
-                    public void onAdLoaded(NativeAdResponse response) {
-                        Log.i("nativeRender", (response.getNativeInfoListView() != null) + " " + flag);
-                        if (response.getNativeInfoListView() != null) {
-
-                            mAdViewList = response.getNativeInfoListView();
-                            frameLayoutToday.removeAllViews();
-                            for (int i = 0; i < mAdViewList.size(); i++) {
-                                View lyAdView = mAdViewList.get(i);
-                                frameLayoutToday.addView(lyAdView);
-                                nativeAd.nativeRender(lyAdView);//这个方法需要广告真正显示到屏幕上的时候再去调用
-
-                             /*   if(flag!=1) {
-                                    nativeAd.nativeRender(lyAdView);//这个方法需要广告真正显示到屏幕上的时候再去调用
-                                }*/
-                            }
-
-                        } else {
-                            invoke();
-                            adViewHolder.mTitle.setText(response.getHeadline());
-                            //需要开发者自己处理图片URL，可使用图片加载框架去处理，本示例使用glide加载仅供参考
-                            try {
-                                Glide.with(activity).load(Uri.parse(response.getImageUrls().get(0))).into(adViewHolder.mImage);
-                                // Glide.with(activity).load(Uri.parse(response.getImageUrls().get(1))).into((ImageView) findViewById(R.id.iv_native2));
-                                // Glide.with(activity).load(Uri.parse(response.getImageUrls().get(2))).into((ImageView) findViewById(R.id.iv_native3));
-                            } catch (Exception ignored) {
-                                Log.e("lance", "Exception:" + ignored.getMessage());
-                            }
-                            try {
-                                adViewHolder.mCreativeButton.setText(response.getTexts().get(0));
-                                adViewHolder.mDescription.setText(response.getTexts().get(1));
-                            } catch (Exception ignored) {
-                                Log.e("lance", "Exception:" + ignored.getMessage());
-                            }
-                            //sdk内部提供了以下方法，可以将一个view加上logo并返回一个加入了logo的framelayout替代原本无logo的view;
-                            //注意调用了此方法之后原来的view将不存在于之前的布局之中，须将返回的framelayout加入之前的布局。
-                            //若此方法不满足要求，请开发者自己实现加入logo及广告字样
-                            FrameLayout frameLayout = NativeAdUtil.addADLogo(frameLayoutToday, response);
-                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER);
-                            layoutParams.gravity = Gravity.CENTER;
-                            frameLayoutToday.addView(frameLayout, 0, layoutParams);
-
-                            // This must be called.
-                            //注册原生广告展示及点击曝光，必须调用。
-                            NativeAdUtil.registerTracking(response, frameLayoutToday, new NativeAdEventListener() {
-                                @Override
-                                public void onAdWasClicked() {
-                                    //Toast.makeText(NativeActivity.this, "onAdWasClicked", Toast.LENGTH_SHORT).show();
-                                }
-
-                                @Override
-                                public void onAdWillLeaveApplication() {
-                                    // Toast.makeText(NativeActivity.this, "onAdWillLeaveApplication", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-                    }
-                });
-                //加载广告
-                nativeAd.loadAd();
                 break;
         }
 
     }
 
-    public interface LordComplete {
-        void success(NativeAd nativeAd, List<? extends View> mAdViewList, FrameLayout frameLayout);
-    }
+    AdViewBannerListener adViewBannerListener = new AdViewBannerListener() {
+        @Override
+        public void onAdClicked() {
+
+        }
+
+        @Override
+        public void onAdDisplayed() {
+
+        }
+
+        @Override
+        public void onAdReceived() {
+
+        }
+
+        @Override
+        public void onAdFailedReceived(String s) {
+
+        }
+
+        @Override
+        public void onAdClosed() {
+
+        }
+    };
 
 
+    public static String HTML = "<meta charset='utf-8'><style type='text/css'>* { padding: 0px; margin: 0px;}a:link { text-decoration: none;}</style><div  style='width: 100%; height: 100%;'><img src=\"image_path\" width=\"100%\" height=\"100%\" ></div>";
+    LayoutInflater inflater;
+    private HashMap<String, Object> nativeAd;
+    AdViewNativeListener adViewNativeListener = new AdViewNativeListener() {
+        @Override
+        public void onNativeAdReceived(List nativeAdList) {
+            if (nativeAdList != null && !nativeAdList.isEmpty()) {
+                nativeAd = (HashMap) nativeAdList.get(0);
+                frameLayoutToday.removeAllViews();
+                View view = null;
+
+                if ((view = (View) nativeAd.get("nativeView")) != null) {
+                    // Toast.makeText(this, "模板广告获取成功", Toast.LENGTH_SHORT).show();
+                    frameLayoutToday.addView(view, new FrameLayout.LayoutParams(-2, -2));
+
+                } else {
+                    Log.i("原生物料信息：", "title=" + nativeAd.get("title") + "\niconUrl=" + nativeAd.get("adIcon") + "\ndescription=" + nativeAd.get("description") + "\nimageUrl=" + nativeAd.get("adImage"));
+
+
+                    View contentView = inflater.inflate(R.layout.item4, null);
+                    WebView icon = contentView.findViewById(R.id.icon);
+                    WebView image = contentView.findViewById(R.id.image);
+                    TextView title = contentView.findViewById(R.id.title);
+                    TextView desc = contentView.findViewById(R.id.desc);
+                    TextView desc2 = contentView.findViewById(R.id.desc2);
+                    frameLayoutToday.addView(contentView);
+                    if (null != nativeAd) {
+                        desc.setText((CharSequence) nativeAd.get("description"));
+                        desc2.setText((CharSequence) nativeAd.get("sec_description"));
+                        title.setText((CharSequence) nativeAd.get("title"));
+                        if (!TextUtils
+                                .isEmpty((CharSequence) nativeAd.get("adImage"))
+                                && null != image) {
+                            image.loadData((new String(HTML)).replace("image_path",
+                                    (CharSequence) nativeAd.get("adImage")),
+                                    "text/html; charset=UTF-8", null);
+                        }
+
+                        if (!TextUtils.isEmpty((CharSequence) nativeAd.get("adIcon"))
+                                && null != icon)
+                            icon.loadData((new String(HTML)).replace("image_path",
+                                    (CharSequence) nativeAd.get("adIcon")),
+                                    "text/html; charset=UTF-8", null);
+                    }
+                }
+
+                adViewNative.reportImpression((String) nativeAd.get("adId"));
+
+                /***************************************************************/
+                // 触发点击汇报
+                if (null != frameLayoutToday)
+                    frameLayoutToday.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            adViewNative.reportClick(
+                                    (String) nativeAd.get("adId"));
+                        }
+                    });
+
+            }
+        }
+
+        @Override
+        public void onNativeAdReceiveFailed(String s) {
+
+        }
+
+        @Override
+        public void onDownloadStatusChange(int i) {
+
+        }
+
+        @Override
+        public void onNativeAdClosed(View view) {
+
+        }
+    };
     TTAdNative mTTAdNative;
     Activity activity;
     TTFeedAd ttFeedAd;
@@ -199,14 +233,17 @@ public class TodayOneAD {
     String daimaweiID;
 
 
-
-    public TodayOneAD(Activity activity, int flag, String daimaweiID) {
-        this.flag=flag;
-        this.daimaweiID = daimaweiID;
+    public TodayOneAD(Activity activity, int flag, String D) {
+        this.flag = flag;
+        this.daimaweiID = D;
+        if (TextUtils.isEmpty(daimaweiID)) {
+            daimaweiID = "925050236";
+        }
         this.activity = activity;
-        invoke();
+        if (layoutInflater == null) {
+            layoutInflater = LayoutInflater.from(activity);
+        }
     }
-
 
 
     public TodayOneAD() {
@@ -230,20 +267,20 @@ public class TodayOneAD {
         public ImageView iv_listitem_icon_;
 
 
-        @OnClick(value = {R.id.tv_listitem_VIP})
-        public void getEvent(View view) {
-            switch (view.getId()) {
-                case R.id.tv_listitem_VIP:
-                    if (MainHttpTask.getInstance().Gotologin(activity)) {
-                        activity.startActivityForResult(new Intent(activity, AcquireBaoyueActivity.class), 301);
-                    }
-                    frameLayoutToday.setVisibility(View.INVISIBLE);
-                    break;
+        /*  @OnClick(value = {R.id.tv_listitem_VIP})
+          public void getEvent(View view) {
+              switch (view.getId()) {
+                  case R.id.tv_listitem_VIP:
+                      if (MainHttpTask.getInstance().Gotologin(activity)) {
+                          activity.startActivityForResult(new Intent(activity, AcquireBaoyueActivity.class), 301);
+                      }
+                      frameLayoutToday.setVisibility(View.INVISIBLE);
+                      break;
 
 
-            }
-        }
-
+              }
+          }
+  */
         public AdViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
@@ -639,12 +676,10 @@ public class TodayOneAD {
     LayoutInflater layoutInflater;
 
     public void invoke() {
-        if (layoutInflater == null) {
-            layoutInflater = LayoutInflater.from(activity);
-        }
+
         switch (flag) {
             case 0:
-                convertView = layoutInflater.inflate(R.layout.listitem_ad_large_pic2, null, false);
+                convertView = layoutInflater.inflate(R.layout.item4, null, false);
                 break;
             case 1:
             case 2:

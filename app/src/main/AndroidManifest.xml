@@ -63,54 +63,33 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
+
         <activity
-            android:name="com.hubcloud.adhubsdk.AdActivity"
+            android:name="com.kyview.AdViewVideoActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:theme="@style/AdhubDialogStyle" />
+            android:hardwareAccelerated="true" >
+        </activity>
+        <service android:name="com.kyview.DownloadService" />
+        <activity android:name="com.kyview.AdViewLandingPage" />
+        <activity android:name="com.kyview.AdActivity" />
 
-        <service
-            android:name="com.hubcloud.adhubsdk.DownloadService"
-            android:exported="false" />
-
-
-        <!-- Fmobi Ad -->
-        <activity android:name="com.ly.adpoymer.activity.LyVideoActivity" />
-
-        <!-- gdt Ad -->
-        <!-- 请开发者注意字母的大小写，ADActivity，而不是AdActivity -->
-        <activity
-            android:name="com.qq.e.ads.ADActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.qq.e.ads.PortraitADActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.qq.e.ads.LandscapeADActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:screenOrientation="landscape" />
-
+        <!-- AdView SDK for tencent Gdt -->
         <service
             android:name="com.qq.e.comm.DownloadService"
-            android:exported="false" />
-        <!-- targetSDKVersion >= 24时才需要添加这些个provider。请开发者根据自己的包名来替换${applicationId}这个值 -->
-
-
-        <!-- BaiDu Ad -->
+            android:exported="false"/>
         <activity
             android:name="com.baidu.mobads.AppActivity"
-            android:configChanges="screenSize|keyboard|keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!-- targetSDKVersion >= 24时才需要添加这些个provider。请开发者根据自己的包名来替换${applicationId}这个值 -->
+            android:configChanges="keyboard|keyboardHidden|orientation"/>
         <provider
             android:name="com.baidu.mobads.openad.FileProvider"
-            android:authorities="${applicationId}.bd.provider"
+            android:authorities="${packageName}.bd.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/bd_file_paths" />
         </provider>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -149,14 +128,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-
-        </activity>
-<!--  <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="iy8qdo" />
-            </intent-filter>-->
+            </intent-filter>
+        </activity>
+
+
         <activity
             android:name="com.dazhongmianfei.dzmfreader.activity.BookInfoActivity"
             android:exported="true"
@@ -309,9 +291,6 @@
             android:theme="@style/FileSearcherActivityTheme" />
 
 
-        <meta-data
-            android:name="com.openinstall.APP_KEY"
-            android:value="iy8qdo" />
         <meta-data
             android:name="android.max_aspect"
             android:value="ratio_float" />

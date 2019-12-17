@@ -55,7 +55,6 @@ import com.dazhongmianfei.dzmfreader.view.AdaptionGridView;
 
 import com.dazhongmianfei.dzmfreader.view.ObservableScrollView;
 import com.dazhongmianfei.dzmfreader.view.PullToRefreshLayout;
-import com.hubcloud.adhubsdk.NativeAd;
 
 import org.greenrobot.eventbus.EventBus;
 

@@ -28,6 +28,11 @@ public class ReaderConfig {
     public static final String TENCENT_AD_APPID = "1109934888";
 
 
+    public static final String appId = "SDK20191817061259eyrxgg0pwde6fqj";
+    public static final String posId = "NATIVEchzdqc0qachn";
+
+
+
     //appid 微信分配的APPID
     public static final String WEIXIN_PAY_APPID = "wx5b7302b335d969fc";
     //appid 微信分配的SECRET
