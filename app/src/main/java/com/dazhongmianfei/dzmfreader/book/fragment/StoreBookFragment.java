@@ -97,7 +97,6 @@ public class StoreBookFragment extends BaseButterKnifeFragment {
     int currentSex = 1;
     LayoutInflater layoutInflater;
 
-
     public ImageView fragment_store_sex;
     StroeNewFragment.Hot_word hot_word;
 

@@ -71,6 +71,10 @@ public class SplashActivity extends Activity implements AdViewSpreadListener {
     @BindView(R.id.splash_container)
     public RelativeLayout mSplashContainer;
 
+    @BindView(R.id.activity_splash_im)
+    public View activity_splash_im;
+
+
     private AdViewSpreadManager adSpreadBIDView = null;
     private int count = 1;
     public String[] permissions = null;
@@ -124,7 +128,7 @@ public class SplashActivity extends Activity implements AdViewSpreadListener {
     }
 
     private void requestSpreadAd() {
-        adSpreadBIDView = new AdViewSpreadManager(this,"POSID53aux6uz41g4",
+        adSpreadBIDView = new AdViewSpreadManager(this,ReaderConfig.appId,
                 mSplashContainer);
         adSpreadBIDView.setBackgroundColor(Color.WHITE);
         adSpreadBIDView.setSpreadNotifyType(AdViewSpreadManager.NOTIFY_COUNTER_NUM);
@@ -305,8 +309,11 @@ public class SplashActivity extends Activity implements AdViewSpreadListener {
         jump();
     }
 
+
+
     @Override
     public void onAdReceived() {
+        activity_splash_im.setVisibility(View.GONE);
         Log.i("AdViewBID", "onAdRecieved");
     }
 
