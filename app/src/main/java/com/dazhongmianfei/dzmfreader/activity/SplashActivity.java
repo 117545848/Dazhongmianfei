@@ -301,7 +301,7 @@ public class SplashActivity extends Activity implements AdViewSpreadListener {
 
     @Override
     public void onAdFailedReceived(String arg1) {
-        Log.i("AdViewBID", "onAdRecieveFailed");
+        Log.i("AdViewBID", arg1);
         jump();
     }
 
