@@ -102,7 +102,12 @@ public class TodayOneAD {
                         daimaweiID = "POSID3e53ss2bla6g";
                     }
                     adViewNative = new AdViewNativeManager(activity, ReaderConfig.appId, daimaweiID, adViewNativeListener);
-                    adViewNative.setAdSize(1080, 400);
+                   int w=ScreenSizeUtils.getInstance(activity).getScreenWidth();
+                    if(flag==0) {
+                        adViewNative.setAdSize(w, ImageUtil.dp2px(activity,290));
+                    }else {
+                        adViewNative.setAdSize(w, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    }
                     adViewNative.requestAd();
                 } else {
                     AdViewBannerManager adViewBIDView = new AdViewBannerManager(activity,

@@ -240,7 +240,7 @@ public class PageFactory {
         this.isNotchEnable = isNotchEnable;
 
         this.baseBook = baseBook;
-        Insert_todayone2 = ImageUtil.dp2px(mActivity, 340);
+        Insert_todayone2 = ImageUtil.dp2px(mActivity, 290);
         mPurchaseDialog = new PurchaseDialog(context, false);
         mBookUtil = new BookUtil();
         config = ReadingConfig.getInstance();
