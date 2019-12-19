@@ -128,11 +128,9 @@ public class SplashActivity extends Activity implements AdViewSpreadListener {
     }
 
     private void requestSpreadAd() {
-        adSpreadBIDView = new AdViewSpreadManager(this,ReaderConfig.appId,
-                mSplashContainer);
+        adSpreadBIDView = new AdViewSpreadManager(this,ReaderConfig.appId, mSplashContainer);
         adSpreadBIDView.setBackgroundColor(Color.WHITE);
         adSpreadBIDView.setSpreadNotifyType(AdViewSpreadManager.NOTIFY_COUNTER_NUM);
-
         adSpreadBIDView.setOnAdViewListener(this
         );
     }
@@ -236,6 +234,7 @@ public class SplashActivity extends Activity implements AdViewSpreadListener {
     @SuppressLint("ResourceType")
     @Override
     public void onAdNotifyCustomCallback(final int ruleTime, final int delayTime) {
+
         final TextView tv1 = new TextView(this);
         final Button btn1 = new Button(this);
         final RelativeLayout.LayoutParams btnLp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,

@@ -3,6 +3,7 @@ package com.dazhongmianfei.dzmfreader.jinritoutiao;
 import android.app.Activity;
 import android.app.NativeActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
@@ -43,8 +44,10 @@ import com.dazhongmianfei.dzmfreader.utils.ShareUitls;
 import com.dazhongmianfei.dzmfreader.utils.UpdateApp;
 import com.kuaiyou.loader.AdViewBannerManager;
 import com.kuaiyou.loader.AdViewNativeManager;
+import com.kuaiyou.loader.AdViewSpreadManager;
 import com.kuaiyou.loader.loaderInterface.AdViewBannerListener;
 import com.kuaiyou.loader.loaderInterface.AdViewNativeListener;
+import com.kuaiyou.loader.loaderInterface.AdViewSpreadListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -76,7 +79,7 @@ public class TodayOneAD {
     public FrameLayout frameLayoutToday;
 
     AdViewNativeManager adViewNative;
-
+    AdViewSpreadManager adSpreadBIDView;
     public void getTodayOneBanner(final FrameLayout frameLayoutToday, final FrameLayout frameLayoutToday1, int flag) {
 
 
@@ -94,37 +97,74 @@ public class TodayOneAD {
                 loadTodayOneBannerAdXINXILIU(frameLayoutToday, flag);
                 break;
             case 1:
-
                 if (flag != 3) {
-                    if (flag == 0) {
-                        daimaweiID = "POSIDyfapv3xjqb3y";
-                    } else {
-                        daimaweiID = "POSID3e53ss2bla6g";
-                    }
-                    adViewNative = new AdViewNativeManager(activity, ReaderConfig.appId, daimaweiID, adViewNativeListener);
-                   int w=ScreenSizeUtils.getInstance(activity).getScreenWidth();
                     if(flag==0) {
-                        adViewNative.setAdSize(w, ImageUtil.dp2px(activity,290));
+                        adSpreadBIDView = new AdViewSpreadManager(activity,ReaderConfig.appId, frameLayoutToday);
+                        adSpreadBIDView.setBackgroundColor(Color.WHITE);
+                        adSpreadBIDView.setSpreadNotifyType(AdViewSpreadManager.NOTIFY_COUNTER_NUM);
+                        adSpreadBIDView.setOnAdViewListener(adViewSpreadListener);
                     }else {
+                        daimaweiID = "POSID3e53ss2bla6g";
+                        adViewNative = new AdViewNativeManager(activity, ReaderConfig.appId, daimaweiID, adViewNativeListener);
+                        int w=ScreenSizeUtils.getInstance(activity).getScreenWidth();
                         adViewNative.setAdSize(w, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        adViewNative.requestAd();
                     }
-                    adViewNative.requestAd();
                 } else {
                     AdViewBannerManager adViewBIDView = new AdViewBannerManager(activity,
                             ReaderConfig.appId, AdViewBannerManager.BANNER_AUTO_FILL, false);
-//		adViewBIDView.logMode=false;
                     adViewBIDView.setShowCloseBtn(true);
                     adViewBIDView.setRefreshTime(15);
                     adViewBIDView.setOpenAnim(true);
                     adViewBIDView.setOnAdViewListener(adViewBannerListener);
                     frameLayoutToday.addView(adViewBIDView.getAdViewLayout());
-
                 }
                 break;
         }
 
     }
 
+    AdViewSpreadListener adViewSpreadListener=new AdViewSpreadListener() {
+        @Override
+        public void onAdClicked() {
+
+        }
+
+        @Override
+        public void onAdDisplayed() {
+
+        }
+
+        @Override
+        public void onAdReceived() {
+
+        }
+
+        @Override
+        public void onAdFailedReceived(String s) {
+
+        }
+
+        @Override
+        public void onAdClosed() {
+
+        }
+
+        @Override
+        public void onAdSpreadPrepareClosed() {
+
+        }
+
+        @Override
+        public void onAdClosedByUser() {
+
+        }
+
+        @Override
+        public void onAdNotifyCustomCallback(int i, int i1) {
+
+        }
+    };
     AdViewBannerListener adViewBannerListener = new AdViewBannerListener() {
         @Override
         public void onAdClicked() {

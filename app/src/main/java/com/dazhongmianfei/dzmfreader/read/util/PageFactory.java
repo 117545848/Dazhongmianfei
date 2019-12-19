@@ -232,7 +232,7 @@ public class PageFactory {
 
     int isNotchEnable;
     float dianchi;
-
+    float huadong;
     public PageFactory(BaseBook baseBook, Context context, int isNotchEnable, int NavigationBarHeight
             , FrameLayout frameLayout) {
         mActivity = (Activity) context;
@@ -240,7 +240,6 @@ public class PageFactory {
         this.isNotchEnable = isNotchEnable;
 
         this.baseBook = baseBook;
-        Insert_todayone2 = ImageUtil.dp2px(mActivity, 290);
         mPurchaseDialog = new PurchaseDialog(context, false);
         mBookUtil = new BookUtil();
         config = ReadingConfig.getInstance();
@@ -312,11 +311,17 @@ public class PageFactory {
 
         initBg(config.getDayOrNight());
         measureMarginWidth();
-        top = (MHeight - Insert_todayone2) / 2;
+       // top = (MHeight - Insert_todayone2) / 2;
+         huadong= mHeight - statusMarginBottom-ImageUtil.dp2px(mActivity,40);
 
+        top=(int) marginHeight;
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) insert_todayone2.getLayoutParams();
         layoutParams.topMargin = top;
+        layoutParams.height= (int) (huadong-top)-ImageUtil.dp2px(mActivity,60);
+        Insert_todayone2 = layoutParams.height;
         insert_todayone2.setLayoutParams(layoutParams);
+
+
 
     }
 
@@ -1820,7 +1825,8 @@ public class PageFactory {
         if (HUADONG_text_WIDTH == 0) {
             HUADONG_text_WIDTH = (int) (mPaint.measureText(HUADONG));//;
         }
-        float huadong = (mHeight - statusMarginBottom - (top + Insert_todayone2)) / 2 + top + Insert_todayone2;
+      //  float huadong = (mHeight - statusMarginBottom - (top + Insert_todayone2)) / 2 + top + Insert_todayone2;
+
         c.drawText(HUADONG, (mWidth - HUADONG_text_WIDTH) / 2, huadong, mPaint);
 
 
