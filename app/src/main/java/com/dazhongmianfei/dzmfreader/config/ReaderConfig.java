@@ -30,6 +30,9 @@ public class ReaderConfig {
 
     public static final String appId = "SDK20191817061259eyrxgg0pwde6fqj";
 
+    public static final String appId2 = "SDK201910201012126cs6htga2iiozgx";
+
+
     public static final String posId = "NATIVEchzdqc0qachn";
 
     //appid 微信分配的APPID

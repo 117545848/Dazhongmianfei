@@ -75,7 +75,6 @@ public class ReaderApplication extends LitePalApplication {
             ReadingConfig.createConfig(this);
             Bugly.init(this, "d763f529c6", false);
             initCloudChannel(this);
-
             if (isMainProcess()) {
                 OpenInstall.init(this);
             }

@@ -317,7 +317,7 @@ public class PageFactory {
         top=(int) marginHeight;
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) insert_todayone2.getLayoutParams();
         layoutParams.topMargin = top;
-        layoutParams.height= (int) (huadong-top)-ImageUtil.dp2px(mActivity,60);
+        layoutParams.height= (int) (huadong-top)-ImageUtil.dp2px(mActivity,130);
         Insert_todayone2 = layoutParams.height;
         insert_todayone2.setLayoutParams(layoutParams);
 

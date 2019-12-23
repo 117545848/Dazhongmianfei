@@ -78,8 +78,16 @@ public class TodayOneAD {
     public boolean is_getNativeInfoListView;
     public FrameLayout frameLayoutToday;
 
-    AdViewNativeManager adViewNative;
+    public AdViewNativeManager adViewNative;
     AdViewSpreadManager adSpreadBIDView;
+
+    public void reportImpression() {
+        if (adViewNative != null && nativeAd != null) {
+            adViewNative.reportImpression((String) nativeAd.get("adId"));
+        }
+    }
+
+
     public void getTodayOneBanner(final FrameLayout frameLayoutToday, final FrameLayout frameLayoutToday1, int flag) {
 
 
@@ -98,15 +106,16 @@ public class TodayOneAD {
                 break;
             case 1:
                 if (flag != 3) {
-                    if(flag==0) {
-                        adSpreadBIDView = new AdViewSpreadManager(activity,ReaderConfig.appId, frameLayoutToday);
+                    if (flag == 0) {
+                        adSpreadBIDView = new AdViewSpreadManager(activity, ReaderConfig.appId2, frameLayoutToday);
                         adSpreadBIDView.setBackgroundColor(Color.WHITE);
-                        adSpreadBIDView.setSpreadNotifyType(AdViewSpreadManager.NOTIFY_COUNTER_NUM);
+                        adSpreadBIDView.setSpreadNotifyType(AdViewSpreadManager.NOTIFY_COUNTER_NULL);
                         adSpreadBIDView.setOnAdViewListener(adViewSpreadListener);
-                    }else {
+
+                    } else {
                         daimaweiID = "POSID3e53ss2bla6g";
                         adViewNative = new AdViewNativeManager(activity, ReaderConfig.appId, daimaweiID, adViewNativeListener);
-                        int w=ScreenSizeUtils.getInstance(activity).getScreenWidth();
+                        int w = ScreenSizeUtils.getInstance(activity).getScreenWidth();
                         adViewNative.setAdSize(w, ViewGroup.LayoutParams.WRAP_CONTENT);
                         adViewNative.requestAd();
                     }
@@ -124,7 +133,7 @@ public class TodayOneAD {
 
     }
 
-    AdViewSpreadListener adViewSpreadListener=new AdViewSpreadListener() {
+    AdViewSpreadListener adViewSpreadListener = new AdViewSpreadListener() {
         @Override
         public void onAdClicked() {
 
@@ -195,7 +204,7 @@ public class TodayOneAD {
 
     public static String HTML = "<meta charset='utf-8'><style type='text/css'>* { padding: 0px; margin: 0px;}a:link { text-decoration: none;}</style><div  style='width: 100%; height: 100%;'><img src=\"image_path\" width=\"100%\" height=\"100%\" ></div>";
     LayoutInflater inflater;
-    private HashMap<String, Object> nativeAd;
+    public HashMap<String, Object> nativeAd;
     AdViewNativeListener adViewNativeListener = new AdViewNativeListener() {
         @Override
         public void onNativeAdReceived(List nativeAdList) {
@@ -238,9 +247,9 @@ public class TodayOneAD {
                                     "text/html; charset=UTF-8", null);
                     }
                 }
-
-                adViewNative.reportImpression((String) nativeAd.get("adId"));
-
+                if (flag != 0) {
+                    adViewNative.reportImpression((String) nativeAd.get("adId"));
+                }
                 /***************************************************************/
                 // 触发点击汇报
                 if (null != frameLayoutToday)
