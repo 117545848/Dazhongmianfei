@@ -107,6 +107,7 @@ public class TodayOneAD {
             case 1:
                 if (flag != 3) {
                     if (flag == 0) {
+                        frameLayoutToday.setVisibility(View.VISIBLE);
                         adSpreadBIDView = new AdViewSpreadManager(activity, ReaderConfig.appId2, frameLayoutToday);
                         adSpreadBIDView.setBackgroundColor(Color.WHITE);
                         adSpreadBIDView.setSpreadNotifyType(AdViewSpreadManager.NOTIFY_COUNTER_NULL);

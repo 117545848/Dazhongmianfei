@@ -849,19 +849,18 @@ public class PageFactory {
                 @Override
                 public void switchNextChapter() {
                     insert_todayone2.setVisibility(View.VISIBLE);
+                    getWebViewAD();
                     Log.i("nativeRender", "---cccc");
                     IS_CHAPTERLast = false;
                     mPurchaseLayout.setVisibility(View.GONE);
-
-
                 }
             });
             return;
-        }else {
+        }/*else {
             if (!IS_VIP && !close_AD && (mBookPageWidget.Current_Page+1) % 5 == 0) {
                 getWebViewAD();
             }
-        }
+        }*/
 
         boolean nextChapter = currentPage.getEnd() >= mBookUtil.getBookLen();
 
@@ -1796,17 +1795,18 @@ public class PageFactory {
             c.drawBitmap(getBgBitmap2(), 0, 0, null);
         }
 
-        Rect mSrcRect = new Rect(0, 0, mWidth, Insert_todayone2);
-        Paint mBitPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mBitPaint.setFilterBitmap(true);
-        mBitPaint.setDither(true);
-
         Bitmap bitmapAD = ViewToBitmapUtil.convertViewToBitmap(insert_todayone2, top, Insert_todayone2);
+        if(bitmapAD!=null&&bitmapAD.getHeight()!=0) {
+            Rect mSrcRect = new Rect(0, 0, mWidth, Insert_todayone2);
+            Paint mBitPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            mBitPaint.setFilterBitmap(true);
+            mBitPaint.setDither(true);
 
 
-        Rect mDestRect = new Rect(0, top, mWidth, top + Insert_todayone2);
+            Rect mDestRect = new Rect(0, top, mWidth, top + Insert_todayone2);
 
-        c.drawBitmap(bitmapAD, mSrcRect, mDestRect, mBitPaint);
+            c.drawBitmap(bitmapAD, mSrcRect, mDestRect, mBitPaint);
+        }
         //画进度及时间
         float fPercent = (float) (currentPage.getBegin() * 1.0 / mBookUtil.getBookLen());//进度
 
