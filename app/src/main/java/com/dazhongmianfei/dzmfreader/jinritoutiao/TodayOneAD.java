@@ -217,6 +217,7 @@ public class TodayOneAD {
                 if ((view = (View) nativeAd.get("nativeView")) != null) {
                     // Toast.makeText(this, "模板广告获取成功", Toast.LENGTH_SHORT).show();
                     frameLayoutToday.addView(view, new FrameLayout.LayoutParams(-2, -2));
+                    Log.i("原生物料信息：", "");
 
                 } else {
                     Log.i("原生物料信息：", "title=" + nativeAd.get("title") + "\niconUrl=" + nativeAd.get("adIcon") + "\ndescription=" + nativeAd.get("description") + "\nimageUrl=" + nativeAd.get("adImage"));
