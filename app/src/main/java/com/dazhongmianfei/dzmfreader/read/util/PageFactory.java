@@ -1463,7 +1463,8 @@ public class PageFactory {
             this.bg_color = bg_color;
             this.color = color;
             //    try {
-            insert_todayone2.setBackgroundColor(bg_color);
+            //insert_todayone2.setBackgroundColor(bg_color);
+
             try {
                 if (todayOneAD_buttom != null && !todayOneAD_buttom.is_getNativeInfoListView) {
                     insert_todayone_button.setBackgroundColor(bg_color);
@@ -1795,18 +1796,15 @@ public class PageFactory {
             c.drawBitmap(getBgBitmap2(), 0, 0, null);
         }
 
-        Bitmap bitmapAD = ViewToBitmapUtil.convertViewToBitmap(insert_todayone2, top, Insert_todayone2);
+    /*    Bitmap bitmapAD = ViewToBitmapUtil.convertViewToBitmap(insert_todayone2, top, Insert_todayone2);
         if(bitmapAD!=null&&bitmapAD.getHeight()!=0) {
             Rect mSrcRect = new Rect(0, 0, mWidth, Insert_todayone2);
             Paint mBitPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             mBitPaint.setFilterBitmap(true);
             mBitPaint.setDither(true);
-
-
             Rect mDestRect = new Rect(0, top, mWidth, top + Insert_todayone2);
-
             c.drawBitmap(bitmapAD, mSrcRect, mDestRect, mBitPaint);
-        }
+        }*/
         //画进度及时间
         float fPercent = (float) (currentPage.getBegin() * 1.0 / mBookUtil.getBookLen());//进度
 

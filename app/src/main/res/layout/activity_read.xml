@@ -254,7 +254,8 @@
     </RelativeLayout>
 
 
-    <include layout="@layout/activity_read_ad"/>
+    <include layout="@layout/activity_read_ad"
+        />
     <ImageView
         android:id="@+id/activity_read_firstread"
         android:layout_width="match_parent"
