@@ -106,7 +106,11 @@ public class TodayOneAD {
                 break;
             case 1:
                 if (flag != 3) {
-                    daimaweiID = "POSID3e53ss2bla6g";
+                    if (flag != 0) {
+                        daimaweiID = "POSID3e53ss2bla6g";
+                    } else {
+                        daimaweiID = "POSIDyfapv3xjqb3y";
+                    }
                     adViewNative = new AdViewNativeManager(activity, ReaderConfig.appId, daimaweiID, adViewNativeListener);
                     int w = ScreenSizeUtils.getInstance(activity).getScreenWidth();
                     adViewNative.setAdSize(w, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -222,9 +226,9 @@ public class TodayOneAD {
                 View view = null;
                 if ((view = (View) nativeAd.get("nativeView")) != null) {
 
-                    FrameLayout.LayoutParams layoutParams= new FrameLayout.LayoutParams(-2, -2);
-                    layoutParams.gravity=Gravity.CENTER;
-                    frameLayoutToday.addView(view,layoutParams);
+                    FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-2, -2);
+                    layoutParams.gravity = Gravity.CENTER;
+                    frameLayoutToday.addView(view, layoutParams);
 
 
                 } else {
@@ -236,9 +240,9 @@ public class TodayOneAD {
                     TextView title = contentView.findViewById(R.id.title);
                     TextView desc = contentView.findViewById(R.id.desc);
                     TextView desc2 = contentView.findViewById(R.id.desc2);
-                    FrameLayout.LayoutParams layoutParams= new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-                    layoutParams.gravity=Gravity.CENTER;
-                    frameLayoutToday.addView(contentView,layoutParams);
+                    FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                    layoutParams.gravity = Gravity.CENTER;
+                    frameLayoutToday.addView(contentView, layoutParams);
                     if (null != nativeAd) {
                         desc.setText((CharSequence) nativeAd.get("description"));
                         desc2.setText((CharSequence) nativeAd.get("sec_description"));
