@@ -1463,7 +1463,7 @@ public class PageFactory {
             this.bg_color = bg_color;
             this.color = color;
             //    try {
-            //insert_todayone2.setBackgroundColor(bg_color);
+           insert_todayone2.setBackgroundColor(bg_color);
 
             try {
                 if (todayOneAD_buttom != null && !todayOneAD_buttom.is_getNativeInfoListView) {
