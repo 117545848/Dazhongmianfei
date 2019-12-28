@@ -254,8 +254,12 @@
     </RelativeLayout>
 
 
-    <include layout="@layout/activity_read_ad"
-        />
+    <FrameLayout
+        android:id="@+id/list_ad_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:visibility="invisible"/>
     <ImageView
         android:id="@+id/activity_read_firstread"
         android:layout_width="match_parent"

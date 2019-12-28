@@ -314,10 +314,10 @@ public class PageFactory {
        // top = (MHeight - Insert_todayone2) / 2;
          huadong= mHeight - statusMarginBottom-ImageUtil.dp2px(mActivity,40);
 
-        top=(int) marginHeight;
+        top=(MHeight-ImageUtil.dp2px(mActivity,290))/2;
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) insert_todayone2.getLayoutParams();
         layoutParams.topMargin = top;
-        layoutParams.height= (int) (huadong-top)-ImageUtil.dp2px(mActivity,130);
+        layoutParams.height= ImageUtil.dp2px(mActivity,290);
         Insert_todayone2 = layoutParams.height;
         insert_todayone2.setLayoutParams(layoutParams);
 
@@ -849,18 +849,18 @@ public class PageFactory {
                 @Override
                 public void switchNextChapter() {
                     insert_todayone2.setVisibility(View.VISIBLE);
-                    getWebViewAD();
+                    //getWebViewAD();
                     Log.i("nativeRender", "---cccc");
                     IS_CHAPTERLast = false;
                     mPurchaseLayout.setVisibility(View.GONE);
                 }
             });
             return;
-        }/*else {
+        }else {
             if (!IS_VIP && !close_AD && (mBookPageWidget.Current_Page+1) % 5 == 0) {
                 getWebViewAD();
             }
-        }*/
+        }
 
         boolean nextChapter = currentPage.getEnd() >= mBookUtil.getBookLen();
 
@@ -1796,7 +1796,7 @@ public class PageFactory {
             c.drawBitmap(getBgBitmap2(), 0, 0, null);
         }
 
-    /*    Bitmap bitmapAD = ViewToBitmapUtil.convertViewToBitmap(insert_todayone2, top, Insert_todayone2);
+        Bitmap bitmapAD = ViewToBitmapUtil.convertViewToBitmap(insert_todayone2, top, Insert_todayone2);
         if(bitmapAD!=null&&bitmapAD.getHeight()!=0) {
             Rect mSrcRect = new Rect(0, 0, mWidth, Insert_todayone2);
             Paint mBitPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -1804,7 +1804,7 @@ public class PageFactory {
             mBitPaint.setDither(true);
             Rect mDestRect = new Rect(0, top, mWidth, top + Insert_todayone2);
             c.drawBitmap(bitmapAD, mSrcRect, mDestRect, mBitPaint);
-        }*/
+        }
         //画进度及时间
         float fPercent = (float) (currentPage.getBegin() * 1.0 / mBookUtil.getBookLen());//进度
 

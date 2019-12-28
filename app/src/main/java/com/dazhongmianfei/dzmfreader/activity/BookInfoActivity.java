@@ -142,7 +142,7 @@ public class BookInfoActivity extends BaseButterKnifeTransparentActivity {
 @BindView(R2.id.list_ad_view_img)
    ImageView list_ad_view_img;
 */
-    @BindView(R2.id.list_ad_view_layout_chuanshanjia)
+    @BindView(R.id.list_ad_view_layout_chuanshanjia)
     FrameLayout list_ad_view_layout_chuanshanjia;
 
   /*  @BindView(R2.id.list_ad_layout)
@@ -401,7 +401,7 @@ public class BookInfoActivity extends BaseButterKnifeTransparentActivity {
 
             }
             MyToash.Log("advertisement",ReaderConfig.USE_AD+"");
-           new TodayOneAD(activity, 2, null).getTodayOneBanner(list_ad_view_layout_chuanshanjia, null, 2);
+            new TodayOneAD(activity, 2, null).getTodayOneBanner(list_ad_view_layout_chuanshanjia, null, 2);
 
 
 

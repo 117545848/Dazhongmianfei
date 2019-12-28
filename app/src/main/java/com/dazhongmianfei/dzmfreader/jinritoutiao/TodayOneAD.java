@@ -106,7 +106,13 @@ public class TodayOneAD {
                 break;
             case 1:
                 if (flag != 3) {
-                    if (flag == 0) {
+                    daimaweiID = "POSID3e53ss2bla6g";
+                    adViewNative = new AdViewNativeManager(activity, ReaderConfig.appId, daimaweiID, adViewNativeListener);
+                    int w = ScreenSizeUtils.getInstance(activity).getScreenWidth();
+                    adViewNative.setAdSize(w, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    adViewNative.requestAd();
+
+                   /* if (flag == 0) {
                         frameLayoutToday.setVisibility(View.VISIBLE);
                         adSpreadBIDView = new AdViewSpreadManager(activity, ReaderConfig.appId2, frameLayoutToday);
 
@@ -120,7 +126,7 @@ public class TodayOneAD {
                         int w = ScreenSizeUtils.getInstance(activity).getScreenWidth();
                         adViewNative.setAdSize(w, ViewGroup.LayoutParams.WRAP_CONTENT);
                         adViewNative.requestAd();
-                    }
+                    }*/
                 } else {
                     AdViewBannerManager adViewBIDView = new AdViewBannerManager(activity,
                             ReaderConfig.appId, AdViewBannerManager.BANNER_AUTO_FILL, false);
@@ -214,14 +220,14 @@ public class TodayOneAD {
                 nativeAd = (HashMap) nativeAdList.get(0);
                 frameLayoutToday.removeAllViews();
                 View view = null;
-
                 if ((view = (View) nativeAd.get("nativeView")) != null) {
-                    // Toast.makeText(this, "模板广告获取成功", Toast.LENGTH_SHORT).show();
-                    frameLayoutToday.addView(view, new FrameLayout.LayoutParams(-2, -2));
-                    Log.i("原生物料信息：", "");
+
+                    FrameLayout.LayoutParams layoutParams= new FrameLayout.LayoutParams(-2, -2);
+                    layoutParams.gravity=Gravity.CENTER;
+                    frameLayoutToday.addView(view,layoutParams);
+
 
                 } else {
-                    Log.i("原生物料信息：", "title=" + nativeAd.get("title") + "\niconUrl=" + nativeAd.get("adIcon") + "\ndescription=" + nativeAd.get("description") + "\nimageUrl=" + nativeAd.get("adImage"));
 
 
                     View contentView = inflater.inflate(R.layout.item4, null);
@@ -230,7 +236,9 @@ public class TodayOneAD {
                     TextView title = contentView.findViewById(R.id.title);
                     TextView desc = contentView.findViewById(R.id.desc);
                     TextView desc2 = contentView.findViewById(R.id.desc2);
-                    frameLayoutToday.addView(contentView);
+                    FrameLayout.LayoutParams layoutParams= new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                    layoutParams.gravity=Gravity.CENTER;
+                    frameLayoutToday.addView(contentView,layoutParams);
                     if (null != nativeAd) {
                         desc.setText((CharSequence) nativeAd.get("description"));
                         desc2.setText((CharSequence) nativeAd.get("sec_description"));
@@ -250,9 +258,8 @@ public class TodayOneAD {
                                     "text/html; charset=UTF-8", null);
                     }
                 }
-                if (flag != 0) {
-                    adViewNative.reportImpression((String) nativeAd.get("adId"));
-                }
+                adViewNative.reportImpression((String) nativeAd.get("adId"));
+
                 /***************************************************************/
                 // 触发点击汇报
                 if (null != frameLayoutToday)

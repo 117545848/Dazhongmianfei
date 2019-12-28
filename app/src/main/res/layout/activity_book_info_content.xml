@@ -206,7 +206,7 @@
         <FrameLayout
             android:id="@+id/list_ad_view_layout_chuanshanjia"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
              />
     </LinearLayout>
 
